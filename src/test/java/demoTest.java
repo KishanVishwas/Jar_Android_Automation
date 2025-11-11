@@ -7,4 +7,9 @@ public class demoTest extends baseSetup {
     public static void firstTest(){
         System.out.println("");
     }
+
+    @Test
+    public static void firsTest(){
+        System.out.println("");
+    }
 }
