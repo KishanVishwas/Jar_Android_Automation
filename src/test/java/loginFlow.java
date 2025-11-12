@@ -7,7 +7,6 @@ public class loginFlow extends baseSetup {
     @Test
     public void onboardingVideoScreenFlow(){
         onboardingFlow onboard=new onboardingFlow();
-        onboard.langaugeSelection();
+        onboard.selectPreferredLanguage();
     }
-
 }
