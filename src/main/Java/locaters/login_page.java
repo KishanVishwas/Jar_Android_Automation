@@ -5,7 +5,6 @@ import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Test;
-@Test
 public class login_page {
 
     public static final By English = AppiumBy.xpath ("//android.widget.TextView[@text='English']");
