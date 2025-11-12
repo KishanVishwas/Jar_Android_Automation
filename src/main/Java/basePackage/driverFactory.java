@@ -40,7 +40,6 @@ public class driverFactory {
 
         driver = new AndroidDriver(url, caps);
         wait = new WebDriverWait(driver, Duration.ofSeconds(20));
-
         return driver;
     }
 }
