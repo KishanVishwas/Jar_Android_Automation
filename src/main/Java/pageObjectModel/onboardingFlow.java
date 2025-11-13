@@ -1,22 +1,23 @@
 package pageObjectModel;
 
 import io.appium.java_client.AppiumBy;
-import org.openqa.selenium.By;
+import static utilsPackage.waitUtils.*;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import static basePackage.driverFactory.driver;
 import static basePackage.driverFactory.wait;
-import static locaters.login_page.*;
+import static locaters.elementLocators.*;
 
 
 public class onboardingFlow  {
 
+
     public void langaugeSelection(){
         try {
             // Wait for the language screen to load
-            wait.until(ExpectedConditions.presenceOfElementLocated(langaugePageText));
+            waitForPresenceElementLocated(langaugePageText);
             // Try to find and click English
             WebElement english = driver.findElement(English);
             if (english.isDisplayed()) {
@@ -43,26 +44,29 @@ public class onboardingFlow  {
     }
     public void onboardingVideo(){
       try{
-       wait.until(ExpectedConditions.elementToBeClickable(skipOnboardingvideo)).click();
-       wait.until(ExpectedConditions.presenceOfElementLocated(startSavingJoueyCTA)).click();
+       waitForElementToBeClickable(skipOnboardingvideo).click();
+//          waitForPresenceElementLocated(startSavingJoueyCTA).click();
           System.out.println("Onboarding video as played");
         }
       catch (NoSuchElementException e){
           System.out.println("Onboarding video is not playing");
         }
 
-      if (driver.findElement(welcomeBackText).isDisplayed()){
-          wait.until(ExpectedConditions.elementToBeClickable(useOtherNumberCTA)).click();
+      if (waitForPresenceElementLocated(welcomeBackText).isDisplayed()){
+          waitForElementToBeClickable(useOtherNumberCTA).click();
       }
         WebElement NonOfAbove = driver.findElement(nonOfTheAbove);
         if (NonOfAbove.isDisplayed()) {
             NonOfAbove.click();
         }
     }
-    public void userLogin(){
-        WebElement NonOfAbove = driver.findElement(nonOfTheAbove);
-        if (NonOfAbove.isDisplayed()) {
-            NonOfAbove.click();
-        }
+    public void userLogin(String number, String OTP){
+        WebElement phnArea=driver.findElement(phoneNumberTextField);
+        phnArea.click();
+        phnArea.sendKeys(number);
+        waitForElementToBeClickable(sendOtpCTA).click();
+        WebElement otpArea=waitForElementToBeClickable(enterOtpTextArea);
+        otpArea.sendKeys(OTP);
+        waitForElementToBeClickable(verifyOtpCTA).click();
     }
 }
