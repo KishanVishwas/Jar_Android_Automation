@@ -29,11 +29,9 @@ public class driverFactory {
         caps.setCapability("appium:appPackage", "com.aso_centric.jar.staging");
         caps.setCapability("appium:appActivity", "com.jar.app.feature.home.ui.activity.HomeActivity");
         caps.setCapability("appium:appWaitActivity", "com.jar.app.*");
-        caps.setCapability("appium:noReset", true);
-        caps.setCapability("appium:fullReset", false);
+        caps.setCapability("appium:noReset", false);
+        caps.setCapability("appium:fullReset", true);
         caps.setCapability("appium:autoGrantPermissions", true);
-        caps.setCapability("appium:disableWindowAnimation", true);
-        caps.setCapability("appium:newCommandTimeout", 300);
 
         // --- Connect to Appium Server ---
         URL url = new URL("http://127.0.0.1:4723/");
