@@ -4,15 +4,10 @@ import io.appium.java_client.AppiumBy;
 import static utilsPackage.waitUtils.*;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-
 import static basePackage.driverFactory.driver;
-import static basePackage.driverFactory.wait;
 import static locaters.elementLocators.*;
 
-
 public class onboardingFlow  {
-
 
     public void langaugeSelection(){
         try {

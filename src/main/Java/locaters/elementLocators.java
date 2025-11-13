@@ -27,7 +27,6 @@ public class elementLocators {
     public static final By  cancalBsCTA =AppiumBy.xpath ("//android.widget.FrameLayout[@resource-id=\"com.aso_centric.jar.staging:id/btnLater\"]/android.view.ViewGroup");
     public static final By  INSTANT_SAVING_Title =AppiumBy.xpath ("//android.widget.TextView[@text=\"INSTANT SAVING\"]");
     public static final By  Daily_SAVING_Title =AppiumBy.xpath ("//android.widget.TextView[@text=\"Daily savings\"]");
-
 }
 
 
