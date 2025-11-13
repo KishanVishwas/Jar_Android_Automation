@@ -1,13 +1,10 @@
 package utilsPackage;
 
-import io.appium.java_client.AppiumBy;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-
 import static basePackage.driverFactory.driver;
 import static basePackage.driverFactory.wait;
-
 public class waitUtils {
 
     public static WebElement waitForElementToBeClickable(By locator){
