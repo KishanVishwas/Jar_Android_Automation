@@ -1,14 +1,17 @@
 package pageObjectModel;
 
 import io.appium.java_client.AppiumBy;
+
+import static basePackage.actions.closeKeyboard;
 import static utilsPackage.waitUtils.*;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
+
+import java.util.Map;
+
 import static basePackage.driverFactory.driver;
 import static locaters.elementLocators.*;
-
 public class onboardingFlow  {
-
     public void langaugeSelection(){
         try {
             // Wait for the language screen to load
@@ -55,8 +58,9 @@ public class onboardingFlow  {
             NonOfAbove.click();
         }
     }
-    public void userLogin(String number, String OTP){
-        WebElement phnArea=driver.findElement(phoneNumberTextField);
+    public void userLogin(String number, String OTP) throws InterruptedException {
+        closeKeyboard();
+        WebElement phnArea=waitForPresenceElementLocated(phoneNumberTextField);
         phnArea.click();
         phnArea.sendKeys(number);
         waitForElementToBeClickable(sendOtpCTA).click();

@@ -10,6 +10,7 @@ import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Map;
 
 import static basePackage.driverFactory.driver;
 import static basePackage.driverFactory.wait;
@@ -27,5 +28,8 @@ public class actions {
             System.out.println("Failed to save screenshot: " + e.getMessage());
         }
 
+    }
+    public static void closeKeyboard(){
+        driver.executeScript("mobile: performEditorAction", Map.of("action", "done"));
     }
 }
