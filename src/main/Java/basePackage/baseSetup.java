@@ -12,7 +12,7 @@ public class baseSetup {
     public static AppiumDriver driver;
 
     @BeforeSuite
-    public static void startAppiumServer(){
+    public static void startAppiumServer() {
         appiumServerManager.startServer();
     }
 
@@ -22,14 +22,14 @@ public class baseSetup {
     }
 
     @AfterClass
-    public static void destroyDriver(){
-        if (driver!=null){
+    public static void destroyDriver() {
+        if (driver != null) {
             driver.quit();
         }
     }
 
     @AfterSuite
-    public static void stopAppiumServer(){
+    public static void stopAppiumServer() {
         appiumServerManager.stopServer();
     }
 }

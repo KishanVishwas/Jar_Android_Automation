@@ -4,6 +4,7 @@ import io.appium.java_client.AppiumBy;
 
 import static basePackage.actions.closeKeyboard;
 import static utilsPackage.waitUtils.*;
+
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 
@@ -11,8 +12,9 @@ import java.util.Map;
 
 import static basePackage.driverFactory.driver;
 import static locaters.elementLocators.*;
-public class onboardingFlow  {
-    public void langaugeSelection(){
+
+public class onboardingFlow {
+    public void langaugeSelection() {
         try {
             // Wait for the language screen to load
             waitForPresenceElementLocated(langaugePageText);
@@ -40,32 +42,43 @@ public class onboardingFlow  {
             System.out.println("⚠️ Apply button not found or not clickable yet.");
         }
     }
-    public void onboardingVideo(){
-      try{
-       waitForElementToBeClickable(skipOnboardingvideo).click();
-//          waitForPresenceElementLocated(startSavingJoueyCTA).click();
-          System.out.println("Onboarding video as played");
-        }
-      catch (NoSuchElementException e){
-          System.out.println("Onboarding video is not playing");
-        }
 
-      if (waitForPresenceElementLocated(welcomeBackText).isDisplayed()){
-          waitForElementToBeClickable(useOtherNumberCTA).click();
-      }
+    public void onboardingVideo() {
+        try {
+            waitForElementToBeClickable(skipOnboardingvideo).click();
+            System.out.println("Onboarding video as played");
+        } catch (NoSuchElementException e) {
+            System.out.println("Onboarding video is not playing");
+        }
+        if (waitForPresenceElementLocated(welcomeBackText).isDisplayed()) {
+            waitForElementToBeClickable(useOtherNumberCTA).click();
+        }
         WebElement NonOfAbove = driver.findElement(nonOfTheAbove);
         if (NonOfAbove.isDisplayed()) {
             NonOfAbove.click();
         }
     }
-    public void userLogin(String number, String OTP) throws InterruptedException {
-        closeKeyboard();
-        WebElement phnArea=waitForPresenceElementLocated(phoneNumberTextField);
+
+    public void userLogin(String number, String OTP) {
+        WebElement phnArea = waitForPresenceElementLocated(phoneNumberTextField);
         phnArea.click();
         phnArea.sendKeys(number);
         waitForElementToBeClickable(sendOtpCTA).click();
-        WebElement otpArea=waitForElementToBeClickable(enterOtpTextArea);
+        WebElement otpArea = waitForElementToBeClickable(enterOtpTextArea);
         otpArea.sendKeys(OTP);
         waitForElementToBeClickable(verifyOtpCTA).click();
+    }
+
+    public void userRedirectiontoHome() {
+        try {
+            WebElement dsTitle = waitForPresenceElementLocated(Daily_SAVING_Title);
+            System.out.println(dsTitle.getText());
+            if (dsTitle.isDisplayed()) {
+                waitForElementToBeClickable(skipInOnboardingDS).click();
+                waitForElementToBeClickable(cancelDSonboard).click();
+            }
+        } catch (NoSuchElementException e) {
+            System.out.println("❌Skip not found after logging in to account");
+        }
     }
 }

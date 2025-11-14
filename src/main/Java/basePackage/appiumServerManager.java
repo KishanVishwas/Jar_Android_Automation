@@ -7,9 +7,8 @@ import java.io.InputStreamReader;
 public class appiumServerManager {
     private static Process appiumProcess;
 
-    public static void startServer(){
-        try
-        {
+    public static void startServer() {
+        try {
             ProcessBuilder builder = new ProcessBuilder("npx", "appium");
             builder.redirectErrorStream(true);
             appiumProcess = builder.start();
