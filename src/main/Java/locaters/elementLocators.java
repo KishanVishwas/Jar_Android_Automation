@@ -14,9 +14,9 @@ public class elementLocators {
     public static final By useOtherNumberCTA =AppiumBy.xpath ("//android.widget.TextView[@resource-id=\"com.aso_centric.jar.staging:id/tvContinueWithDifferentNumber\"]");
     public static final By useSameNumberCTA =AppiumBy.xpath ("//android.widget.FrameLayout[@resource-id=\"com.aso_centric.jar.staging:id/btnContinue\"]/android.view.ViewGroup");
     public static final By nonOfTheAbove =AppiumBy.id("com.google.android.gms:id/cancel");
-    public static final By phoneNumberTextField =AppiumBy.androidUIAutomator ("new UiSelector().className(\"android.view.View\").instance(7)");
+    public static final By phoneNumberTextField =AppiumBy.xpath ("//android.widget.EditText[@resource-id=\"onboarding_v2_number_input_text_field\"]");
     public static final By  sendOtpCTA=AppiumBy.xpath ("//android.view.View[@resource-id=\"onboarding_v2_send_otp_cta\"]");
-    public static final By  enterOtpTextArea =AppiumBy.xpath ("(//android.widget.EditText[@resource-id=\"onboarding_v2_otp_input_text_field\"])[1]/android.view.View");
+    public static final By  enterOtpTextArea =AppiumBy.androidUIAutomator ("new UiSelector().resourceId(\"onboarding_v2_otp_input_text_field\").instance(0)");
     public static final By  enterOtp =AppiumBy.xpath ("//android.widget.ScrollView/android.widget.EditText[1]");
     public static final By  verifyOtpCTA =AppiumBy.xpath ("//android.view.View[@resource-id=\"onboarding_v2_verify_otp_cta\"]");
     public static final By redireactionPageTitle = AppiumBy.id("com.aso_centric.jar.staging:id/tvTitle");
