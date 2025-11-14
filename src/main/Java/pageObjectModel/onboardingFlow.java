@@ -35,7 +35,7 @@ public class onboardingFlow {
             }
         }
         try {
-            WebElement applyBtn = driver.findElement(AppiumBy.xpath("//androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View[3]/android.view.View/android.view.View/android.view.View[2]"));
+            WebElement applyBtn = waitForElementToBeClickable(applyCTA);
             applyBtn.click();
             System.out.println("▶️ Clicked Apply button.");
         } catch (Exception ex) {
@@ -50,10 +50,11 @@ public class onboardingFlow {
         } catch (NoSuchElementException e) {
             System.out.println("Onboarding video is not playing");
         }
-        if (waitForPresenceElementLocated(welcomeBackText).isDisplayed()) {
+         WebElement wclText=waitForPresenceElementLocated(welcomeBackText);
+        if (wclText.isDisplayed()) {
             waitForElementToBeClickable(useOtherNumberCTA).click();
         }
-        WebElement NonOfAbove = driver.findElement(nonOfTheAbove);
+        WebElement NonOfAbove = waitForElementToBeClickable(nonOfTheAbove);
         if (NonOfAbove.isDisplayed()) {
             NonOfAbove.click();
         }

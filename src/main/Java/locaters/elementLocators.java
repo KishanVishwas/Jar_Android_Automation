@@ -30,6 +30,7 @@ public class elementLocators {
     public static final By Daily_SAVING_Title = AppiumBy.xpath("//android.widget.TextView[@text=\"Daily Saving\"]");
     public static final By skipInOnboardingDS = AppiumBy.xpath("//android.widget.TextView[@text=\"Skip\"]");
     public static final By cancelDSonboard = AppiumBy.xpath("//android.widget.FrameLayout[@resource-id=\"com.aso_centric.jar.staging:id/btnLater\"]/android.view.ViewGroup");
+    public static final By applyCTA=AppiumBy.xpath("//androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View[3]/android.view.View/android.view.View/android.view.View[2]");
 }
 
 
