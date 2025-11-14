@@ -4,8 +4,6 @@ import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.io.FileHandler;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -13,10 +11,9 @@ import java.util.Date;
 import java.util.Map;
 
 import static basePackage.driverFactory.driver;
-import static basePackage.driverFactory.wait;
 
 public class actions {
-    public static void takeScreenShot(AppiumDriver driver, String fileName){
+    public static void takeScreenShot(AppiumDriver driver, String fileName) {
         File screenShot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
         String path = System.getProperty("user.home") + "/Desktop/Screenshot_" + fileName + "_" + timeStamp + ".png";
@@ -29,7 +26,8 @@ public class actions {
         }
 
     }
-    public static void closeKeyboard(){
+
+    public static void closeKeyboard() {
         driver.executeScript("mobile: performEditorAction", Map.of("action", "done"));
     }
 }
