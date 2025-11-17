@@ -6,6 +6,7 @@ import static basePackage.actions.closeKeyboard;
 import static utilsPackage.waitUtils.*;
 
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 
 import java.util.Map;
@@ -78,8 +79,9 @@ public class onboardingFlow {
                 waitForElementToBeClickable(skipInOnboardingDS).click();
                 waitForElementToBeClickable(cancelDSonboard).click();
             }
-        } catch (NoSuchElementException e) {
-            System.out.println("Skip not found after logging in to account");
+        } catch (TimeoutException e) {
+            waitForPresenceElementLocated(homeTab);
+            System.out.println("HomeScreen Redirected");
         }
     }
 }
