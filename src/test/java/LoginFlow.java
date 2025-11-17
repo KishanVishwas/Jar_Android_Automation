@@ -2,7 +2,7 @@ import basePackage.baseSetup;
 import org.testng.annotations.Test;
 import pageObjectModel.onboardingFlow;
 
-public class loginFlow extends baseSetup {
+public class LoginFlow extends baseSetup {
 
     @Test(description = "Displaying the Onboarding and user is getting login to his account",priority = 1)
     public void onboardingVideoScreenFlow(){

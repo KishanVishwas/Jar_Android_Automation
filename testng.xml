@@ -3,9 +3,8 @@
 <suite name="All Test Suite">
     <test verbose="2" preserve-order="true" name="/Users/kishanr/Downloads/JAR_Android_Automation">
         <classes>
-            <class name="loginFlow"/>
+            <class name="LoginFlow"/>
             <class name="buyGoldFlowLocker"/>
         </classes>
-
     </test>
 </suite>
