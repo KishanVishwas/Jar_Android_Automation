@@ -79,7 +79,7 @@ public class onboardingFlow {
                 waitForElementToBeClickable(cancelDSonboard).click();
             }
         } catch (NoSuchElementException e) {
-            System.out.println("❌Skip not found after logging in to account");
+            System.out.println("Skip not found after logging in to account");
         }
     }
 }
