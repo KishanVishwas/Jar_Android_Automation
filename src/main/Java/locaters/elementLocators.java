@@ -20,6 +20,7 @@ public class elementLocators {
     public static final By cancelDSonboard = AppiumBy.xpath("//android.widget.FrameLayout[@resource-id=\"com.aso_centric.jar.staging:id/btnLater\"]/android.view.ViewGroup");
     public static final By applyCTA=AppiumBy.xpath("//androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View[3]/android.view.View/android.view.View/android.view.View[2]");
     public static final By homeTab=AppiumBy.xpath("//android.widget.TextView[@text=\"Home\"]");
+    public static final By saveInstantlyCTA=AppiumBy.xpath("(//androidx.compose.ui.platform.ComposeView[@resource-id=\"com.aso_centric.jar.staging:id/composeView\"])[1]/android.view.View/android.view.View/android.view.View[5]/android.view.View[1]/android.view.View/android.view.View/android.view.View[5]");
 }
 
 
