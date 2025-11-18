@@ -3,6 +3,7 @@ package pageObjectModel;
 import static basePackage.actions.takeScreenShot;
 import static basePackage.driverFactory.driver;
 import static utilsPackage.waitUtils.*;
+
 import locaters.elementLocators;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.NoSuchElementException;
@@ -24,18 +25,19 @@ public class onboardingFlow {
                 log.info("English found and selecting");
             }
         } catch (NoSuchElementException e) {
-           log.info("English not found , selecting Hindi langauge");
-           WebElement hindi=loc.getHindi();
-           if (hindi.isDisplayed())
-           {hindi.click();}
+            log.info("English not found , selecting Hindi langauge");
+            WebElement hindi = loc.getHindi();
+            if (hindi.isDisplayed()) {
+                hindi.click();
+            }
         }
         try {
-            WebElement applyCta=waitForClick(loc.getApplyCTA());
-            if (applyCta.isDisplayed()){
+            WebElement applyCta = waitForClick(loc.getApplyCTA());
+            if (applyCta.isDisplayed()) {
                 applyCta.click();
                 log.info("Apply cta found and clicked");
             }
-        }catch (NoSuchElementException e){
+        } catch (NoSuchElementException e) {
             log.info("Apply cta not found");
         }
     }
@@ -43,21 +45,20 @@ public class onboardingFlow {
     public void onboardingVideo() {
         waitForClick(loc.getSkipOnboardingVideo()).click();
 
-        try
-        {WebElement useAnother=waitForVisibility(loc.getUseOtherNumberCTA());
-            if (useAnother.isDisplayed()){
+        try {
+            WebElement useAnother = waitForVisibility(loc.getUseOtherNumberCTA());
+            if (useAnother.isDisplayed()) {
                 useAnother.click();
             }
-        }catch (TimeoutException e){
+        } catch (TimeoutException e) {
             waitForVisibility(loc.getEnterNumberTitle());
             log.info("Got directly Enter number screen without preffered numbers");
         }
         try {
-            WebElement noneOfAbove=waitForClick(loc.getNoneOfTheAbove());
+            WebElement noneOfAbove = waitForClick(loc.getNoneOfTheAbove());
             noneOfAbove.click();
             log.info("got the None of the ABove option and clicking");
-        }
-        catch (TimeoutException e){
+        } catch (TimeoutException e) {
             waitForVisibility(loc.getEnterNumberTitle());
             log.info("Got directly Enter number screen without preffered numbers");
         }

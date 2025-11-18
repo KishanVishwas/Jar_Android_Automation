@@ -14,7 +14,7 @@ public class baseSetup {
     }
 
     @BeforeClass
-    public static void setUpEmulator(){
+    public static void setUpEmulator() {
         emulatorManager.openAndroidEmulator();
     }
 
@@ -31,7 +31,7 @@ public class baseSetup {
     }
 
     @AfterClass
-    public static void closeEmulator(){
+    public static void closeEmulator() {
         emulatorManager.closeAndroidEmulator();
     }
 
