@@ -1,11 +1,8 @@
 package pageObjectModel;
 
-import io.appium.java_client.AppiumBy;
-
 import static basePackage.actions.takeScreenShot;
 import static basePackage.driverFactory.driver;
 import static utilsPackage.waitUtils.*;
-
 import locaters.elementLocators;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.TimeoutException;
@@ -23,7 +20,6 @@ public class onboardingFlow {
         if (english.isDisplayed()) {
             english.click();
         }
-
         waitForClick(loc.getApplyCTA()).click();
     }
 
