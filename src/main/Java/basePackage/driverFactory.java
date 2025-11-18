@@ -18,9 +18,9 @@ public class driverFactory {
         // --- Android Device Capabilities ---
         caps.setCapability("platformName", "Android");
         caps.setCapability("appium:automationName", "UiAutomator2");
-        caps.setCapability("appium:deviceName", "Samsung Note 10");
-        caps.setCapability("appium:udid", "R3CMA02PYNK");
-        caps.setCapability("appium:platformVersion", "12.0");
+        caps.setCapability("appium:deviceName", "Pixel_9_Pro_API_35");
+        caps.setCapability("appium:udid", "emulator-5554");
+        caps.setCapability("appium:platformVersion", "14.0");
         caps.setCapability("appium:autoAcceptAlerts", true);
 
         // --- App Specific Capabilities ---
