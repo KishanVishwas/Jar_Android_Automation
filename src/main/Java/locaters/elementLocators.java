@@ -63,9 +63,9 @@ public class elementLocators {
     @AndroidFindBy(xpath = "(//androidx.compose.ui.platform.ComposeView[@resource-id='com.aso_centric.jar.staging:id/composeView'])[1]/android.view.View/android.view.View/android.view.View[5]/android.view.View[1]/android.view.View/android.view.View/android.view.View[5]")
     private WebElement saveInstantlyCTA;
 
-    @AndroidFindBy(xpath = "")
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"हिंदी\"]")
     private WebElement Hindi;
 
-    @AndroidFindBy(xpath = "")
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Start by entering your phone number\"]")
     private WebElement enterNumberTitle;
 }
