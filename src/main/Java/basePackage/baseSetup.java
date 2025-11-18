@@ -23,7 +23,7 @@ public class baseSetup {
         driverFactory.driverSetup();
     }
 
-    @AfterClass
+    @AfterTest
     public static void destroyDriver() {
         if (driver != null) {
             driver.quit();
