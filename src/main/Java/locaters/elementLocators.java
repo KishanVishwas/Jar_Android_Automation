@@ -18,9 +18,6 @@ public class elementLocators {
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='English']")
     private WebElement English;
 
-    @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"हिंदी\"]")
-    private WebElement Hindi;
-
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Choose the app language you prefer.']")
     private WebElement languagePageText;
 
@@ -65,7 +62,4 @@ public class elementLocators {
 
     @AndroidFindBy(xpath = "(//androidx.compose.ui.platform.ComposeView[@resource-id='com.aso_centric.jar.staging:id/composeView'])[1]/android.view.View/android.view.View/android.view.View[5]/android.view.View[1]/android.view.View/android.view.View/android.view.View[5]")
     private WebElement saveInstantlyCTA;
-
-    @AndroidFindBy(xpath ="//android.widget.TextView[@text=\"Start by entering your phone number\"]")
-    private WebElement enterNumberTitle;
 }

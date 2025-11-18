@@ -20,8 +20,10 @@ public class buyGoldFromFloatingCTA {
             instantSave.click();
 
         } catch (TimeoutException e) {
+
             waitForVisibility(loc.getHomeTab());
-            log.info("HomeScreen not Redirected");
+            log.info("HomeScreen Redirected");
+
             takeScreenShot(driver, "instant_save_screen");
         }
     }

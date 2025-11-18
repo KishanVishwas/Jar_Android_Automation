@@ -6,7 +6,6 @@ import static utilsPackage.waitUtils.*;
 
 import locaters.elementLocators;
 import lombok.extern.slf4j.Slf4j;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 
@@ -40,6 +39,7 @@ public class onboardingFlow {
         } catch (NoSuchElementException e) {
             log.info("Apply cta not found");
         }
+        waitForClick(loc.getApplyCTA()).click();
     }
 
     public void onboardingVideo() {
