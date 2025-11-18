@@ -14,6 +14,11 @@ public class baseSetup {
     }
 
     @BeforeClass
+    public static void setUpEmulator() {
+        emulatorManager.openAndroidEmulator();
+    }
+
+    @BeforeTest
     public static void createDriver() throws MalformedURLException {
         driverFactory.driverSetup();
     }
@@ -23,6 +28,11 @@ public class baseSetup {
         if (driver != null) {
             driver.quit();
         }
+    }
+
+    @AfterClass
+    public static void closeEmulator() {
+        emulatorManager.closeAndroidEmulator();
     }
 
     @AfterSuite

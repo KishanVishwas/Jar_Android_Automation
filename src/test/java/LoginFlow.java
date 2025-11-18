@@ -4,12 +4,12 @@ import pageObjectModel.onboardingFlow;
 
 public class LoginFlow extends baseSetup {
 
-    @Test(description = "Displaying the Onboarding and user is getting login to his account",priority = 1)
-    public void onboardingVideoScreenFlow(){
-        onboardingFlow onboard=new onboardingFlow();
+    @Test(description = "Displaying the Onboarding and user is getting login to his account", priority = 1)
+    public void onboardingVideoScreenFlow() {
+        onboardingFlow onboard = new onboardingFlow();
         onboard.langaugeSelection();
         onboard.onboardingVideo();
-        onboard.userLogin("9999911111","123456");
+        onboard.userLogin("9999911111", "123456");
         onboard.userRedirectiontoHome();
     }
 }
