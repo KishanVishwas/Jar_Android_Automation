@@ -70,4 +70,13 @@ public class elementLocators {
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Start by entering your phone number\"]")
     private WebElement enterNumberTitle;
+
+    @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"com.aso_centric.jar.staging:id/tvSavingInGold\"]")
+    private WebElement saveInGoldTitle;
+
+    @AndroidFindBy(xpath = "//android.widget.EditText[@resource-id=\"com.aso_centric.jar.staging:id/etBuyGoldInput\"]")
+    private WebElement amountInputArea;
+
+    @AndroidFindBy(xpath = "//android.widget.FrameLayout[@resource-id=\"com.aso_centric.jar.staging:id/llBuyNow\"]/android.view.ViewGroup")
+    private WebElement payNowCTA;
 }
