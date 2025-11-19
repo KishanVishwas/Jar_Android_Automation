@@ -36,10 +36,7 @@ public class driverFactory {
 
         return driver;
     }
-
-    // -------------------------------------------------------
     //                   ANDROID SETUP
-    // -------------------------------------------------------
     private static AppiumDriver setupAndroid() throws Exception {
 
         DesiredCapabilities caps = new DesiredCapabilities();
@@ -60,10 +57,7 @@ public class driverFactory {
 
         return new AndroidDriver(new URL(configReader.get("appiumServerURL")), caps);
     }
-
-    // -------------------------------------------------------
     //                     iOS SETUP
-    // -------------------------------------------------------
     private static AppiumDriver setupIOS() throws Exception {
 
         DesiredCapabilities caps = new DesiredCapabilities();

@@ -2,6 +2,7 @@ package locaters;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
+import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import lombok.Data;
 import org.openqa.selenium.WebElement;
@@ -16,6 +17,7 @@ public class elementLocators {
     }
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='English']")
+    @iOSXCUITFindBy()
     private WebElement English;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Choose the app language you prefer.']")
