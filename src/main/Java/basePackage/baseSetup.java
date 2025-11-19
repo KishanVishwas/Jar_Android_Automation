@@ -14,12 +14,13 @@ public class baseSetup {
     }
 
     @BeforeClass
-    public static void setUpEmulator() {
+    public static void setUpVirtualDevices() {
+//        simulatorManager.openSimulator();
         emulatorManager.openAndroidEmulator();
     }
 
     @BeforeTest
-    public static void createDriver() throws MalformedURLException {
+    public static void createDriver() throws Exception {
         driverFactory.driverSetup();
     }
 
@@ -31,7 +32,8 @@ public class baseSetup {
     }
 
     @AfterClass
-    public static void closeEmulator() {
+    public static void closeVirtualDevices() {
+//        simulatorManager.closingSimulator();
         emulatorManager.closeAndroidEmulator();
     }
 
