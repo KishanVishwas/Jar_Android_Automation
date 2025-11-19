@@ -13,7 +13,7 @@ public class baseSetup {
         appiumServerManager.startServer();
     }
 
-    @BeforeClass
+//    @BeforeClass
     public static void setUpVirtualDevices() {
 //        simulatorManager.openSimulator();
         emulatorManager.openAndroidEmulator();
@@ -31,7 +31,7 @@ public class baseSetup {
         }
     }
 
-    @AfterClass
+//    @AfterClass
     public static void closeVirtualDevices() {
 //        simulatorManager.closingSimulator();
         emulatorManager.closeAndroidEmulator();
