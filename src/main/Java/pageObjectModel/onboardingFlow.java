@@ -85,8 +85,13 @@ public class onboardingFlow {
                 waitForClick(loc.getCancelDSonboard()).click();
             }
         } catch (TimeoutException e) {
-            waitForVisibility(loc.getHomeTab());
-            takeScreenShot(driver, "homeScreen_notRedirecting");
+            try {
+                driver.navigate().back();    // handled the Instant saving flow as well using back navigation
+                waitForClick(loc.getCancelDSonboard()).click();
+            } catch (TimeoutException e1) {
+                waitForVisibility(loc.getHomeTab());
+                takeScreenShot(driver, "homeScreen_notRedirecting");
+            }
         }
     }
 }

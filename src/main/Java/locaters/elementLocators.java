@@ -2,6 +2,7 @@ package locaters;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
+import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import lombok.Data;
 import org.openqa.selenium.WebElement;
@@ -16,6 +17,7 @@ public class elementLocators {
     }
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='English']")
+    @iOSXCUITFindBy()
     private WebElement English;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Choose the app language you prefer.']")
@@ -68,4 +70,13 @@ public class elementLocators {
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Start by entering your phone number\"]")
     private WebElement enterNumberTitle;
+
+    @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"com.aso_centric.jar.staging:id/tvSavingInGold\"]")
+    private WebElement saveInGoldTitle;
+
+    @AndroidFindBy(xpath = "//android.widget.EditText[@resource-id=\"com.aso_centric.jar.staging:id/etBuyGoldInput\"]")
+    private WebElement amountInputArea;
+
+    @AndroidFindBy(xpath = "//android.widget.FrameLayout[@resource-id=\"com.aso_centric.jar.staging:id/llBuyNow\"]/android.view.ViewGroup")
+    private WebElement payNowCTA;
 }

@@ -7,5 +7,6 @@ public class buyGoldFlowLocker {
     public void buyGold() {
         buyGoldFromFloatingCTA buy = new buyGoldFromFloatingCTA();
         buy.instantSaveScreen();
+        buy.amountEntering();
     }
 }
