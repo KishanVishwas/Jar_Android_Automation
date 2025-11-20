@@ -32,13 +32,15 @@ public class elementLocators {
     @AndroidFindBy(id = "com.google.android.gms:id/cancel")
     private WebElement noneOfTheAbove;
 
-    @AndroidFindBy(xpath = "//android.widget.EditText[@resource-id='onboarding_v2_number_input_text_field']")
+    @AndroidFindBy(xpath = "//android.widget.EditText")
     private WebElement phoneNumberTextField;
 
     @AndroidFindBy(xpath = "//android.view.View[@resource-id='onboarding_v2_send_otp_cta']")
     private WebElement sendOtpCTA;
 
-    @AndroidFindBy(uiAutomator = "new UiSelector().resourceId(\"onboarding_v2_otp_input_text_field\").instance(0)")
+//    @AndroidFindBy(uiAutomator = "new UiSelector().resourceId(\"onboarding_v2_otp_input_text_field\").instance(0)")
+//    private WebElement enterOtpTextArea;
+    @AndroidFindBy(xpath = "//android.widget.ScrollView/android.widget.EditText[1]")
     private WebElement enterOtpTextArea;
 
     @AndroidFindBy(xpath = "//android.view.View[@resource-id='onboarding_v2_verify_otp_cta']")
@@ -56,7 +58,7 @@ public class elementLocators {
     @AndroidFindBy(xpath = "//android.widget.FrameLayout[@resource-id='com.aso_centric.jar.staging:id/btnLater']/android.view.ViewGroup")
     private WebElement cancelDSonboard;
 
-    @AndroidFindBy(xpath = "//androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View[3]/android.view.View/android.view.View/android.view.View[2]")
+    @AndroidFindBy(xpath = "//androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View[2]/android.view.View")
     private WebElement applyCTA;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Home']")
