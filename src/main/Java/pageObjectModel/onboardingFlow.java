@@ -43,8 +43,11 @@ public class onboardingFlow {
     }
 
     public void onboardingVideo() {
-        waitForClick(loc.getSkipOnboardingVideo()).click();
-
+        try{
+        waitForClick(loc.getSkipOnboardingVideo()).click();}
+        catch (TimeoutException e){
+            log.info("Skip onboarding video not found, moving foward");
+        }
         try {
             WebElement useAnother = waitForVisibility(loc.getUseOtherNumberCTA());
             if (useAnother.isDisplayed()) {
