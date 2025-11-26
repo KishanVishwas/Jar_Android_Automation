@@ -55,6 +55,7 @@ public class driverFactory {
         caps.setCapability("appium:appPackage", configReader.get("androidPackage"));
         caps.setCapability("appium:appActivity", configReader.get("androidActivity"));
 
+
         return new AndroidDriver(new URL(configReader.get("appiumServerURL")), caps);
     }
     //                     iOS SETUP
