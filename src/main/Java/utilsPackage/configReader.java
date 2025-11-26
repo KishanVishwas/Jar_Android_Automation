@@ -8,7 +8,7 @@ public class configReader {
 
     static {
         try {
-            FileInputStream fis = new FileInputStream("/Users/kishanr/Downloads/JAR_Android_Automation/src/main/resources/config.properties");
+            FileInputStream fis = new FileInputStream("/Users/hkkarthik/IdeaProjects/Jar_Android_Automation/src/main/resources/config.properties");
             properties.load(fis);
         } catch (Exception e) {
             e.printStackTrace();
