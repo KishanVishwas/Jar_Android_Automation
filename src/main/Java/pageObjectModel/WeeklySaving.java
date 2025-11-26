@@ -29,7 +29,7 @@ public class WeeklySaving {
             waitForClick(loe.getWeeklySavingtextField()).click();
             loe.getWeeklySavingtextField().sendKeys(amount);
         } catch (Exception e) {
-            System.out.println("Loding is taking time");
+            log.info("Loding is taking time");
             waitForClick(loe.getWeeklySavingtextField()).click();
             loe.getWeeklySavingtextField().sendKeys(amount);
         }
@@ -39,15 +39,15 @@ public class WeeklySaving {
         try {
             waitForClick(loe.getProceedForPaymentCTA()).click();
         } catch (Exception e) {
-            System.out.println("Proceed For Payment CTA is not clickable");
+            log.info("Proceed For Payment CTA is not clickable");
         }
         try {
             waitForVisibility(loe.getPhonePayPaymentButton());
             waitForClick(loe.getPhonePayPaymentButton()).click();
         } catch (Exception e) {
-            System.out.println("Payment bottom sheet is not clickable  ");
+            log.info("Payment bottom sheet is not clickable  ");
         }
-       // waitForClick(loe.getProceedForPaymentCTA()).click();
+        // waitForClick(loe.getProceedForPaymentCTA()).click();
         waitForClick(loe.getPinCompleted()).click();
         try {
             waitForVisibility(loe.getWSOrderSuccessScreenStatus());
@@ -66,7 +66,7 @@ public class WeeklySaving {
             try {
                 waitForVisibility(loe.getWS_Status_WS_screen());
             } catch (Exception e) {
-                System.out.println("WS Screen is not loaded");
+                log.info("WS Screen is not loaded");
             }
             scrollUntilElementFound(driver, loe.getWS_setupDetailDropDown());
             waitForClick(loe.getWS_setupDetailDropDown()).click();
@@ -79,17 +79,16 @@ public class WeeklySaving {
             try {
                 waitForVisibility(loe.getWS_StopPermanentlyRedioButtom());
                 loe.getWS_StopPermanentlyRedioButtom().click();
-            }catch (TimeoutException e){
+            } catch (TimeoutException e) {
                 log.info("Redio CTA is not clickable");
             }
-            try{
+            try {
                 waitForClick(loe.getWS_StopNowCTA()).click();
-            }
-            catch (Exception e){
+            } catch (Exception e) {
                 log.info("Stop now CTA is not clickable");
             }
 
-           waitForClick(loe.getGoToHomeCTA()).click();
+            waitForClick(loe.getGoToHomeCTA()).click();
 
         }
 
