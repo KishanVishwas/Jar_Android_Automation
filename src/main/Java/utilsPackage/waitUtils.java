@@ -3,7 +3,7 @@ package utilsPackage;
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
-import org.openqa.selenium.By;
+import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.PointerInput;
@@ -15,8 +15,8 @@ import java.time.Duration;
 import java.util.Collections;
 
 import static basePackage.driverFactory.driver;
-import static basePackage.driverFactory.wait;
 
+@Slf4j
 public class waitUtils {
 
     public static WebElement waitForVisibility(WebElement element) {
@@ -28,28 +28,29 @@ public class waitUtils {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
         return wait.until(ExpectedConditions.elementToBeClickable(element));
     }
+
     public static void scrollToElementByText(AndroidDriver driver, String visibleText) {
         driver.findElement(AppiumBy.androidUIAutomator(
                 "new UiScrollable(new UiSelector().scrollable(true))" +
                         ".scrollIntoView(new UiSelector().text(\"" + visibleText + "\"));"));
     }
+
     public static void scrollUntilElementFound(AppiumDriver driver, WebElement element) {
         int maxScroll = 10;
 
         for (int i = 0; i < maxScroll; i++) {
             try {
                 if (element.isDisplayed()) {
-                    System.out.println("Element found!");
+                    log.info("Element found!");
                     return;
                 }
             } catch (Exception e) {
-                System.out.println("Element is not found");
+                log.info("Element is not found");
                 scrollDown((AndroidDriver) driver);
             }
         }
         throw new RuntimeException("Element not found after scrolling");
     }
-
 
     public static void scrollDown(AndroidDriver driver) {
         Dimension size = driver.manage().window().getSize();
@@ -66,7 +67,4 @@ public class waitUtils {
 
         driver.perform(Collections.singletonList(swipe));
     }
-
-
-
 }

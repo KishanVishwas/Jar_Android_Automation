@@ -1,6 +1,7 @@
 package basePackage;
 
 import io.appium.java_client.AppiumDriver;
+import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.io.FileHandler;
@@ -13,6 +14,7 @@ import java.util.Map;
 
 import static basePackage.driverFactory.driver;
 
+@Slf4j
 public class actions {
     public static void takeScreenShot(AppiumDriver driver, String fileName) {
         File screenShot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
@@ -21,9 +23,9 @@ public class actions {
 
         try {
             FileHandler.copy(screenShot, new File(path));
-            System.out.println("new file saved at " + path);
+            log.info("new file saved at {}", path);
         } catch (IOException e) {
-            System.out.println("Failed to save screenshot: " + e.getMessage());
+            log.info("Failed to save screenshot: {}", e.getMessage());
         }
 
     }

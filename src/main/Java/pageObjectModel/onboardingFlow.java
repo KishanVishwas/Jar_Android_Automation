@@ -17,40 +17,39 @@ public class onboardingFlow {
     elementLocators loc = new elementLocators(driver);
 
     public void langaugeSelection() {
-try {
-    try {
-        waitForVisibility(loc.getLanguagePageText());
-        WebElement english = loc.getEnglish();
-        if (english.isDisplayed()) {
-            english.click();
-            log.info("English found and selecting");
+        try {
+            try {
+                waitForVisibility(loc.getLanguagePageText());
+                WebElement english = loc.getEnglish();
+                if (english.isDisplayed()) {
+                    english.click();
+                    log.info("English found and selecting");
+                }
+            } catch (NoSuchElementException e) {
+                log.info("English not found , selecting Hindi langauge");
+                WebElement hindi = loc.getHindi();
+                if (hindi.isDisplayed()) {
+                    hindi.click();
+                }
+            }
+            try {
+                WebElement applyCta = waitForClick(loc.getApplyCTA());
+                if (applyCta.isDisplayed()) {
+                    applyCta.click();
+                    log.info("Apply cta found and clicked");
+                }
+            } catch (NoSuchElementException e) {
+                log.info("Apply cta not found");
+            }
+        } catch (Exception e) {
+            log.info("OnBoaring video is getting played");
         }
-    } catch (NoSuchElementException e) {
-        log.info("English not found , selecting Hindi langauge");
-        WebElement hindi = loc.getHindi();
-        if (hindi.isDisplayed()) {
-            hindi.click();
-        }
-    }
-    try {
-        WebElement applyCta = waitForClick(loc.getApplyCTA());
-        if (applyCta.isDisplayed()) {
-            applyCta.click();
-            log.info("Apply cta found and clicked");
-        }
-    } catch (NoSuchElementException e) {
-        log.info("Apply cta not found");
-    }
-}
-catch (Exception e){
-    System.out.println("OnBoaring video is getting played");
-}
     }
 
     public void onboardingVideo() {
-        try{
+        try {
             waitForClick(loc.getSkipOnboardingVideo()).click();
-        }catch (Exception e){
+        } catch (Exception e) {
             waitForVisibility(loc.getUseOtherNumberCTA());
         }
 
