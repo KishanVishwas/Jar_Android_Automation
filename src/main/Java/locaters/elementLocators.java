@@ -40,7 +40,7 @@ public class elementLocators {
 
 //    @AndroidFindBy(uiAutomator = "new UiSelector().resourceId(\"onboarding_v2_otp_input_text_field\").instance(0)")
 //    private WebElement enterOtpTextArea;
-    @AndroidFindBy(xpath = "//android.widget.ScrollView/android.widget.EditText[1]")
+    @AndroidFindBy(xpath = "//android.widget.EditText[@resource-id=\"onboarding_v2_otp_input_text_field\" and @text=\"1\"]")
     private WebElement enterOtpTextArea;
 
     @AndroidFindBy(xpath = "//android.view.View[@resource-id='onboarding_v2_verify_otp_cta']")
@@ -58,7 +58,7 @@ public class elementLocators {
     @AndroidFindBy(xpath = "//android.widget.FrameLayout[@resource-id='com.aso_centric.jar.staging:id/btnLater']/android.view.ViewGroup")
     private WebElement cancelDSonboard;
 
-    @AndroidFindBy(xpath = "//androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View[2]/android.view.View")
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Apply\"]")
     private WebElement applyCTA;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Home']")
