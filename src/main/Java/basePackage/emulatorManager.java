@@ -7,7 +7,7 @@ public class emulatorManager {
 
     public static void openAndroidEmulator(){
         try {
-            String emulatorName="Medium Phone API 35";
+            String emulatorName="Pixel 9 Pro API 35";
             emulatorProcess = Runtime.getRuntime().exec(new String[]{
                     "/bin/bash", "-c", "emulator -avd " + emulatorName
             });
