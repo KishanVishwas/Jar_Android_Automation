@@ -19,13 +19,18 @@ public class buyGoldFromFloatingCTA {
     public void instantSaveScreen() {
         try {
             WebElement instantSave = waitForVisibility(loc.getSaveInstantlyCTA());
+            log.info("Fetched the Instant save cta in the locker");
             instantSave.click();
+            log.info("Clicked the instant save cta in the locker");
 
         } catch (TimeoutException e) {
             try {
                 waitForVisibility(loc.getProfileIcon()).click();
+                log.info("didnt get the instant save cta in locker ,redirecting from the new profile to buy gold");
                 waitForVisibility(loc.getInstantSaveInProfile()).click();
-            }catch (Exception e1){
+                log.info("Clicked the instant save cta in the new profile");
+            }
+            catch (Exception e1){
             waitForVisibility(loc.getHomeTab());
             log.info("HomeScreen Redirected");
             takeScreenShot(driver, "instant_save_screen");}
@@ -34,6 +39,7 @@ public class buyGoldFromFloatingCTA {
     public void amountEntering() {
         try {
             waitForVisibility(loc.getAvailableOfferTitle());
+            log.info("Redirected to buy gold screen and doing another actions");
             WebElement amountEnter = waitForClick(loc.getAmountInputArea());
             amountEnter.clear();
             amountEnter.sendKeys("100");
