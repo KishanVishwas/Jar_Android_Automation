@@ -162,4 +162,17 @@ public class elementLocators {
 
     @AndroidFindBy(xpath = "//androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[3]/android.view.View/android.view.View")
     private WebElement startSJCTA;
-}
+
+    @AndroidFindBy(xpath = "(//android.widget.TextView[@text=\"Daily Saving\"])[2]")
+    private WebElement dsInProfile;
+
+    @AndroidFindBy(xpath = "new UiSelector().className(\"android.widget.EditText\")")
+    private WebElement dsAmountArea;
+
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Setup Daily Savings\"]")
+    private WebElement setupDsCTA;
+
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Proceed for Payment\"]")
+    private WebElement proceedForPaymentCTA;
+
+    }
