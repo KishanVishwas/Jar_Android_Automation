@@ -39,24 +39,33 @@ public class driverFactory {
     //                   ANDROID SETUP
     private static AppiumDriver setupAndroid() throws Exception {
 
-        DesiredCapabilities caps = new DesiredCapabilities();
+        DesiredCapabilities cap = new DesiredCapabilities();
 
-        caps.setCapability("platformName", "Android");
-        caps.setCapability("appium:automationName", "UiAutomator2");
+//        caps.setCapability("platformName", "Android");
+//        caps.setCapability("appium:automationName", "UiAutomator2");
+//
+//        // You can load these also from config.xml if needed
+//        caps.setCapability("appium:deviceName", configReader.get("androidDeviceName"));
+//        caps.setCapability("appium:udid", configReader.get("androidUDID"));
+//        caps.setCapability("appium:platformVersion", configReader.get("androidPlatformVersion"));
+//
+//        caps.setCapability("appium:autoGrantPermissions", true);
+//
+//        caps.setCapability("appium:app", configReader.get("androidApp"));
+//        caps.setCapability("appium:appPackage", configReader.get("androidPackage"));
+//        caps.setCapability("appium:appActivity", configReader.get("androidActivity"));
+        cap.setCapability("appium:automationName", "UiAutomator2");
+        cap.setCapability("appium:deviceName","emulator");
+        cap.setCapability("appium:udid","emulator-5554");
+        cap.setCapability("appium:platformName","Android");
+        cap.setCapability("appium:platformVersion", "11");
+        cap.setCapability("appium:appPackage","com.aso_centric.jar.staging");
+        cap.setCapability("appium:appActivity", "com.jar.app.feature.home.ui.activity.HomeActivity");
+        cap.setCapability("appium:autoGrantPermissions", true);
+        cap.setCapability("appium:noReset", false);
 
-        // You can load these also from config.xml if needed
-        caps.setCapability("appium:deviceName", configReader.get("androidDeviceName"));
-        caps.setCapability("appium:udid", configReader.get("androidUDID"));
-        caps.setCapability("appium:platformVersion", configReader.get("androidPlatformVersion"));
 
-        caps.setCapability("appium:autoGrantPermissions", true);
-
-        caps.setCapability("appium:app", configReader.get("androidApp"));
-        caps.setCapability("appium:appPackage", configReader.get("androidPackage"));
-        caps.setCapability("appium:appActivity", configReader.get("androidActivity"));
-
-
-        return new AndroidDriver(new URL(configReader.get("appiumServerURL")), caps);
+        return new AndroidDriver(new URL(configReader.get("appiumServerURL")), cap);
     }
     //                     iOS SETUP
     private static AppiumDriver setupIOS() throws Exception {
@@ -69,8 +78,8 @@ public class driverFactory {
         caps.setCapability("appium:udid", configReader.get("uuid"));
         caps.setCapability("appium:platformVersion", configReader.get("platformVersion"));
         caps.setCapability("appium:autoAcceptAlerts", Boolean.parseBoolean(configReader.get("autoAcceptAlerts")));
-        caps.setCapability("appium:noReset", false);
-        caps.setCapability("appium:fullReset", false);
+        caps.setCapability("appium:noReset", true);
+        caps.setCapability("appium:fullReset", true);
 
         // iOS App: app (.ipa) or bundleId
         if (configReader.get("app") != null && !configReader.get("app").isEmpty()) {

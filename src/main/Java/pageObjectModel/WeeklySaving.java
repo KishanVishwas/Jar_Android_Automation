@@ -61,7 +61,7 @@ public class WeeklySaving {
         waitForVisibility(loe.getProfileIcon()).click();
         scrollUntilElementFound((AndroidDriver) driver, loe.getWeekly_Saving());
         if (loe.getWS_Status_in_hamberger().getText().equalsIgnoreCase("ACTIVE")) {
-            scrollUntilElementFound(driver, loe.getWeekly_Saving());
+           // scrollUntilElementFound(driver, loe.getWeekly_Saving());
             loe.getWeekly_Saving().click();
             try {
                 waitForVisibility(loe.getWS_Status_WS_screen());
@@ -69,8 +69,9 @@ public class WeeklySaving {
                 System.out.println("WS Screen is not loaded");
             }
             scrollUntilElementFound(driver, loe.getWS_setupDetailDropDown());
-            waitForClick(loe.getWS_setupDetailDropDown()).click();
+
             try {
+                waitForClick(loe.getWS_setupDetailDropDown()).click();
                 waitForClick(loe.getStopWeeklySavingCTA()).click();
                 waitForClick(loe.getWS_SillWantToStopWS()).click();
             } catch (TimeoutException e) {
