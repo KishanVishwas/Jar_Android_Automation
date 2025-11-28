@@ -49,7 +49,7 @@ public class buyGoldFromFloatingCTA {
             waitForClick(loc.getPayNowCTAinBS()).click();
         }
     }
-    public void zomatoAndNonZomato(){
+    public void buyGoldAsZomatoAndNonZomato(){
         try {
             WebElement phnPe=waitForVisibility(loc.getPhnPeSimulator());
             if (phnPe.isDisplayed()){

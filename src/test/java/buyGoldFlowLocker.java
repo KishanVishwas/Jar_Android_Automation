@@ -8,7 +8,6 @@ public class buyGoldFlowLocker {
         buyGoldFromFloatingCTA buy = new buyGoldFromFloatingCTA();
         buy.instantSaveScreen();
         buy.amountEntering();
-        buy.zomatoAndNonZomato();
-
+        buy.buyGoldAsZomatoAndNonZomato();
     }
 }
