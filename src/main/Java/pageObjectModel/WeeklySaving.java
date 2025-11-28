@@ -91,6 +91,5 @@ public class WeeklySaving {
             waitForClick(loc.getGoToHomeCTA()).click();
 
         }
-
     }
 }
