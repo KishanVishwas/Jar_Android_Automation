@@ -2,7 +2,6 @@ package pageObjectModel;
 
 import static basePackage.actions.takeScreenShot;
 import static basePackage.driverFactory.driver;
-import static basePackage.driverFactory.wait;
 import static utilsPackage.waitUtils.*;
 
 import locaters.elementLocators;
