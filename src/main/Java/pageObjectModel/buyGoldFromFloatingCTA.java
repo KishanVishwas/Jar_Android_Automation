@@ -61,7 +61,7 @@ public class buyGoldFromFloatingCTA {
             if (phnPe.isDisplayed()){
                 phnPe.click();
             }
-            WebElement goToHome=waitForVisibility(loc.getGoToHomeCTA());
+            WebElement goToHome=waitForVisibility(loc.getGoToHomePageCTA());
             if (goToHome.isDisplayed()){
                 goToHome.click();
             }
