@@ -115,7 +115,13 @@ public class elementLocators {
     private WebElement WS_Status_in_hamberger;
 
      @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Active\"]")
-    private WebElement WS_Status_WS_screen;
+    private WebElement WS_Active_Status_screen;
+
+     @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Resume\"]")
+     private WebElement WS_Resume_Status_screen;
+
+     @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Resume Now\"]")
+     private WebElement WS_Resume_Now_CTA;
 
      @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Setup details\"]")
     private WebElement WS_setupDetailDropDown;
@@ -124,13 +130,16 @@ public class elementLocators {
     private WebElement stopWeeklySavingCTA;
 
 
-     @AndroidFindBy(xpath = "//androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.view.View/android.view.View[2]")
+     @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"I still want to cancel\"]")
     private WebElement WS_SillWantToStopWS;
 
-     @AndroidFindBy(xpath = "//androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.view.View/android.view.View[5]/android.view.View")
+     @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Permanently\"]")
     private WebElement WS_StopPermanentlyRedioButtom;
 
-     @AndroidFindBy(xpath = "//androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.view.View/android.view.View[6]")
+     @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"For 3 weeks\"]")
+     private WebElement WS_stopFor3WeeksRedioButtom;
+
+     @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Stop Now\"]")
     private WebElement WS_StopNowCTA;
 
      @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Go To Home\"]")

@@ -60,11 +60,10 @@ public class WeeklySaving {
     public void stopWeeklySaving() {
         waitForVisibility(loe.getProfileIcon()).click();
         scrollUntilElementFound((AndroidDriver) driver, loe.getWeekly_Saving());
-        if (loe.getWS_Status_in_hamberger().getText().equalsIgnoreCase("ACTIVE")) {
            // scrollUntilElementFound(driver, loe.getWeekly_Saving());
             loe.getWeekly_Saving().click();
             try {
-                waitForVisibility(loe.getWS_Status_WS_screen());
+                waitForVisibility(loe.getWS_Active_Status_screen());
             } catch (Exception e) {
                 System.out.println("WS Screen is not loaded");
             }
@@ -76,23 +75,80 @@ public class WeeklySaving {
                 waitForClick(loe.getWS_SillWantToStopWS()).click();
             } catch (TimeoutException e) {
                 log.info("Stop weekly saving CTA is not visible");
+                return;
             }
             try {
                 waitForVisibility(loe.getWS_StopPermanentlyRedioButtom());
                 loe.getWS_StopPermanentlyRedioButtom().click();
             }catch (TimeoutException e){
-                log.info("Redio CTA is not clickable");
+                log.info("Stop Permanently Redio Buttom CTA is not clickable");
+                return;
             }
             try{
                 waitForClick(loe.getWS_StopNowCTA()).click();
             }
             catch (Exception e){
                 log.info("Stop now CTA is not clickable");
+                return;
             }
 
            waitForClick(loe.getGoToHomeCTA()).click();
-
+    }
+    public void pauseWeeklySaving() {
+        waitForVisibility(loe.getProfileIcon()).click();
+        scrollUntilElementFound((AndroidDriver) driver, loe.getWeekly_Saving());
+        loe.getWeekly_Saving().click();
+        try {
+            waitForVisibility(loe.getWS_Active_Status_screen());
+        } catch (Exception e) {
+            System.out.println("WS Screen is not loaded");
         }
+        scrollUntilElementFound(driver, loe.getWS_setupDetailDropDown());
+
+        try {
+            waitForClick(loe.getWS_setupDetailDropDown()).click();
+            waitForClick(loe.getStopWeeklySavingCTA()).click();
+            waitForClick(loe.getWS_SillWantToStopWS()).click();
+        } catch (TimeoutException e) {
+            log.info("Stop weekly saving CTA is not visible");
+        }
+        try {
+            waitForVisibility(loe.getWS_stopFor3WeeksRedioButtom());
+            loe.getWS_stopFor3WeeksRedioButtom().click();
+        }catch (TimeoutException e){
+            log.info("Redio CTA is not clickable");
+        }
+        try{
+            waitForClick(loe.getWS_StopNowCTA()).click();
+        }
+        catch (Exception e){
+            log.info("Stop now CTA is not clickable");
+        }
+        waitForVisibility(loe.getWeekly_Saving());
 
     }
+    public void ResumeWeeklySaving() {
+        waitForVisibility(loe.getProfileIcon()).click();
+        scrollUntilElementFound((AndroidDriver) driver, loe.getWeekly_Saving());
+        loe.getWeekly_Saving().click();
+        try {
+            waitForVisibility(loe.getWS_Resume_Status_screen());
+        } catch (Exception e) {
+            System.out.println("WS Screen is not loaded");
+        }
+        scrollUntilElementFound(driver, loe.getWS_setupDetailDropDown());
+        try{
+            waitForClick(loe.getWS_setupDetailDropDown()).click();
+            waitForClick(loe.getWS_Resume_Now_CTA()).click();
+            log.info("Weekly saving is resume successfully");
+        }
+        catch (RuntimeException e){
+            log.info("Resume now CTA is not click able");
+        }
+        waitForVisibility(loe.getWS_Active_Status_screen());
+        driver.navigate().back();
+        driver.navigate().back();
+    }
+
+
 }
