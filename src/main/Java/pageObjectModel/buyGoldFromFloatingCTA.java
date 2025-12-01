@@ -19,18 +19,27 @@ public class buyGoldFromFloatingCTA {
     public void instantSaveScreen() {
         try {
             WebElement instantSave = waitForVisibility(loc.getSaveInstantlyCTA());
+            log.info("Fetched the Instant save cta in the locker");
             instantSave.click();
+            log.info("Clicked the instant save cta in the locker");
 
         } catch (TimeoutException e) {
+            try {
+                waitForVisibility(loc.getProfileIcon()).click();
+                log.info("didnt get the instant save cta in locker ,redirecting from the new profile to buy gold");
+                waitForVisibility(loc.getInstantSaveInProfile()).click();
+                log.info("Clicked the instant save cta in the new profile");
+            }
+            catch (Exception e1){
             waitForVisibility(loc.getHomeTab());
             log.info("HomeScreen Redirected");
-            takeScreenShot(driver, "instant_save_screen");
+            takeScreenShot(driver, "instant_save_screen");}
         }
     }
-
     public void amountEntering() {
         try {
-            waitForVisibility(loc.getSaveInGoldTitle());
+            waitForVisibility(loc.getAvailableOfferTitle());
+            log.info("Redirected to buy gold screen and doing another actions");
             WebElement amountEnter = waitForClick(loc.getAmountInputArea());
             amountEnter.clear();
             amountEnter.sendKeys("100");
@@ -43,6 +52,21 @@ public class buyGoldFromFloatingCTA {
             if (payCta.isEnabled()) {
                 payCta.click();
             }
+            waitForClick(loc.getPayNowCTAinBS()).click();
+        }
+    }
+    public void buyGoldAsZomatoAndNonZomato(){
+        try {
+            WebElement phnPe=waitForVisibility(loc.getPhnPeSimulator());
+            if (phnPe.isDisplayed()){
+                phnPe.click();
+            }
+            WebElement goToHome=waitForVisibility(loc.getGoToHomeCTA());
+            if (goToHome.isDisplayed()){
+                goToHome.click();
+            }
+        }catch (TimeoutException e){
+            log.info("user has not redirect to payment listing and Go to Homepage cta is not displaying");
         }
     }
 }

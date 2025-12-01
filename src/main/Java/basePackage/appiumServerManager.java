@@ -1,9 +1,12 @@
 package basePackage;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+@Slf4j
 public class appiumServerManager {
     private static Process appiumProcess;
 
@@ -18,7 +21,7 @@ public class appiumServerManager {
             String line;
             boolean started = false;
             while ((line = reader.readLine()) != null) {
-                System.out.println(line);
+                log.info(line);
                 if (line.contains("Appium REST http interface listener started")) {
                     started = true;
                     break;
@@ -26,7 +29,7 @@ public class appiumServerManager {
             }
 
             if (started) {
-                System.out.println("✅ Appium server started successfully");
+                log.info("✅ Appium server started successfully");
             } else {
                 throw new RuntimeException("❌ Appium server failed to start");
             }
@@ -39,7 +42,7 @@ public class appiumServerManager {
     public static void stopServer() {
         if (appiumProcess != null && appiumProcess.isAlive()) {
             appiumProcess.destroy();
-            System.out.println("Appium server is stopped");
+            log.info("Appium server is stopped");
         }
     }
 }

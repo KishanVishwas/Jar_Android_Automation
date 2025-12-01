@@ -3,42 +3,32 @@ package basePackage;
 import io.appium.java_client.AppiumDriver;
 import org.testng.annotations.*;
 
-import java.net.MalformedURLException;
-
 public class baseSetup {
     public static AppiumDriver driver;
 
     @BeforeSuite
-    public static void startAppiumServer() {
+    public void globalSetup() throws Exception {
+        // Start Appium one time
         appiumServerManager.startServer();
-    }
 
-//    @BeforeClass
-    public static void setUpVirtualDevices() {
-//        simulatorManager.openSimulator();
+        // Start emulator one time
         emulatorManager.openAndroidEmulator();
-    }
 
-    @BeforeTest
-    public static void createDriver() throws Exception {
+        // Create driver one time
         driverFactory.driverSetup();
     }
 
-    @AfterTest
-    public static void destroyDriver() {
+    @AfterSuite
+    public void globalTearDown() {
+        // Quit driver one time
         if (driver != null) {
             driver.quit();
         }
-    }
 
-//    @AfterClass
-    public static void closeVirtualDevices() {
-//        simulatorManager.closingSimulator();
+        // Close emulator one time
         emulatorManager.closeAndroidEmulator();
-    }
 
-    @AfterSuite
-    public static void stopAppiumServer() {
+        // Stop Appium one time
         appiumServerManager.stopServer();
     }
 }

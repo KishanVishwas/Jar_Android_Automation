@@ -3,10 +3,11 @@ import pageObjectModel.buyGoldFromFloatingCTA;
 
 public class buyGoldFlowLocker {
 
-    @Test()
+    @Test(dependsOnMethods = "LoginFlow.onboardingVideoScreenFlow")
     public void buyGold() {
         buyGoldFromFloatingCTA buy = new buyGoldFromFloatingCTA();
         buy.instantSaveScreen();
         buy.amountEntering();
+        buy.buyGoldAsZomatoAndNonZomato();
     }
 }

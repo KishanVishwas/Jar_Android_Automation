@@ -14,47 +14,47 @@ import static utilsPackage.waitUtils.*;
 
 @Slf4j
 public class WeeklySaving {
-    elementLocators loe = new elementLocators(driver);
+    elementLocators loc = new elementLocators(driver);
 
     // elementLocators loc = new elementLocators(driver);
     public void setWeeklySaving(String amount) throws InterruptedException {
-        waitForVisibility(loe.getProfileIcon()).click();
-        scrollUntilElementFound((AndroidDriver) driver, loe.getWeekly_Saving());
+        waitForVisibility(loc.getProfileIcon()).click();
+        scrollUntilElementFound((AndroidDriver) driver, loc.getWeekly_Saving());
         try {
-            waitForVisibility(loe.getWeekly_Saving()).click();
+            waitForVisibility(loc.getWeekly_Saving()).click();
         } catch (Exception e) {
             log.info("Weekly_Saving CTA is not clickable");
         }
         try {
-            waitForClick(loe.getWeeklySavingtextField()).click();
-            loe.getWeeklySavingtextField().sendKeys(amount);
+            waitForClick(loc.getWeeklySavingtextField()).click();
+            loc.getWeeklySavingtextField().sendKeys(amount);
         } catch (Exception e) {
-            System.out.println("Loding is taking time");
-            waitForClick(loe.getWeeklySavingtextField()).click();
-            loe.getWeeklySavingtextField().sendKeys(amount);
+            log.info("Loding is taking time");
+            waitForClick(loc.getWeeklySavingtextField()).click();
+            loc.getWeeklySavingtextField().sendKeys(amount);
         }
-        waitForClick(loe.getWeeklySavingProceedCTA()).click();
+        waitForClick(loc.getWeeklySavingProceedCTA()).click();
         Thread.sleep(3000);
-        //waitForVisibility(loe.getPaymentScreenHeder());
+        //waitForVisibility(loc.getPaymentScreenHeder());
         try {
-            waitForClick(loe.getProceedForPaymentCTA()).click();
+            waitForClick(loc.getProceedForPaymentCTA()).click();
         } catch (Exception e) {
-            System.out.println("Proceed For Payment CTA is not clickable");
+            log.info("Proceed For Payment CTA is not clickable");
         }
         try {
-            waitForVisibility(loe.getPhonePayPaymentButton());
-            waitForClick(loe.getPhonePayPaymentButton()).click();
+            waitForVisibility(loc.getPhonePayPaymentButton());
+            waitForClick(loc.getPhonePayPaymentButton()).click();
         } catch (Exception e) {
-            System.out.println("Payment bottom sheet is not clickable  ");
+            log.info("Payment bottom sheet is not clickable  ");
         }
-       // waitForClick(loe.getProceedForPaymentCTA()).click();
-        waitForClick(loe.getPinCompleted()).click();
+        // waitForClick(loc.getProceedForPaymentCTA()).click();
+        waitForClick(loc.getPinCompleted()).click();
         try {
-            waitForVisibility(loe.getWSOrderSuccessScreenStatus());
+            waitForVisibility(loc.getWSOrderSuccessScreenStatus());
         } catch (TimeoutException e) {
             Thread.sleep(5000);
         }
-        waitForClick(loe.getWSOrderSuccessScreen_GoToHomeCTA()).click();
+        waitForClick(loc.getWSOrderSuccessScreen_GoToHomeCTA()).click();
     }
 
     public void stopWeeklySaving() {
@@ -65,7 +65,7 @@ public class WeeklySaving {
             try {
                 waitForVisibility(loe.getWS_Active_Status_screen());
             } catch (Exception e) {
-                System.out.println("WS Screen is not loaded");
+                log.info("WS Screen is not loaded");
             }
             scrollUntilElementFound(driver, loe.getWS_setupDetailDropDown());
 
@@ -84,10 +84,9 @@ public class WeeklySaving {
                 log.info("Stop Permanently Redio Buttom CTA is not clickable");
                 return;
             }
-            try{
-                waitForClick(loe.getWS_StopNowCTA()).click();
-            }
-            catch (Exception e){
+            try {
+                waitForClick(loc.getWS_StopNowCTA()).click();
+            } catch (Exception e) {
                 log.info("Stop now CTA is not clickable");
                 return;
             }
