@@ -55,6 +55,7 @@ public class driverFactory {
         caps.setCapability("appium:appPackage", configReader.get("androidPackage"));
         caps.setCapability("appium:appActivity", configReader.get("androidActivity"));
 
+
         return new AndroidDriver(new URL(configReader.get("appiumServerURL")), caps);
     }
     //                     iOS SETUP
@@ -68,8 +69,8 @@ public class driverFactory {
         caps.setCapability("appium:udid", configReader.get("uuid"));
         caps.setCapability("appium:platformVersion", configReader.get("platformVersion"));
         caps.setCapability("appium:autoAcceptAlerts", Boolean.parseBoolean(configReader.get("autoAcceptAlerts")));
-        caps.setCapability("appium:noReset", false);
-        caps.setCapability("appium:fullReset", false);
+        caps.setCapability("appium:noReset", true);
+        caps.setCapability("appium:fullReset", true);
 
         // iOS App: app (.ipa) or bundleId
         if (configReader.get("app") != null && !configReader.get("app").isEmpty()) {
