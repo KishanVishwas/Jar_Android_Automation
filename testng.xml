@@ -5,6 +5,8 @@
         <classes>
             <class name="LoginFlow"/>
             <class name="buyGoldFlowLocker"/>
+            <class name="dailySavingsFlow"/>
+<!--            <class name="weeklySavingsFlow"/>-->
         </classes>
     </test>
 </suite>
