@@ -13,7 +13,7 @@ public class dailySavingsPOM {
 
     public void setupDailySaving() {
         waitForVisibility(loc.getProfileIcon()).click();
-        scrollUntilElementFound(driver, loc.getDsInProfile());
+       scrollUntilElementFound(driver, loc.getDsInProfile());
         try {
             waitForVisibility(loc.getDsInProfile()).click();
         } catch (Exception e) {
