@@ -13,5 +13,7 @@ public class LoginFlow extends baseSetup {
         onboard.onboardingVideo();
         onboard.userLogin("9999911111", "123456");
         onboard.userRedirectiontoHome();
+       WS.setWeeklySaving("100");
+        WS.stopWeeklySaving();
     }
 }
