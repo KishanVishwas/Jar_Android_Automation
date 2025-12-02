@@ -1,6 +1,8 @@
 import basePackage.baseSetup;
 import org.testng.annotations.Test;
 import pageObjectModel.WeeklySaving;
+import pageObjectModel.buyGoldFromFloatingCTA;
+import pageObjectModel.dailySavingsPOM;
 import pageObjectModel.onboardingFlow;
 
 public class LoginFlow extends baseSetup {
@@ -13,7 +15,6 @@ public class LoginFlow extends baseSetup {
         onboard.onboardingVideo();
         onboard.userLogin("9999911111", "123456");
         onboard.userRedirectiontoHome();
-       WS.setWeeklySaving("100");
-        WS.stopWeeklySaving();
+
     }
 }
