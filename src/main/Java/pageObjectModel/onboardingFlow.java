@@ -48,8 +48,8 @@ public class onboardingFlow {
     public void onboardingVideo() {
         try {
             waitForClick(loc.getSkipOnboardingVideo()).click();
-            WebElement ssjCTA=waitForClick(loc.getStartSJCTA());
-            if (ssjCTA.isEnabled()){
+            WebElement ssjCTA = waitForClick(loc.getStartSJCTA());
+            if (ssjCTA.isEnabled()) {
                 ssjCTA.click();
             }
         } catch (Exception e) {
@@ -83,7 +83,7 @@ public class onboardingFlow {
 
         waitForVisibility(loc.getEnterOtpTextArea()).sendKeys(OTP);
 
-       waitForClick(loc.getVerifyOtpCTA()).click();
+        waitForClick(loc.getVerifyOtpCTA()).click();
     }
 
     public void userRedirectiontoHome() {
