@@ -15,6 +15,9 @@ public class LoginFlow extends baseSetup {
         onboard.onboardingVideo();
         onboard.userLogin("9999911111", "123456");
         onboard.userRedirectiontoHome();
+      //  dailySavingsPOM ds=new dailySavingsPOM();
+         //ds.setupDailySaving();
+     //   ds.stopDailySaving();
 
     }
 }
