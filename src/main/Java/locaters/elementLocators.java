@@ -171,10 +171,10 @@ public class elementLocators {
     @AndroidFindBy(xpath = "//androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[3]/android.view.View/android.view.View")
     private WebElement startSJCTA;
 
-    @AndroidFindBy(xpath = "//androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.view.View/android.view.View[4]/android.view.View[2]/android.view.View[1]/android.view.View")
+    @AndroidFindBy(xpath="//android.widget.TextView[normalize-space(@text)='Daily Saving']")
     private WebElement dsInProfile;
 
-    @AndroidFindBy(uiAutomator = "new UiSelector().className(\"android.widget.EditText\")")
+    @AndroidFindBy(xpath = "//android.widget.EditText")
     private WebElement dsAmountArea;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Setup Daily Savings\"]")
@@ -182,5 +182,59 @@ public class elementLocators {
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Proceed for Payment\"]")
     private WebElement proceedForPaymentCTA;
+
+
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"ACTIVE\"]")
+    private WebElement dsLandingStatus;
+
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Manage Savings\"]")
+    private WebElement dsManageSavingropDown;
+
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Pause\"]")
+    private WebElement dsPauseCTA;
+
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Stop\"]")
+    private WebElement dsStopCTA;
+
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Pause Savings\"]")
+    private  WebElement dsPauseSavingBottomScreenCTA;
+
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Continue Saving\"]")
+    private  WebElement dsContinueSavingBottomScreenCTA;
+
+    @AndroidFindBy(xpath = "//android.view.ViewGroup/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.view.View/android.widget.ImageView")
+    private WebElement closePauseBottomScreen;
+
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Stop Saving\"]")
+    private WebElement dsStopSavingCTAFormVideo;
+
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Continue Saving\"]")
+    private WebElement dsContinueSavingCTAFormVideo;
+
+    @AndroidFindBy(xpath = "//android.widget.ScrollView/android.widget.ImageView[1]")
+    private WebElement dsStopFormVideo;
+
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Don’t want to save anymore\"]")
+    private WebElement dsDontWantToSaveAnymoreRedioButtonCTA;
+
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Submit\"]")
+    private WebElement dsSubmitReasonCTA;
+
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"For 2 weeks\"]")
+    private WebElement ds_stopFor2WeeksRedioButtom;
+
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Permanently\"]")
+    private WebElement ds_StopPermanentlyRedioButtom;
+
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Stop Saving\"]")
+    private WebElement dsStopSavingCTA;
+    @AndroidFindBy(xpath = "(//android.widget.TextView[@text=\"ACTIVE\"])[1]")
+    private WebElement dsActiveStatus;
+
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Daily Saving\"]")
+    private WebElement dailySavingHamberger;
+
+    @AndroidFindBy(xpath = " //android.widget.TextView[normalize-space(@text)='Update Daily Savings']")
+    private WebElement UpdateDailySavingsCTA;
 
     }

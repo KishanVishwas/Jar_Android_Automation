@@ -62,7 +62,7 @@ public class onboardingFlow {
             }
         } catch (TimeoutException e) {
             waitForVisibility(loc.getEnterNumberTitle());
-            log.info("Got directly Enter number screen without preffered numbers");
+            log.info("Got directly Enter number screen without prefered numbers");
         }
         try {
             WebElement noneOfAbove = waitForClick(loc.getNoneOfTheAbove());

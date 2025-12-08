@@ -21,22 +21,23 @@ public class WeeklySaving {
             waitForVisibility(loc.getWeekly_Saving()).click();
         } catch (Exception e) {
             log.info("Weekly_Saving CTA is not clickable");
+            return;
         }
 
         try {
             waitForClick(loc.getWeeklySavingtextField()).click();
             loc.getWeeklySavingtextField().sendKeys(amount);
+            log.info("amount enter in the WS text field");
         } catch (Exception e) {
             log.info("Loading is taking time");
             waitForClick(loc.getWeeklySavingtextField()).click();
             loc.getWeeklySavingtextField().sendKeys(amount);
         }
-
-        waitForClick(loc.getWeeklySavingProceedCTA()).click();
-        Thread.sleep(3000);
-
         try {
+            waitForClick(loc.getWeeklySavingProceedCTA()).click();
+            Thread.sleep(3000);
             waitForClick(loc.getProceedForPaymentCTA()).click();
+            log.info("click on the proceed for payment CTA ");
         } catch (Exception e) {
             log.info("Proceed For Payment CTA is not clickable");
         }
@@ -44,19 +45,22 @@ public class WeeklySaving {
         try {
             waitForVisibility(loc.getPhonePayPaymentButton());
             waitForClick(loc.getPhonePayPaymentButton()).click();
+            waitForClick(loc.getPinCompleted()).click();
         } catch (Exception e) {
-            log.info("Payment bottom sheet is not clickable");
+            log.info("Payment app  is not clickable");
+            return;
         }
-
-        waitForClick(loc.getPinCompleted()).click();
 
         try {
             waitForVisibility(loc.getWSOrderSuccessScreenStatus());
+            log.info("got Weekly saving order success screen ");
         } catch (TimeoutException e) {
             log.info("Weekly saving order success is not getting loaded");
         }
 
         waitForClick(loc.getWSOrderSuccessScreen_GoToHomeCTA()).click();
+        log.info("User in the home screen");
+
     }
 
     public void stopWeeklySaving() {
@@ -134,15 +138,16 @@ public class WeeklySaving {
         }
 
         waitForVisibility(loc.getWeekly_Saving());
+        driver.navigate().back();
     }
 
     public void ResumeWeeklySaving() {
         waitForVisibility(loc.getProfileIcon()).click();
         scrollUntilElementFound((AndroidDriver) driver, loc.getWeekly_Saving());
         loc.getWeekly_Saving().click();
-
         try {
             waitForVisibility(loc.getWS_Resume_Status_screen());
+
         } catch (Exception e) {
             log.info("WS Screen is not loaded");
         }
