@@ -16,17 +16,14 @@ public class dailySavingsPOM {
 
     public void setupDailySaving() {
         waitForVisibility(loc.getProfileIcon()).click();
-       scrollUntilElementFound(driver, loc.getDsInProfile());
+        scrollUntilElementFound(driver, loc.getDsInProfile());
         try {
             waitForVisibility(loc.getDsInProfile()).click();
         } catch (Exception e) {
             log.info("Daily savings option CTA is not clickable");
         }
         WebElement dstextArea = waitForVisibility(loc.getDsAmountArea());
-        if (dstextArea.isEnabled()) {
-            dstextArea.clear();
             dstextArea.sendKeys("200");
-        }
         waitForClick(loc.getSetupDsCTA()).click();
         WebElement proceedCTA = waitForVisibility(loc.getProceedForPaymentCTA());
         if (proceedCTA.isEnabled()) {
@@ -34,7 +31,6 @@ public class dailySavingsPOM {
         }
         waitForVisibility(loc.getPhonePayPaymentButton()).click();
         waitForClick(loc.getPinCompleted()).click();
-
         waitForVisibility(loc.getGoToHomeCTA()).click();
     }
     public void stopDailySaving() {
