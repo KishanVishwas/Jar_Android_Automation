@@ -1,5 +1,6 @@
 package pageObjectModel;
 
+import static basePackage.API.decryptOtp;
 import static basePackage.actions.takeScreenShot;
 import static basePackage.driverFactory.driver;
 import static utilsPackage.waitUtils.*;
@@ -74,14 +75,14 @@ public class onboardingFlow {
         }
     }
 
-    public void userLogin(String number, String OTP) {
+    public void userLogin(String number) {
 
         WebElement phnArea = waitForVisibility(loc.getPhoneNumberTextField());
         phnArea.sendKeys(number);
 
         waitForClick(loc.getSendOtpCTA()).click();
 
-        waitForVisibility(loc.getEnterOtpTextArea()).sendKeys(OTP);
+        waitForVisibility(loc.getEnterOtpTextArea()).sendKeys(decryptOtp(number));
 
        waitForClick(loc.getVerifyOtpCTA()).click();
     }

@@ -85,7 +85,7 @@ public class dailySavingsPOM {
         try{
             WebElement submit = waitForClick(loc.getDsSubmitReasonCTA());
             if(submit.isEnabled()){
-                waitForClick(loc.getDsSubmitReasonCTA());
+                waitForClick(loc.getDsSubmitReasonCTA()).click();
             }
         }
         catch (RuntimeException e){

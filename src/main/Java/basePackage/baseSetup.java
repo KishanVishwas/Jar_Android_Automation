@@ -26,7 +26,7 @@ public class baseSetup {
         }
 
         // Close emulator one time
-        emulatorManager.closeAndroidEmulator();
+       // emulatorManager.closeAndroidEmulator();
 
         // Stop Appium one time
         appiumServerManager.stopServer();
