@@ -26,6 +26,7 @@ public class WeeklySaving {
 
         try {
             waitForClick(loc.getWeeklySavingtextField()).click();
+            loc.getWeeklySavingtextField().clear();
             loc.getWeeklySavingtextField().sendKeys(amount);
             log.info("amount enter in the WS text field");
         } catch (Exception e) {
