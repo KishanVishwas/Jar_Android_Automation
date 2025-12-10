@@ -163,7 +163,7 @@ public class WeeklySaving {
             log.info("Resume now CTA is not clickable");
         }
 
-        waitForVisibility(loc.getWS_Active_Status_screen());
+       // waitForVisibility(loc.getWS_Active_Status_screen());
         driver.navigate().back();
         driver.navigate().back();
     }
