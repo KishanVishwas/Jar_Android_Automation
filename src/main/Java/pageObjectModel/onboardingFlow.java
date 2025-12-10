@@ -1,6 +1,6 @@
 package pageObjectModel;
 
-import static basePackage.API.decryptOtp;
+
 import static basePackage.actions.takeScreenShot;
 import static basePackage.driverFactory.driver;
 import static utilsPackage.waitUtils.*;
@@ -19,12 +19,8 @@ public class onboardingFlow {
     public void langaugeSelection() {
         try {
             try {
-                waitForVisibility(loc.getLanguagePageText());
                 WebElement english = loc.getEnglish();
-                if (english.isDisplayed()) {
-                    english.click();
-                    log.info("English found and selecting");
-                }
+                english.click();
             } catch (NoSuchElementException e) {
                 log.info("English not found , selecting Hindi langauge");
                 WebElement hindi = loc.getHindi();
@@ -48,7 +44,7 @@ public class onboardingFlow {
 
     public void onboardingVideo() {
         try {
-            waitForClick(loc.getSkipOnboardingVideo()).click();
+            waitForClick(loc.getSkipForDev()).click();
             WebElement ssjCTA = waitForClick(loc.getStartSJCTA());
             if (ssjCTA.isEnabled()) {
                 ssjCTA.click();
@@ -75,7 +71,7 @@ public class onboardingFlow {
         }
     }
 
-    public void userLogin(String number,String otp) {
+    public void userLogin(String number, String otp) {
 
         WebElement phnArea = waitForVisibility(loc.getPhoneNumberTextField());
         phnArea.sendKeys(number);

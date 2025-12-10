@@ -47,13 +47,13 @@ public class buyGoldFromFloatingCTA {
             if (payCta.isEnabled()) {
                 payCta.click();
             }
-            waitForClick(loc.getPayNowCTAinBS()).click();
+//            waitForClick(loc.getPayNowCTAinBS()).click();
         } catch (TimeoutException e) {
             WebElement payCta = waitForVisibility(loc.getPayNowCTA());
             if (payCta.isEnabled()) {
                 payCta.click();
             }
-            waitForClick(loc.getPayNowCTAinBS()).click();
+//            waitForClick(loc.getPayNowCTAinBS()).click();
         }
     }
 

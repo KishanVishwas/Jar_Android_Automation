@@ -17,8 +17,7 @@ public class elementLocators {
         PageFactory.initElements(new AppiumFieldDecorator(driver), this);
     }
 
-    @AndroidFindBy(xpath = "//android.widget.TextView[@text='English']")
-    @iOSXCUITFindBy()
+    @AndroidFindBy(xpath = "//android.widget.TextView[contains(@text,'English')]")
     private WebElement English;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Choose the app language you prefer.']")
@@ -156,7 +155,7 @@ public class elementLocators {
     @AndroidFindBy(xpath = "//android.view.ViewGroup/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.view.View[3]")
     private WebElement payNowCTAinBS;
 
-    @AndroidFindBy(id = "com.aso_centric.jar.staging:id/tvPaymentType")
+    @AndroidFindBy(id = "//android.widget.TextView[@text=\"PhonePe Simulator\"] and @resource-id=\"com.aso_centric.jar.staging:id/tvPaymentType\"]")
     private WebElement phnPeSimulator;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"com.aso_centric.jar.staging:id/textView\" and @text=\"Go To Homepage\"]")
@@ -236,5 +235,11 @@ public class elementLocators {
 
     @AndroidFindBy(xpath = " //android.widget.TextView[normalize-space(@text)='Update Daily Savings']")
     private WebElement UpdateDailySavingsCTA;
+
+    @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"com.aso_centric.jar.staging:id/textView\"]")
+    private WebElement payNowCTAExp1;
+
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Skip for devs\"]")
+    private WebElement skipForDev;
 
     }
