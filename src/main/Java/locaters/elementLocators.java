@@ -27,7 +27,7 @@ public class elementLocators {
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Skip']")
     private WebElement skipOnboardingVideo;
 
-    @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id='com.aso_centric.jar.staging:id/tvContinueWithDifferentNumber']")
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Use another number\"]")
     private WebElement useOtherNumberCTA;
 
     @AndroidFindBy(id = "com.google.android.gms:id/cancel")
@@ -81,7 +81,7 @@ public class elementLocators {
     @AndroidFindBy(xpath = "//android.widget.FrameLayout[@resource-id=\"com.aso_centric.jar.staging:id/llBuyNow\"]/android.view.ViewGroup")
     private WebElement payNowCTA;
 
-    @AndroidFindBy(accessibility = "ProfileIcon")
+    @AndroidFindBy(accessibility = "profile Icon")
     private WebElement ProfileIcon;
 
     //  @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Weekly Saving\"]")
