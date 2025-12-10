@@ -75,14 +75,14 @@ public class onboardingFlow {
         }
     }
 
-    public void userLogin(String number) {
+    public void userLogin(String number,String otp) {
 
         WebElement phnArea = waitForVisibility(loc.getPhoneNumberTextField());
         phnArea.sendKeys(number);
 
         waitForClick(loc.getSendOtpCTA()).click();
 
-        waitForVisibility(loc.getEnterOtpTextArea()).sendKeys(decryptOtp(number));
+        waitForVisibility(loc.getEnterOtpTextArea()).sendKeys(otp);
 
         waitForClick(loc.getVerifyOtpCTA()).click();
     }

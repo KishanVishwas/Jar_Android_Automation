@@ -13,7 +13,7 @@ public class LoginFlow extends baseSetup {
         WeeklySaving WS = new WeeklySaving();
         onboard.langaugeSelection();
         onboard.onboardingVideo();
-        onboard.userLogin("2222211110");
+        onboard.userLogin("6666611111","123456");
         onboard.userRedirectiontoHome();
         dailySavingsPOM ds=new dailySavingsPOM();
          ds.setupDailySaving();

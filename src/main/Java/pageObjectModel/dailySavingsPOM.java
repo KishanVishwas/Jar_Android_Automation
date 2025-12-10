@@ -23,7 +23,8 @@ public class dailySavingsPOM {
             log.info("Daily savings option CTA is not clickable");
         }
         WebElement dstextArea = waitForVisibility(loc.getDsAmountArea());
-            dstextArea.sendKeys("200");
+        dstextArea.clear();
+        dstextArea.sendKeys("200");
         waitForClick(loc.getSetupDsCTA()).click();
         WebElement proceedCTA = waitForVisibility(loc.getProceedForPaymentCTA());
         if (proceedCTA.isEnabled()) {
@@ -69,7 +70,7 @@ public class dailySavingsPOM {
         }
         try{
             WebElement reason = waitForVisibility(loc.getDsDontWantToSaveAnymoreRedioButtonCTA());
-            if(reason.isDisplayed()){
+            if(reason.isDisplayed() && reason.isEnabled()){
                 waitForClick(reason).click();
             }
             log.info("Don't Want To Save Any more reason is  selected");
@@ -112,4 +113,5 @@ public class dailySavingsPOM {
             log.info("Go to home CTA is not visible");
         }
     }
+
 }
