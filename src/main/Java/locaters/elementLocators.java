@@ -72,13 +72,13 @@ public class elementLocators {
     @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Start by entering your phone number\"]")
     private WebElement enterNumberTitle;
 
-    @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"com.aso_centric.jar.staging:id/tvSavingInGold\"]")
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Save in Gold\"]")
     private WebElement saveInGoldTitle;
 
-    @AndroidFindBy(xpath = "//android.widget.EditText[@resource-id=\"com.aso_centric.jar.staging:id/etBuyGoldInput\"]")
+    @AndroidFindBy(xpath = "//android.widget.EditText")
     private WebElement amountInputArea;
 
-    @AndroidFindBy(xpath = "//android.widget.FrameLayout[@resource-id=\"com.aso_centric.jar.staging:id/llBuyNow\"]/android.view.ViewGroup")
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Pay Now\"]")
     private WebElement payNowCTA;
 
     @AndroidFindBy(accessibility = "profile Icon")
@@ -156,7 +156,7 @@ public class elementLocators {
     @AndroidFindBy(xpath = "//android.view.ViewGroup/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.view.View[3]")
     private WebElement payNowCTAinBS;
 
-    @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"com.aso_centric.jar.staging:id/tvPaymentType\"]")
+    @AndroidFindBy(id = "com.aso_centric.jar.staging:id/tvPaymentType")
     private WebElement phnPeSimulator;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"com.aso_centric.jar.staging:id/textView\" and @text=\"Go To Homepage\"]")
