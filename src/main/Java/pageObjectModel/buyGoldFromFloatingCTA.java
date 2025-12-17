@@ -69,6 +69,14 @@ public class buyGoldFromFloatingCTA {
             }
         } catch (TimeoutException e) {
             log.info("user has not redirect to payment listing and Go to Homepage cta is not displaying");
+            WebElement simu=waitForVisibility(loc.getPhnPeSimulator());
+            if (simu.isEnabled()){
+                simu.click();
+            }
+            WebElement goToHome = waitForVisibility(loc.getGoToHomePageCTA());
+            if (goToHome.isDisplayed()) {
+                goToHome.click();
+            }
         }
     }
 }
