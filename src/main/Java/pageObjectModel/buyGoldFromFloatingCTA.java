@@ -59,10 +59,7 @@ public class buyGoldFromFloatingCTA {
 
     public void buyGoldAsZomatoAndNonZomato() {
         try {
-            WebElement phnPe = waitForVisibility(loc.getPhnPeSimulator());
-            if (phnPe.isDisplayed()) {
-                phnPe.click();
-            }
+            waitForClick(loc.getPhnPeSimulator()).click();
             WebElement goToHome = waitForVisibility(loc.getGoToHomePageCTA());
             if (goToHome.isDisplayed()) {
                 goToHome.click();
