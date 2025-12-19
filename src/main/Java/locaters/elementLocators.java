@@ -2,7 +2,6 @@ package locaters;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
-import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import lombok.Data;
 import org.openqa.selenium.WebElement;
@@ -155,7 +154,7 @@ public class elementLocators {
     @AndroidFindBy(xpath = "//android.view.ViewGroup/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.view.View[3]")
     private WebElement payNowCTAinBS;
 
-    @AndroidFindBy(id = "//android.widget.TextView[@resource-id=\"com.jar.app.replica:id/tvPaymentType\"]")
+    @AndroidFindBy(id = "com.jar.app.replica:id/tvPaymentType")
     private WebElement phnPeSimulator;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"com.jar.app.replica:id/textView\" and @text=\"Go To Homepage\"]")
@@ -247,5 +246,4 @@ public class elementLocators {
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Go To Transactions\"]")
     private WebElement goToTransactionCTA;
-
     }

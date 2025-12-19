@@ -29,17 +29,11 @@ public class dailySavingsPOM {
         waitForClick(loc.getSetupDsCTA()).click();
         try {
             waitForClick(loc.getWeeklyBoosterBS()).click();
-            WebElement proceedCTA = waitForVisibility(loc.getProceedForPaymentCTA());
-            if (proceedCTA.isEnabled()) {
-                proceedCTA.click();
-            }
+            waitForVisibility(loc.getProceedForPaymentCTA()).click();
         } catch (TimeoutException e) {
-            waitForVisibility(loc.getPhonePayPaymentButton()).click();
-            WebElement proceedCTA = waitForVisibility(loc.getProceedForPaymentCTA());
-            if (proceedCTA.isEnabled()) {
-                proceedCTA.click();
-            }
+            waitForVisibility(loc.getProceedForPaymentCTA()).click();
         }
+//        waitForVisibility(loc.getProceedForPaymentCTA()).click();
 //        waitForVisibility(loc.getPhonePayPaymentButton()).click();
 //        waitForClick(loc.getPinCompleted()).click();
 //        waitForVisibility(loc.getGoToHomeCTA()).click();
