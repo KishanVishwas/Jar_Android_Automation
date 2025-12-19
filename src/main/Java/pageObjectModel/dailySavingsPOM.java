@@ -44,7 +44,7 @@ public class dailySavingsPOM {
 //        waitForClick(loc.getPinCompleted()).click();
 //        waitForVisibility(loc.getGoToHomeCTA()).click();
         waitForClick(loc.getGoToTransactionCTA()).click();
-        waitForClick(loc.getHomeTab1()).click();
+        waitForClick(loc.getHomeTab()).click();
     }
 
     public void stopDailySaving() {

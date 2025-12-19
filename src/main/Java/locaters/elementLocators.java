@@ -248,7 +248,4 @@ public class elementLocators {
     @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Go To Transactions\"]")
     private WebElement goToTransactionCTA;
 
-    @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Home\"]")
-    private WebElement homeTab1;
-
     }
