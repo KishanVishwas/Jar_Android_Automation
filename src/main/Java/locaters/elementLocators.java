@@ -158,7 +158,7 @@ public class elementLocators {
     @AndroidFindBy(id = "//android.widget.TextView[@resource-id=\"com.jar.app.replica:id/tvPaymentType\"]")
     private WebElement phnPeSimulator;
 
-    @AndroidFindBy(xpath = "//android.widget.FrameLayout[@resource-id=\"com.jar.app.replica:id/btnGoToHome\"]/android.view.ViewGroup")
+    @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"com.jar.app.replica:id/textView\" and @text=\"Go To Homepage\"]")
     private WebElement goToHomePageCTA;
 
     @AndroidFindBy(xpath = "//androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.view.View/android.view.View[4]/android.view.View[2]/android.view.View[3]/android.view.View")
