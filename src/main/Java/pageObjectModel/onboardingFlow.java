@@ -19,7 +19,7 @@ public class onboardingFlow {
     public void langaugeSelection() {
         try {
             try {
-                WebElement english = loc.getEnglish();
+                WebElement english = waitForClick(loc.getEnglish());
                 english.click();
             } catch (NoSuchElementException e) {
                 log.info("English not found , selecting Hindi langauge");

@@ -53,7 +53,7 @@ public class elementLocators {
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Skip']")
     private WebElement skipInOnboardingDS;
 
-    @AndroidFindBy(xpath = "//android.widget.FrameLayout[@resource-id='com.aso_centric.jar.staging:id/btnLater']/android.view.ViewGroup")
+    @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"com.jar.app.replica:id/textView\" and @text=\"Cancel\"]")
     private WebElement cancelDSonboard;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Apply\"]")
@@ -155,10 +155,10 @@ public class elementLocators {
     @AndroidFindBy(xpath = "//android.view.ViewGroup/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.view.View[3]")
     private WebElement payNowCTAinBS;
 
-    @AndroidFindBy(id = "//android.widget.TextView[@text=\"PhonePe Simulator\"] and @resource-id=\"com.aso_centric.jar.staging:id/tvPaymentType\"]")
+    @AndroidFindBy(id = "//android.widget.TextView[@resource-id=\"com.jar.app.replica:id/tvPaymentType\"]")
     private WebElement phnPeSimulator;
 
-    @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"com.aso_centric.jar.staging:id/textView\" and @text=\"Go To Homepage\"]")
+    @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"com.jar.app.replica:id/textView\" and @text=\"Go To Homepage\"]")
     private WebElement goToHomePageCTA;
 
     @AndroidFindBy(xpath = "//androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.view.View/android.view.View[4]/android.view.View[2]/android.view.View[3]/android.view.View")
