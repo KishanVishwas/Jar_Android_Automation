@@ -52,7 +52,7 @@ public class elementLocators {
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Skip']")
     private WebElement skipInOnboardingDS;
 
-    @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"com.jar.app.replica:id/textView\" and @text=\"Cancel\"]")
+    @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"com.aso_centric.jar.staging:id/textView\" and @text=\"Cancel\"]")
     private WebElement cancelDSonboard;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Apply\"]")
@@ -120,32 +120,32 @@ public class elementLocators {
     @AndroidFindBy(xpath = "(//android.widget.TextView[@text=\"ACTIVE\"])[2]")
     private WebElement WS_Status_in_hamberger;
 
-     @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Active\"]")
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Active\"]")
     private WebElement WS_Active_Status_screen;
 
-     @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Resume\"]")
-     private WebElement WS_Resume_Status_screen;
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Resume\"]")
+    private WebElement WS_Resume_Status_screen;
 
-     @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Resume Now\"]")
-     private WebElement WS_Resume_Now_CTA;
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Resume Now\"]")
+    private WebElement WS_Resume_Now_CTA;
 
-     @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Setup details\"]")
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Setup details\"]")
     private WebElement WS_setupDetailDropDown;
 
-     @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Stop Weekly Savings\"]")
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Stop Weekly Savings\"]")
     private WebElement stopWeeklySavingCTA;
 
 
-     @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"I still want to cancel\"]")
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"I still want to cancel\"]")
     private WebElement WS_SillWantToStopWS;
 
-     @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Permanently\"]")
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Permanently\"]")
     private WebElement WS_StopPermanentlyRedioButtom;
 
-     @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"For 3 weeks\"]")
-     private WebElement WS_stopFor3WeeksRedioButtom;
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"For 3 weeks\"]")
+    private WebElement WS_stopFor3WeeksRedioButtom;
 
-     @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Stop Now\"]")
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Stop Now\"]")
     private WebElement WS_StopNowCTA;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Go To Home\"]")
@@ -154,10 +154,10 @@ public class elementLocators {
     @AndroidFindBy(xpath = "//android.view.ViewGroup/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.view.View[3]")
     private WebElement payNowCTAinBS;
 
-    @AndroidFindBy(id = "com.jar.app.replica:id/tvPaymentType")
+    @AndroidFindBy(id = "com.aso_centric.jar.staging:id/tvPaymentType")
     private WebElement phnPeSimulator;
 
-    @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"com.jar.app.replica:id/textView\" and @text=\"Go To Homepage\"]")
+    @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"com.aso_centric.jar.staging:id/textView\" and @text=\"Go To Homepage\"]")
     private WebElement goToHomePageCTA;
 
     @AndroidFindBy(xpath = "//androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.view.View/android.view.View[4]/android.view.View[2]/android.view.View[3]/android.view.View")
@@ -169,7 +169,7 @@ public class elementLocators {
     @AndroidFindBy(xpath = "//androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[3]/android.view.View/android.view.View")
     private WebElement startSJCTA;
 
-    @AndroidFindBy(xpath="//android.widget.TextView[normalize-space(@text)='Daily Saving']")
+    @AndroidFindBy(xpath = "//android.widget.TextView[normalize-space(@text)='Daily Saving']")
     private WebElement dsInProfile;
 
     @AndroidFindBy(xpath = "//android.widget.EditText")
@@ -195,10 +195,10 @@ public class elementLocators {
     private WebElement dsStopCTA;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Pause Savings\"]")
-    private  WebElement dsPauseSavingBottomScreenCTA;
+    private WebElement dsPauseSavingBottomScreenCTA;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Continue Saving\"]")
-    private  WebElement dsContinueSavingBottomScreenCTA;
+    private WebElement dsContinueSavingBottomScreenCTA;
 
     @AndroidFindBy(xpath = "//android.view.ViewGroup/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.view.View/android.widget.ImageView")
     private WebElement closePauseBottomScreen;
@@ -246,4 +246,7 @@ public class elementLocators {
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Go To Transactions\"]")
     private WebElement goToTransactionCTA;
-    }
+
+    @AndroidFindBy(xpath = "//androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.view.View[2]")
+    private WebElement proceedWithEnglish;
+}
