@@ -19,23 +19,13 @@ public class onboardingFlow {
     public void langaugeSelection() {
         try {
             try {
+                WebElement pwd=waitForClick(loc.getProceedWithEnglish());
+                pwd.click();
+            } catch (NoSuchElementException e) {
                 WebElement english = waitForClick(loc.getEnglish());
                 english.click();
-            } catch (NoSuchElementException e) {
-                log.info("English not found , selecting Hindi langauge");
-                WebElement hindi = loc.getHindi();
-                if (hindi.isDisplayed()) {
-                    hindi.click();
-                }
-            }
-            try {
-                WebElement applyCta = waitForClick(loc.getApplyCTA());
-                if (applyCta.isDisplayed()) {
-                    applyCta.click();
-                    log.info("Apply cta found and clicked");
-                }
-            } catch (NoSuchElementException e) {
-                log.info("Apply cta not found");
+                log.info("English, selecting English langauge");
+                waitForClick(loc.getApplyCTA()).click();
             }
         } catch (Exception e) {
             log.info("OnBoaring video is getting played");
