@@ -33,12 +33,9 @@ public class dailySavingsPOM {
         } catch (TimeoutException e) {
             waitForVisibility(loc.getProceedForPaymentCTA()).click();
         }
-//        waitForVisibility(loc.getProceedForPaymentCTA()).click();
-//        waitForVisibility(loc.getPhonePayPaymentButton()).click();
-//        waitForClick(loc.getPinCompleted()).click();
-//        waitForVisibility(loc.getGoToHomeCTA()).click();
-        waitForClick(loc.getGoToTransactionCTA()).click();
-        waitForClick(loc.getHomeTab()).click();
+        waitForVisibility(loc.getPhonePayPaymentButton()).click();
+        waitForClick(loc.getPinCompleted()).click();
+        waitForVisibility(loc.getGoToHomeCTA()).click();
     }
 
     public void stopDailySaving() {

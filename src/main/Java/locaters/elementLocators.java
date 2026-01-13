@@ -249,4 +249,8 @@ public class elementLocators {
 
     @AndroidFindBy(xpath = "//androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.view.View[2]")
     private WebElement proceedWithEnglish;
+
+    @AndroidFindBy(uiAutomator= "new UiSelector().className(\"android.widget.Button\")")
+    private WebElement skipInInstantSave;
+
 }

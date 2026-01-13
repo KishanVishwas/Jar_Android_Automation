@@ -19,13 +19,13 @@ public class onboardingFlow {
     public void langaugeSelection() {
         try {
             try {
-                WebElement pwd=waitForClick(loc.getProceedWithEnglish());
-                pwd.click();
-            } catch (NoSuchElementException e) {
                 WebElement english = waitForClick(loc.getEnglish());
                 english.click();
                 log.info("English, selecting English langauge");
                 waitForClick(loc.getApplyCTA()).click();
+            } catch (NoSuchElementException e) {
+                WebElement pwd = waitForClick(loc.getProceedWithEnglish());
+                pwd.click();
             }
         } catch (Exception e) {
             log.info("OnBoaring video is getting played");
@@ -76,18 +76,19 @@ public class onboardingFlow {
     public void userRedirectiontoHome() {
 
         try {
+            WebElement skip = waitForVisibility(loc.getSkipInInstantSave());
+            if (skip.isDisplayed()) {
+                skip.click();
+                waitForClick(loc.getCancelDSonboard()).click();
+            } else {
+                driver.navigate().back();    // handled the Instant saving flow as well using back navigation
+                waitForClick(loc.getCancelDSonboard()).click();
+            }
+        } catch (Exception e) {
             WebElement dsTitle = waitForVisibility(loc.getDailySavingTitle());
             if (dsTitle.isDisplayed()) {
                 waitForClick(loc.getSkipInOnboardingDS()).click();
                 waitForClick(loc.getCancelDSonboard()).click();
-            }
-        } catch (TimeoutException e) {
-            try {
-                driver.navigate().back();    // handled the Instant saving flow as well using back navigation
-                waitForClick(loc.getCancelDSonboard()).click();
-            } catch (TimeoutException e1) {
-                waitForVisibility(loc.getHomeTab());
-                takeScreenShot(driver, "homeScreen_notRedirecting");
             }
         }
     }
