@@ -3,7 +3,7 @@ package pageObjectModel;
 import static basePackage.driverFactory.driver;
 import static utilsPackage.waitUtils.*;
 
-import locaters.elementLocators;
+import locaters.onboardingLocators;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
@@ -11,62 +11,62 @@ import org.openqa.selenium.WebElement;
 @Slf4j
 public class onboardingFlow {
 
-    elementLocators loc = new elementLocators(driver);
+    onboardingLocators onB = new onboardingLocators(driver);
 
     public void langaugeSelection() {
         try {
-            waitForVisibility(loc.getLanguagePageText());
-            WebElement english = waitForClick(loc.getEnglish());
+            waitForVisibility(onB.getLanguagePageText());
+            WebElement english = waitForClick(onB.getEnglish());
             english.click();
             log.info("English, selecting English langauge");
-            WebElement apply = waitForClick(loc.getApplyCTA());
+            WebElement apply = waitForClick(onB.getApplyCTA());
             apply.click();
         } catch (TimeoutException e) {
-            waitForVisibility(loc.getSelectLanguage());
-            WebElement pwd = waitForClick(loc.getProceedWithEnglish());
+            waitForVisibility(onB.getSelectLanguage());
+            WebElement pwd = waitForClick(onB.getProceedWithEnglish());
             pwd.click();
         }
     }
 
     public void onboardingVideo() {
         try {
-            waitForClick(loc.getSkipForDev()).click();
-            WebElement ssjCTA = waitForClick(loc.getStartSJCTA());
+            waitForClick(onB.getSkipForDev()).click();
+            WebElement ssjCTA = waitForClick(onB.getStartSJCTA());
             if (ssjCTA.isEnabled()) {
                 ssjCTA.click();
             }
         } catch (Exception e) {
-            waitForVisibility(loc.getUseOtherNumberCTA());
+            waitForVisibility(onB.getUseOtherNumberCTA());
         }
         try {
-            WebElement useAnother = waitForVisibility(loc.getUseOtherNumberCTA());
+            WebElement useAnother = waitForVisibility(onB.getUseOtherNumberCTA());
             if (useAnother.isDisplayed()) {
                 useAnother.click();
             }
         } catch (TimeoutException e) {
-            waitForVisibility(loc.getEnterNumberTitle());
+            waitForVisibility(onB.getEnterNumberTitle());
             log.info("Got directly Enter number screen without prefered numbers");
         }
     }
 
     public void userLogin(String number, String otp) {
 
-        WebElement phnArea = waitForVisibility(loc.getPhoneNumberTextField());
+        WebElement phnArea = waitForVisibility(onB.getPhoneNumberTextField());
         phnArea.sendKeys(number);
 
-        waitForClick(loc.getSendOtpCTA()).click();
+        waitForClick(onB.getSendOtpCTA()).click();
 
-        waitForVisibility(loc.getEnterOtpTextArea()).sendKeys(otp);
+        waitForVisibility(onB.getEnterOtpTextArea()).sendKeys(otp);
 
-        waitForClick(loc.getVerifyOtpCTA()).click();
+        waitForClick(onB.getVerifyOtpCTA()).click();
     }
 
     public void userRedirectiontoHome() {
 
         try {
-            waitForVisibility(loc.getSaveInGoldTitle());
+            waitForVisibility(onB.getSaveInGoldTitle());
             driver.navigate().back();
-            waitForClick(loc.getCancelDSonboard()).click();
+            waitForClick(onB.getCancelDSonboard()).click();
         } catch (TimeoutException e) {
             log.error("User nnot able to redirect to the homepage");
         }
