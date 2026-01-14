@@ -55,7 +55,7 @@ public class elementLocators {
     @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"com.aso_centric.jar.staging:id/textView\" and @text=\"Cancel\"]")
     private WebElement cancelDSonboard;
 
-    @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Apply\"]")
+    @AndroidFindBy(uiAutomator = "new UiSelector().text(\"Apply\")")
     private WebElement applyCTA;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Home']")
@@ -247,10 +247,16 @@ public class elementLocators {
     @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Go To Transactions\"]")
     private WebElement goToTransactionCTA;
 
-    @AndroidFindBy(xpath = "//androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.view.View[2]")
+    @AndroidFindBy(uiAutomator = "new UiSelector().text(\"Proceed with English\")")
     private WebElement proceedWithEnglish;
 
     @AndroidFindBy(uiAutomator= "new UiSelector().className(\"android.widget.Button\")")
     private WebElement skipInInstantSave;
+
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"INSTANT SAVING\"]")
+    private WebElement instantSaveHeader;
+
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Select language\"]")
+    private WebElement selectLanguage;
 
 }
