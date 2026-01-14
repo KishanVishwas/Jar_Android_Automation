@@ -68,7 +68,7 @@ public class onboardingFlow {
             driver.navigate().back();
             waitForClick(loc.getCancelDSonboard()).click();
         } catch (TimeoutException e) {
-            log.error("User redirection to home failed due to timeout", e);
+            log.error("User nnot able to redirect to the homepage");
         }
     }
 }
