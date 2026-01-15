@@ -12,8 +12,8 @@ public class dailySavingsLocators {
     private AppiumDriver driver;
 
     public dailySavingsLocators(AppiumDriver driver) {
-        this.driver = this.driver;
-        PageFactory.initElements(new AppiumFieldDecorator(this.driver), this);
+        this.driver = driver;
+        PageFactory.initElements(new AppiumFieldDecorator(driver), this);
     }
 
     @AndroidFindBy(accessibility = "profile Icon")

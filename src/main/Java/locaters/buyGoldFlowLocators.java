@@ -11,8 +11,8 @@ import org.openqa.selenium.support.PageFactory;
 public class buyGoldFlowLocators {
     private AppiumDriver driver;
     public buyGoldFlowLocators(AppiumDriver driver){
-        this.driver = this.driver;
-        PageFactory.initElements(new AppiumFieldDecorator(this.driver), this);
+        this.driver = driver;
+        PageFactory.initElements(new AppiumFieldDecorator(driver), this);
     }
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"⚡ Save Instantly\"]")
