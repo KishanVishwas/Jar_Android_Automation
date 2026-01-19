@@ -31,10 +31,10 @@ public class onboardingLocators {
     @AndroidFindBy(id = "com.google.android.gms:id/cancel")
     private WebElement noneOfTheAbove;
 
-    @AndroidFindBy(xpath = "//android.widget.EditText[@resource-id='onboarding_v2_number_input_text_field']")
+    @AndroidFindBy(uiAutomator = "new UiSelector().resourceId(\"onboarding_v2_number_input_text_field\")")
     private WebElement phoneNumberTextField;
 
-    @AndroidFindBy(xpath = "//android.view.View[@resource-id='onboarding_v2_send_otp_cta']")
+    @AndroidFindBy(uiAutomator = "new UiSelector().text(\"Send OTP\")")
     private WebElement sendOtpCTA;
 
     @AndroidFindBy(uiAutomator = "new UiSelector().resourceId(\"onboarding_v2_otp_input_text_field\").instance(0)")
