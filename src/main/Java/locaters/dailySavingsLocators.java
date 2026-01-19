@@ -66,4 +66,33 @@ public class dailySavingsLocators {
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Permanently\"]")
     private WebElement ds_StopPermanentlyRedioButtom;
+
+    @AndroidFindBy(xpath = "//android.widget.TextView[contains(@text,\"Update\")]")
+    private WebElement dsUpdateProfile;
+
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Daily Savings\"]")
+    private WebElement  dsUpdateText;
+
+    @AndroidFindBy(xpath = "//android.view.View[@resource-id=\"update_mandate_cta\"]")
+    private WebElement updateMandateCta;
+
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Automatic Step-Up\"]")
+    private WebElement AutomaticStepUpBottomSheet;
+
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Activate Step-up\"]")
+    private WebElement ActivateStepUpCTA;
+
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"With Step-Up\"]")
+    private WebElement withStepUpRedioButton;
+
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Without Step-Up\"]")
+    private WebElement withOutStepUpRedioButton;
+
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Proceed without Step-up\"]")
+    private WebElement ProceedWithOutStepUpRedioButton;
+
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Go to Locker\"]")
+    private WebElement goToLockerCTA;
+
+
 }

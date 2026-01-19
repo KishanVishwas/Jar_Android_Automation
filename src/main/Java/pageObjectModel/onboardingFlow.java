@@ -43,8 +43,10 @@ public class onboardingFlow {
             if (useAnother.isDisplayed()) {
                 useAnother.click();
             }
+            waitForClick(onB.getNoneOfTheAbove()).click();
         } catch (TimeoutException e) {
             waitForVisibility(onB.getEnterNumberTitle());
+            waitForClick(onB.getNoneOfTheAbove()).click();
             log.info("Got directly Enter number screen without prefered numbers");
         }
     }
@@ -68,7 +70,7 @@ public class onboardingFlow {
             driver.navigate().back();
             waitForClick(onB.getCancelDSonboard()).click();
         } catch (TimeoutException e) {
-            log.error("User nnot able to redirect to the homepage");
+            log.error("User not able to redirect to the homepage");
         }
     }
 }
