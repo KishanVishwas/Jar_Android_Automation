@@ -11,5 +11,6 @@ public class LoginFlow extends baseSetup {
         onboard.onboardingVideo();
         onboard.userLogin("6666611111","123456");
         onboard.userRedirectiontoHome();
+
     }
 }

@@ -1,18 +1,23 @@
 package pageObjectModel;
 
 
+import com.beust.ah.A;
+import locaters.buyGoldFlowLocators;
 import locaters.dailySavingsLocators;
+import locaters.onboardingLocators;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 
 import static basePackage.driverFactory.driver;
+import static basePackage.driverFactory.wait;
 import static utilsPackage.waitUtils.*;
 
 @Slf4j
 public class dailySavingsPOM {
     dailySavingsLocators dsL = new dailySavingsLocators(driver);
+    buyGoldFlowLocators buyG = new buyGoldFlowLocators(driver);
 
     public void setupDailySaving() {
         waitForVisibility(dsL.getProfileIcon()).click();
@@ -109,4 +114,67 @@ public class dailySavingsPOM {
         }
     }
 
+    public void updateDS() {
+        waitForClick(buyG.getProfileIcon()).click();
+        try {
+            waitForVisibility(dsL.getDsUpdateProfile()).click();
+           // String heading = waitForVisibility(dsL.getDsUpdateText()).getText();
+        } catch (TimeoutException e) {
+            log.info("Daily saving is not active");
+            return;
+        }
+        try {
+            WebElement increas = waitForVisibility(dsL.getUpdateMandateCta());
+            if (increas.isEnabled()) {
+                increas.click();
+            }
+        } catch (Exception e) {
+            log.info("increase CTA is disable");
+        }
+        try {
+            String ApText = waitForVisibility(dsL.getAutomaticStepUpBottomSheet()).getText();
+            log.info("user got Automatic Step-Up Bottom sheet");
+            if (ApText.equalsIgnoreCase("Automatic Step-Up")) {
+//                waitForClick(dsL.getWithStepUpRedioButton()).click();
+//                waitForVisibility(dsL.getActivateStepUpCTA()).click();
+                waitForClick(dsL.getWithOutStepUpRedioButton()).click();
+                waitForVisibility(dsL.getProceedWithOutStepUpRedioButton()).click();
+            } else {
+                log.info("Auto step up bottom sheet has not opened");
+            }
+        } catch (Exception e) {
+            log.info("Auto step up bottom sheet has not opened");
+        }
+        try {
+            waitForVisibility(dsL.getPhonePayPaymentButton()).click();
+            waitForClick(dsL.getPinCompleted()).click();
+            waitForVisibility(dsL.getGoToHomeCTA()).click();
+        } catch (Exception e) {
+            log.info("PhonePay bottom sheet as not opened");
+        }
+        try {
+            WebElement lockerCTA = waitForVisibility(dsL.getGoToLockerCTA());
+            lockerCTA.click();
+            driver.navigate().back();
+        } catch (TimeoutException e) {
+            log.info("Locker CTA is  clickable");
+        }
+
+    }
+
+    public void autoStepup() {
+        try {
+            String ApText = waitForVisibility(dsL.getAutomaticStepUpBottomSheet()).getText();
+            log.info("user got Automatic Step-Up Bottom sheet");
+            if (ApText.equalsIgnoreCase("Automatic Step-Up")) {
+                waitForClick(dsL.getWithOutStepUpRedioButton()).click();
+                waitForVisibility(dsL.getProceedWithOutStepUpRedioButton()).click();
+            } else {
+                log.info("Auto step up bottom sheet has not opened");
+            }
+        } catch (Exception e) {
+
+        }
+
+    }
 }

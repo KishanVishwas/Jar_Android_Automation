@@ -43,17 +43,19 @@ public class driverFactory {
 
         caps.setCapability("platformName", "Android");
         caps.setCapability("appium:automationName", "UiAutomator2");
+        caps.setCapability("appium:appPackage","com.aso_centric.jar.staging");
+        caps.setCapability("appium:appActivity", configReader.get("androidActivity"));
 
         // You can load these also from config.xml if needed
-        caps.setCapability("appium:deviceName", configReader.get("androidDeviceName"));
+        //caps.setCapability("appium:deviceName", configReader.get("androidDeviceName"));
         caps.setCapability("appium:udid", configReader.get("androidUDID"));
         caps.setCapability("appium:platformVersion", configReader.get("androidPlatformVersion"));
 
         caps.setCapability("appium:autoGrantPermissions", true);
+        caps.setCapability("appium:deviceName", configReader.get("androidDeviceName"));
+        caps.setCapability("appium:noReset", false);
+        //caps.setCapability("appium:app", configReader.get("androidApp"));
 
-        caps.setCapability("appium:app", configReader.get("androidApp"));
-        caps.setCapability("appium:appPackage", configReader.get("androidPackage"));
-        caps.setCapability("appium:appActivity", configReader.get("androidActivity"));
 
 
         return new AndroidDriver(new URL(configReader.get("appiumServerURL")), caps);
