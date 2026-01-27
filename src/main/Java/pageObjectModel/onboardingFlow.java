@@ -43,10 +43,8 @@ public class onboardingFlow {
             if (useAnother.isDisplayed()) {
                 useAnother.click();
             }
-            waitForClick(onB.getNoneOfTheAbove()).click();
         } catch (TimeoutException e) {
             waitForVisibility(onB.getEnterNumberTitle());
-            waitForClick(onB.getNoneOfTheAbove()).click();
             log.info("Got directly Enter number screen without prefered numbers");
         }
     }
