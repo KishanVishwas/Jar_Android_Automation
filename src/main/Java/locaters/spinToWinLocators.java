@@ -22,8 +22,26 @@ public class spinToWinLocators {
     @AndroidFindBy(xpath = "//android.widget.ImageView[@resource-id=\"com.aso_centric.jar.staging:id/tvSpinToWin\"]")
     private WebElement spinToWinBanner;
 
-    @AndroidFindBy(xpath = "//android.widget.FrameLayout[@resource-id=\"com.aso_centric.jar.staging:id/activeDropContainer\"]")
+    @AndroidFindBy(uiAutomator = "new UiSelector().resourceId(\"com.aso_centric.jar.staging:id/activeDropDown\")")
     private WebElement activeDropDownPoint;
+
+    @AndroidFindBy(xpath = "//android.widget.ImageView[@content-desc=\"back\"]")
+    private WebElement backButtoninSpins;
+
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Use Winnings\"]")
+    private WebElement useWinningsCta;
+
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"INSTANT SAVING\"]")
+    private WebElement instantSavingHeader;
+
+    @AndroidFindBy(uiAutomator = "new UiSelector().className(\"android.widget.ImageView\").instance(0)")
+    private WebElement backNavigate;
+
+    @AndroidFindBy(uiAutomator = "new UiSelector().className(\"android.widget.ImageView\")")
+    private WebElement crossOptionInInstantsave;
+
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Home']")
+    private WebElement homeTab;
 
 
 }
