@@ -121,7 +121,6 @@ public class dailySavingsPOM {
            // String heading = waitForVisibility(dsL.getDsUpdateText()).getText();
         } catch (TimeoutException e) {
             log.info("Daily saving is not active");
-            return;
         }
         try {
             WebElement increas = waitForVisibility(dsL.getUpdateMandateCta());
@@ -135,8 +134,7 @@ public class dailySavingsPOM {
             String ApText = waitForVisibility(dsL.getAutomaticStepUpBottomSheet()).getText();
             log.info("user got Automatic Step-Up Bottom sheet");
             if (ApText.equalsIgnoreCase("Automatic Step-Up")) {
-//                waitForClick(dsL.getWithStepUpRedioButton()).click();
-//                waitForVisibility(dsL.getActivateStepUpCTA()).click();
+
                 waitForClick(dsL.getWithOutStepUpRedioButton()).click();
                 waitForVisibility(dsL.getProceedWithOutStepUpRedioButton()).click();
             } else {
@@ -167,13 +165,13 @@ public class dailySavingsPOM {
             String ApText = waitForVisibility(dsL.getAutomaticStepUpBottomSheet()).getText();
             log.info("user got Automatic Step-Up Bottom sheet");
             if (ApText.equalsIgnoreCase("Automatic Step-Up")) {
-                waitForClick(dsL.getWithOutStepUpRedioButton()).click();
-                waitForVisibility(dsL.getProceedWithOutStepUpRedioButton()).click();
+                waitForClick(dsL.getWithStepUpRedioButton()).click();
+                waitForVisibility(dsL.getActivateStepUpCTA()).click();
             } else {
                 log.info("Auto step up bottom sheet has not opened");
             }
         } catch (Exception e) {
-
+            log.info("User is not Eligible for Auto step up bottom sheet");
         }
 
     }
