@@ -94,5 +94,8 @@ public class dailySavingsLocators {
     @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Go to Locker\"]")
     private WebElement goToLockerCTA;
 
+    @AndroidFindBy(xpath = "//android.widget.FrameLayout[@resource-id=\"com.aso_centric.jar.staging:id/btnGoToHomePage\"]/android.view.ViewGroup")
+    private WebElement ordrSucessGoToHomeCTA;
+
 
 }

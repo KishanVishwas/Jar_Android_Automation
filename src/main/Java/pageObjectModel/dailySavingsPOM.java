@@ -46,7 +46,6 @@ public class dailySavingsPOM {
         waitForClick(dsL.getProfileIcon()).click();
         try {
             scrollUntilElementFound(driver, dsL.getDsInProfile());
-            ;
             waitForVisibility(dsL.getDsInProfile()).click();
             try {
                 waitForVisibility(dsL.getDsActiveStatus());
@@ -99,6 +98,7 @@ public class dailySavingsPOM {
             log.info("Stop saving CTA after selecting the reason is not displaying");
             return;
         }
+
         try {
             waitForVisibility(dsL.getDs_StopPermanentlyRedioButtom()).click();
             waitForClick(dsL.getDsStopSavingCTA()).click();
@@ -152,10 +152,25 @@ public class dailySavingsPOM {
         }
         try {
             WebElement lockerCTA = waitForVisibility(dsL.getGoToLockerCTA());
-            lockerCTA.click();
-            driver.navigate().back();
+            if(lockerCTA.isDisplayed()) {
+                lockerCTA.click();
+                driver.navigate().back();
+            }//else {
+//                try {
+//                    WebElement goToHameCTA = waitForVisibility(dsL.getOrdrSucessGoToHomeCTA());
+//                    goToHameCTA.click();
+//                }
+//                catch (Exception e){
+//                    driver.navigate().back();
+//                    driver.navigate().back();
+//                }
+//            }
+
         } catch (TimeoutException e) {
-            log.info("Locker CTA is  clickable");
+            log.info("New order success screen is not displayed so Locker CTA is not clickable");
+            WebElement goToHameCTA = waitForVisibility(dsL.getOrdrSucessGoToHomeCTA());
+            goToHameCTA.click();
+
         }
 
     }

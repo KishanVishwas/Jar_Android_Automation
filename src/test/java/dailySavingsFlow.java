@@ -8,7 +8,7 @@ public class dailySavingsFlow {
         dailySavingsPOM ds=new dailySavingsPOM();
        // ds.setupDailySaving();
         ds.updateDS();
-//        ds.stopDailySaving();
+        ds.stopDailySaving();
 
     }
 }
