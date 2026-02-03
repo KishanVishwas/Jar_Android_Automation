@@ -118,7 +118,6 @@ public class dailySavingsPOM {
         waitForClick(buyG.getProfileIcon()).click();
         try {
             waitForVisibility(dsL.getDsUpdateProfile()).click();
-           // String heading = waitForVisibility(dsL.getDsUpdateText()).getText();
         } catch (TimeoutException e) {
             log.info("Daily saving is not active");
         }
@@ -155,16 +154,7 @@ public class dailySavingsPOM {
             if(lockerCTA.isDisplayed()) {
                 lockerCTA.click();
                 driver.navigate().back();
-            }//else {
-//                try {
-//                    WebElement goToHameCTA = waitForVisibility(dsL.getOrdrSucessGoToHomeCTA());
-//                    goToHameCTA.click();
-//                }
-//                catch (Exception e){
-//                    driver.navigate().back();
-//                    driver.navigate().back();
-//                }
-//            }
+            }
 
         } catch (TimeoutException e) {
             log.info("New order success screen is not displayed so Locker CTA is not clickable");
