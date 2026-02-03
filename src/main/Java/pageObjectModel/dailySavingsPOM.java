@@ -46,7 +46,6 @@ public class dailySavingsPOM {
         waitForClick(dsL.getProfileIcon()).click();
         try {
             scrollUntilElementFound(driver, dsL.getDsInProfile());
-            ;
             waitForVisibility(dsL.getDsInProfile()).click();
             try {
                 waitForVisibility(dsL.getDsActiveStatus());
@@ -99,6 +98,7 @@ public class dailySavingsPOM {
             log.info("Stop saving CTA after selecting the reason is not displaying");
             return;
         }
+
         try {
             waitForVisibility(dsL.getDs_StopPermanentlyRedioButtom()).click();
             waitForClick(dsL.getDsStopSavingCTA()).click();
@@ -118,10 +118,8 @@ public class dailySavingsPOM {
         waitForClick(buyG.getProfileIcon()).click();
         try {
             waitForVisibility(dsL.getDsUpdateProfile()).click();
-           // String heading = waitForVisibility(dsL.getDsUpdateText()).getText();
         } catch (TimeoutException e) {
             log.info("Daily saving is not active");
-            return;
         }
         try {
             WebElement increas = waitForVisibility(dsL.getUpdateMandateCta());
@@ -135,8 +133,7 @@ public class dailySavingsPOM {
             String ApText = waitForVisibility(dsL.getAutomaticStepUpBottomSheet()).getText();
             log.info("user got Automatic Step-Up Bottom sheet");
             if (ApText.equalsIgnoreCase("Automatic Step-Up")) {
-//                waitForClick(dsL.getWithStepUpRedioButton()).click();
-//                waitForVisibility(dsL.getActivateStepUpCTA()).click();
+
                 waitForClick(dsL.getWithOutStepUpRedioButton()).click();
                 waitForVisibility(dsL.getProceedWithOutStepUpRedioButton()).click();
             } else {
@@ -154,10 +151,16 @@ public class dailySavingsPOM {
         }
         try {
             WebElement lockerCTA = waitForVisibility(dsL.getGoToLockerCTA());
-            lockerCTA.click();
-            driver.navigate().back();
+            if(lockerCTA.isDisplayed()) {
+                lockerCTA.click();
+                driver.navigate().back();
+            }
+
         } catch (TimeoutException e) {
-            log.info("Locker CTA is  clickable");
+            log.info("New order success screen is not displayed so Locker CTA is not clickable");
+            WebElement goToHameCTA = waitForVisibility(dsL.getOrdrSucessGoToHomeCTA());
+            goToHameCTA.click();
+
         }
 
     }
@@ -167,13 +170,13 @@ public class dailySavingsPOM {
             String ApText = waitForVisibility(dsL.getAutomaticStepUpBottomSheet()).getText();
             log.info("user got Automatic Step-Up Bottom sheet");
             if (ApText.equalsIgnoreCase("Automatic Step-Up")) {
-                waitForClick(dsL.getWithOutStepUpRedioButton()).click();
-                waitForVisibility(dsL.getProceedWithOutStepUpRedioButton()).click();
+                waitForClick(dsL.getWithStepUpRedioButton()).click();
+                waitForVisibility(dsL.getActivateStepUpCTA()).click();
             } else {
                 log.info("Auto step up bottom sheet has not opened");
             }
         } catch (Exception e) {
-
+            log.info("User is not Eligible for Auto step up bottom sheet");
         }
 
     }
