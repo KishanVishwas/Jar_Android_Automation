@@ -42,4 +42,11 @@ public class trustMarkersLocators {
 
     @AndroidFindBy(id = "com.aso_centric.jar.staging:id/textView")
     private WebElement verifyPan;
+
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"⚡ Save Instantly\"]")
+    private WebElement saveInstantlyCTA;
+
+    @AndroidFindBy(uiAutomator = "new UiSelector().text(\"See Details\")")
+    private WebElement detailsCTA;
+
 }

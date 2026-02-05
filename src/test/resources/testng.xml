@@ -5,6 +5,7 @@
         <classes>
             <class name="LoginFlow"/>
             <class name="spinsJackpot"/>
+            <class name="trustMarkers"/>
 <!--            <class name="weeklySavingsFlow"/>-->
 <!--            <class name="buyGoldFlowLocker"/>-->
 <!--            <class name="dailySavingsFlow"/>-->

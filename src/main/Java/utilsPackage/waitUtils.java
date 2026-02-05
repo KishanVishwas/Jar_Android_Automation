@@ -4,6 +4,7 @@ import io.appium.java_client.AppiumBy;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import lombok.extern.slf4j.Slf4j;
+import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.Rectangle;
 import org.openqa.selenium.WebElement;
@@ -33,6 +34,15 @@ public class waitUtils {
         return wait.until(ExpectedConditions.elementToBeClickable(element));
     }
 
+    public static void waitForSeconds(int seconds) {
+        try {
+            Thread.sleep(2000);
+        }
+        catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
     public static void scrollToElementByText(AndroidDriver driver, String visibleText) {
         driver.findElement(AppiumBy.androidUIAutomator("new UiScrollable(new UiSelector().scrollable(true))" + ".scrollIntoView(new UiSelector().text(\"" + visibleText + "\"));"));
     }
@@ -54,6 +64,25 @@ public class waitUtils {
         throw new RuntimeException("Element not found after scrolling");
     }
 
+    public static void scrollUpUntilElementFound(WebElement element) {
+        int maxScrolls = 10;
+
+        for (int i = 0; i < maxScrolls; i++) {
+            try {
+                if (driver.findElement((By) element).isDisplayed()) {
+                    log.info("Element found after scrolling up");
+                    return;
+                }
+            } catch (Exception e) {
+                log.info("Element not found, scrolling up... attempt " + (i + 1));
+                scrollUp((AndroidDriver) driver);
+            }
+        }
+
+        throw new RuntimeException("Element not found after scrolling up");
+    }
+
+
     public static void scrollDown(AndroidDriver driver) {
         Dimension size = driver.manage().window().getSize();
         int startX = size.width / 2;
@@ -65,6 +94,25 @@ public class waitUtils {
         swipe.addAction(finger.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), startX, startY));
         swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
         swipe.addAction(finger.createPointerMove(Duration.ofMillis(700), PointerInput.Origin.viewport(), startX, endY));
+        swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
+
+        driver.perform(Collections.singletonList(swipe));
+    }
+
+    public static void scrollUp(AndroidDriver driver) {
+
+        Dimension size = driver.manage().window().getSize();
+
+        int startX = size.width / 2;
+        int startY = (int) (size.height * 0.3);
+        int endY = (int) (size.height * 0.85);
+
+        PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+        Sequence swipe = new Sequence(finger, 1);
+
+        swipe.addAction(finger.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), startX, startY));
+        swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
+        swipe.addAction(finger.createPointerMove(Duration.ofMillis(900), PointerInput.Origin.viewport(), startX, endY));
         swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
 
         driver.perform(Collections.singletonList(swipe));
