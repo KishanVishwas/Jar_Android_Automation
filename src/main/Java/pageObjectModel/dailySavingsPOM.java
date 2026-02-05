@@ -155,7 +155,6 @@ public class dailySavingsPOM {
                 lockerCTA.click();
                 driver.navigate().back();
             }
-
         } catch (TimeoutException e) {
             log.info("New order success screen is not displayed so Locker CTA is not clickable");
             WebElement goToHameCTA = waitForVisibility(dsL.getOrdrSucessGoToHomeCTA());
