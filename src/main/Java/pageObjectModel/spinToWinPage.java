@@ -21,13 +21,10 @@ public class spinToWinPage {
             scrollUntilElementFound(driver, sp.getTitleSpinToWin());
             scrollUntilElementFound(driver, sp.getNekCollectionsHeader());
 
-
             if (sp.getSpinImage().isDisplayed()) {
                 waitForClick(sp.getArrowCta()).click();
             }
-
             waitForVisibility(sp.getSpinToWinBanner());
-
             // Scroll dropdown twice
             scrollTillEndOfSection(sp.getActiveDropDownPoint());
             waitForSeconds(2);
@@ -53,8 +50,9 @@ public class spinToWinPage {
             cta = waitForVisibility(sp.getUseWinningsCta());
         } catch (Exception e) {
             log.info("Use Winnings CTA not found, scrolling up");
-            scrollUp((AndroidDriver) driver);
-            scrollUp((AndroidDriver) driver);
+            for (int i = 0; i < 2; i++) {
+                scrollUp((AndroidDriver) driver);
+            }
         }
 
         if (cta != null && cta.isDisplayed()
@@ -65,7 +63,7 @@ public class spinToWinPage {
 
             waitForVisibility(sp.getInstantSavingHeader());
             waitForClick(sp.getBackNavigate()).click();
-            waitForSeconds(2);
+//            waitForSeconds(2);
 
 //            try {
 //                if (sp.getCrossOptionInInstantsave().isDisplayed()) {

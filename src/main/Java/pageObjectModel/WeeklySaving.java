@@ -13,9 +13,9 @@ public class WeeklySaving {
 
     weeklySavingsLocators wsL = new weeklySavingsLocators(driver);
 
-    public void setWeeklySaving(String amount) throws InterruptedException {
+    public void setWeeklySaving(String amount) {
         waitForVisibility(wsL.getProfileIcon()).click();
-        scrollUntilElementFound((AndroidDriver) driver, wsL.getWeekly_Saving());
+        scrollUntilElementFound(driver, wsL.getWeekly_Saving());
 
         try {
             waitForVisibility(wsL.getWeekly_Saving()).click();
@@ -66,7 +66,7 @@ public class WeeklySaving {
 
     public void stopWeeklySaving() {
         waitForVisibility(wsL.getProfileIcon()).click();
-        scrollUntilElementFound((AndroidDriver) driver, wsL.getWeekly_Saving());
+        scrollUntilElementFound(driver, wsL.getWeekly_Saving());
         wsL.getWeekly_Saving().click();
 
         try {
@@ -106,7 +106,7 @@ public class WeeklySaving {
 
     public void pauseWeeklySaving() {
         waitForVisibility(wsL.getProfileIcon()).click();
-        scrollUntilElementFound((AndroidDriver) driver, wsL.getWeekly_Saving());
+        scrollUntilElementFound(driver, wsL.getWeekly_Saving());
         wsL.getWeekly_Saving().click();
 
         try {
@@ -144,7 +144,7 @@ public class WeeklySaving {
 
     public void ResumeWeeklySaving() {
         waitForVisibility(wsL.getProfileIcon()).click();
-        scrollUntilElementFound((AndroidDriver) driver, wsL.getWeekly_Saving());
+        scrollUntilElementFound(driver, wsL.getWeekly_Saving());
         wsL.getWeekly_Saving().click();
         try {
             waitForVisibility(wsL.getWS_Resume_Status_screen());

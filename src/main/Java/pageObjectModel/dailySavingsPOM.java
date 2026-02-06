@@ -1,17 +1,14 @@
 package pageObjectModel;
 
-
-import com.beust.ah.A;
 import locaters.buyGoldFlowLocators;
 import locaters.dailySavingsLocators;
-import locaters.onboardingLocators;
+
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 
 import static basePackage.driverFactory.driver;
-import static basePackage.driverFactory.wait;
 import static utilsPackage.waitUtils.*;
 
 @Slf4j
