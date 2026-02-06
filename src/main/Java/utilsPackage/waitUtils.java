@@ -43,9 +43,9 @@ public class waitUtils {
         }
     }
 
-    public static void scrollToElementByText(AndroidDriver driver, String visibleText) {
-        driver.findElement(AppiumBy.androidUIAutomator("new UiScrollable(new UiSelector().scrollable(true))" + ".scrollIntoView(new UiSelector().text(\"" + visibleText + "\"));"));
-    }
+//    public static void scrollToElementByText(AndroidDriver driver, String visibleText) {
+//        driver.findElement(AppiumBy.androidUIAutomator("new UiScrollable(new UiSelector().scrollable(true))" + ".scrollIntoView(new UiSelector().text(\"" + visibleText + "\"));"));
+//    }
 
     public static void scrollUntilElementFound(AppiumDriver driver, WebElement element) {
         int maxScroll = 10;
