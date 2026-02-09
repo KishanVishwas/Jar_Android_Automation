@@ -1,5 +1,6 @@
 package pageObjectModel;
 
+import io.appium.java_client.android.AndroidDriver;
 import locaters.monthlySavingsLocators;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.WebElement;
@@ -16,7 +17,7 @@ public class monthlySavingsPage {
         monthlyAmountflow();
     }
 
-    public void monthlySavingsStopFlow(){
+    public void monthlySavingsStopFlow() {
         stopRedirection();
         stopMonthFlow();
     }
@@ -43,16 +44,17 @@ public class monthlySavingsPage {
         waitForClick(ml.getPinCompleted()).click();
     }
 
-    private void stopRedirection(){
+    private void stopRedirection() {
         scrollUntilElementFound(driver, ml.getApSavingsEntryPoint());
-        WebElement mAct=waitForVisibility(ml.getApSavingsMonthlyActiveCard());
-        WebElement suTi=waitForVisibility(ml.getApMonthSubtitle());
+        scrollDown((AndroidDriver) driver);
+        WebElement mAct = waitForVisibility(ml.getApSavingsMonthlyActiveCard());
+        WebElement suTi = waitForVisibility(ml.getApMonthSubtitle());
         if (mAct != null || "Creating the future you deserve".equalsIgnoreCase(suTi.toString())) {
             mAct.click();
         }
     }
 
-    private void stopMonthFlow(){
+    private void stopMonthFlow() {
         scrollUntilElementFound(driver, ml.getSetupDetailsDropdown());
         waitForClick(ml.getSetupDetailsView()).click();
         waitForClick(ml.getStopMonthlySavingsEntry()).click();

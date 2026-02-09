@@ -48,7 +48,7 @@ public class monthlySavingsLocators {
     @AndroidFindBy(xpath = "//android.widget.ImageView[@resource-id=\"com.phonepe.simulator:id/done\"]")
     private WebElement PinCompleted;
 
-    @AndroidFindBy(uiAutomator = "new UiSelector().text(\"₹200 Monthly\")")
+    @AndroidFindBy(uiAutomator = "new UiSelector().textContains(\"Monthly\")")
     private WebElement apSavingsMonthlyActiveCard;
 
     @AndroidFindBy(uiAutomator ="new UiSelector().text(\"Creating the future you deserve\")")
