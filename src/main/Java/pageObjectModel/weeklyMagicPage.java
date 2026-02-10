@@ -7,8 +7,7 @@ import org.openqa.selenium.WebElement;
 
 import static basePackage.actions.takeScreenShot;
 import static basePackage.driverFactory.driver;
-import static utilsPackage.waitUtils.waitForClick;
-import static utilsPackage.waitUtils.waitForVisibility;
+import static utilsPackage.waitUtils.*;
 
 @Slf4j
 public class weeklyMagicPage {
@@ -20,33 +19,40 @@ public class weeklyMagicPage {
     }
 
     private void weeklyMagicRedirection() {
-        WebElement notch = waitForVisibility(wM.getWeeklyNotch());
-        if (notch != null) {
-            notch.click();
-        } else {
-            waitForClick(wM.getProfileIcon()).click();
-            WebElement week = waitForVisibility(wM.getWeeklyMagicInProfile());
-            if (week != null) {
-                week.click();
-            }
+        waitForClick(wM.getProfileIcon()).click();
+        scrollUntilElementFound(driver, wM.getWeeklyMagicInProfile());
+        WebElement week = waitForVisibility(wM.getWeeklyMagicInProfile());
+        if (week != null) {
+            week.click();
         }
     }
 
     private void weeklyGoThrough() {
 
-        waitForClick(wM.getBtnLeftChevron()).click();
+        try {
+            WebElement lC = waitForClick(wM.getBtnLeftChevron());
+            if (lC != null) {
+                lC.click();
+            }
+        } catch (Exception e) {
+            log.error("old weekly magic not displayed");
+        }
+        waitForClick(wM.getLeftChevron()).click();
         waitForClick(wM.getLeftChevron()).click();
         WebElement title = waitForVisibility(wM.getCurrentWeekTitle());
         if (title != null) {
-            takeScreenShot(driver, "Weekly_savings_currentWeek");
             log.info("Weekly_savings_currentWeek score");
         }
         waitForClick(wM.getBtnRightChevron()).click();
         waitForClick(wM.getRightChevron()).click();
-        WebElement cta = waitForVisibility(wM.getGetMystryCardCta());
-        if (cta != null && "Get Mystery Card".equals(cta.getText())) {
-            cta.click();
-        } else {
+        waitForClick(wM.getRightChevron()).click();
+        try {
+            WebElement cta = waitForVisibility(wM.getGetMystryCardCta());
+            if (cta != null && "Get Mystery Card".equals(cta.getText())) {
+                log.info("Get Mystery Card cta is visible");
+                cta.click();
+            }
+        } catch (Exception e) {
             log.error("Get Mystry Card cta is not visible");
         }
         try {
@@ -58,6 +64,7 @@ public class weeklyMagicPage {
             }
         } catch (Exception e) {
             waitForClick(wM.getBackNaviateWeekly()).click();
+            driver.navigate().back();
         }
     }
 }
