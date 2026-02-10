@@ -1,12 +1,14 @@
 package pageObjectModel;
 
 import locaters.buyGoldFlowLocators;
+import locaters.dailySavingsLocators;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 
 import static basePackage.actions.takeScreenShot;
 import static basePackage.driverFactory.driver;
+import static basePackage.driverFactory.wait;
 import static utilsPackage.waitUtils.waitForClick;
 import static utilsPackage.waitUtils.waitForVisibility;
 
@@ -14,6 +16,7 @@ import static utilsPackage.waitUtils.waitForVisibility;
 public class buyGoldFromFloatingCTA {
 
     buyGoldFlowLocators buyG = new buyGoldFlowLocators(driver);
+    dailySavingsLocators ds = new dailySavingsLocators(driver);
 
     public void instantSaveScreen() {
         try {
@@ -47,19 +50,37 @@ public class buyGoldFromFloatingCTA {
             if (payCta.isEnabled()) {
                 payCta.click();
             }
-//            waitForClick(loc.getPayNowCTAinBS()).click();
-        } catch (TimeoutException e) {
-            WebElement payCta = waitForVisibility(buyG.getPayNowCTA());
-            if (payCta.isEnabled()) {
-                payCta.click();
+            else {
+                log.info("Pay Now CTA is disable");
             }
-//            waitForClick(loc.getPayNowCTAinBS()).click();
+            try {
+                if (buyG.getManualToDSBottomSheet().isDisplayed()) {
+                    waitForVisibility(buyG.getInstanteSaveRedioBottomSheet()).click();
+                    if (buyG.getInstantSaveBottomCTA().isEnabled()) {
+                        buyG.getInstantSaveBottomCTA().click();
+                    }
+                }
+            }catch (Exception e){
+                log.info("Manual To DS bottom sheet is not displayed");
+            }
+        } catch (TimeoutException e) {
+            log.info("Element is not visible");
         }
+
     }
 
     public void buyGoldAsZomatoAndNonZomato() {
         try {
             waitForClick(buyG.getPhnPeSimulator()).click();
+            try {
+                WebElement merchant = waitForVisibility(buyG.getPhonePayMerchantBottomSheet());
+                if (merchant.isDisplayed()){
+                    waitForVisibility(buyG.getPayCTAphonepeSimulatorBottomsheet()).click();
+                    waitForClick(ds.getPinCompleted()).click();
+                }
+            }catch (Exception e){
+               log.info("phonePe Simulator Bottom sheet as not displayed");
+            }
             WebElement goToHome = waitForVisibility(buyG.getGoToHomePageCTA());
             if (goToHome.isDisplayed()) {
                 goToHome.click();
@@ -70,9 +91,13 @@ public class buyGoldFromFloatingCTA {
             if (simu.isEnabled()){
                 simu.click();
             }
-            WebElement goToHome = waitForVisibility(buyG.getGoToHomePageCTA());
-            if (goToHome.isDisplayed()) {
-                goToHome.click();
+            try {
+                WebElement goToHome = waitForVisibility(buyG.getGoToHomePageCTA());
+                if (goToHome.isDisplayed()) {
+                    goToHome.click();
+                }
+            }catch (Exception f){
+                log.info("Order success screen is getting display");
             }
         }
     }

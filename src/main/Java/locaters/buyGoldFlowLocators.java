@@ -21,7 +21,7 @@ public class buyGoldFlowLocators {
     @AndroidFindBy(accessibility = "profile Icon")
     private WebElement ProfileIcon;
 
-    @AndroidFindBy(xpath = "//androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.view.View/android.view.View[4]/android.view.View[2]/android.view.View[3]/android.view.View")
+    @AndroidFindBy(xpath = "(//android.widget.TextView[contains(@text,\"Instant\")])[1]")
     private WebElement instantSaveInProfile;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Home']")
@@ -41,4 +41,19 @@ public class buyGoldFlowLocators {
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"com.aso_centric.jar.staging:id/textView\" and @text=\"Go To Homepage\"]")
     private WebElement goToHomePageCTA;
+
+
+    @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"com.aso_centric.jar.staging:id/tvTopLabel\"]")
+    private WebElement manualToDSBottomSheet;
+    @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"com.aso_centric.jar.staging:id/tvOneTimeLabel\"]")
+    private WebElement instanteSaveRedioBottomSheet;
+    @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"com.aso_centric.jar.staging:id/textView\"]")
+    private WebElement instantSaveBottomCTA;
+    @AndroidFindBy(id = "com.phonepe.simulator:id/merchant_name")
+    private WebElement phonePayMerchantBottomSheet;
+    @AndroidFindBy(id = "com.phonepe.simulator:id/pay_button")
+    private WebElement payCTAphonepeSimulatorBottomsheet;
+
+
+
 }
