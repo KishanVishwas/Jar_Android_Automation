@@ -47,6 +47,15 @@ public class onboardingFlow {
             waitForVisibility(onB.getEnterNumberTitle());
             log.info("Got directly Enter number screen without prefered numbers");
         }
+        try {
+            WebElement none = waitForVisibility(onB.getNoneOfTheAbove());
+            if(none!=null){
+                none.click();
+            }
+        }
+        catch (Exception e){
+            log.info("Non of the Above CTA is not visible");
+        }
     }
 
     public void userLogin(String number, String otp) {
