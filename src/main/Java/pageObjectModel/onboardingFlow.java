@@ -49,8 +49,9 @@ public class onboardingFlow {
         }
         try {
             WebElement none = waitForVisibility(onB.getNoneOfTheAbove());
-            if (none.isDisplayed()) ;
-            onB.getNoneOfTheAbove().click();
+            if(none!=null){
+                none.click();
+            }
         }
         catch (Exception e){
             log.info("Non of the Above CTA is not visible");

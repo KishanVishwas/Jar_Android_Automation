@@ -10,7 +10,8 @@ import org.openqa.selenium.support.PageFactory;
 @Data
 public class buyGoldFlowLocators {
     private AppiumDriver driver;
-    public buyGoldFlowLocators(AppiumDriver driver){
+
+    public buyGoldFlowLocators(AppiumDriver driver) {
         this.driver = driver;
         PageFactory.initElements(new AppiumFieldDecorator(driver), this);
     }
@@ -42,18 +43,20 @@ public class buyGoldFlowLocators {
     @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"com.aso_centric.jar.staging:id/textView\" and @text=\"Go To Homepage\"]")
     private WebElement goToHomePageCTA;
 
-
     @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"com.aso_centric.jar.staging:id/tvTopLabel\"]")
     private WebElement manualToDSBottomSheet;
+
     @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"com.aso_centric.jar.staging:id/tvOneTimeLabel\"]")
     private WebElement instanteSaveRedioBottomSheet;
+
     @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"com.aso_centric.jar.staging:id/textView\"]")
     private WebElement instantSaveBottomCTA;
+
     @AndroidFindBy(id = "com.phonepe.simulator:id/merchant_name")
     private WebElement phonePayMerchantBottomSheet;
+
     @AndroidFindBy(id = "com.phonepe.simulator:id/pay_button")
     private WebElement payCTAphonepeSimulatorBottomsheet;
-
 
 
 }

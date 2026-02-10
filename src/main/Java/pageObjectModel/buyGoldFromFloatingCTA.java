@@ -47,10 +47,16 @@ public class buyGoldFromFloatingCTA {
             amountEnter.clear();
             amountEnter.sendKeys("100");
             WebElement payCta = waitForVisibility(buyG.getPayNowCTA());
-            if (payCta.isEnabled()) {
+            if (payCta != null) {
                 payCta.click();
+            } else {
+                log.info("Pay Now CTA is disable");
             }
-            else {
+            try {
+                if (payCta != null) {
+                    payCta.click();
+                }
+            } catch (TimeoutException e) {
                 log.info("Pay Now CTA is disable");
             }
             try {
@@ -60,7 +66,7 @@ public class buyGoldFromFloatingCTA {
                         buyG.getInstantSaveBottomCTA().click();
                     }
                 }
-            }catch (Exception e){
+            } catch (Exception e) {
                 log.info("Manual To DS bottom sheet is not displayed");
             }
         } catch (TimeoutException e) {
@@ -74,12 +80,12 @@ public class buyGoldFromFloatingCTA {
             waitForClick(buyG.getPhnPeSimulator()).click();
             try {
                 WebElement merchant = waitForVisibility(buyG.getPhonePayMerchantBottomSheet());
-                if (merchant.isDisplayed()){
+                if (merchant.isDisplayed()) {
                     waitForVisibility(buyG.getPayCTAphonepeSimulatorBottomsheet()).click();
                     waitForClick(ds.getPinCompleted()).click();
                 }
-            }catch (Exception e){
-               log.info("phonePe Simulator Bottom sheet as not displayed");
+            } catch (Exception e) {
+                log.info("phonePe Simulator Bottom sheet as not displayed");
             }
             WebElement goToHome = waitForVisibility(buyG.getGoToHomePageCTA());
             if (goToHome.isDisplayed()) {
@@ -87,8 +93,8 @@ public class buyGoldFromFloatingCTA {
             }
         } catch (TimeoutException e) {
             log.info("user has not redirect to payment listing and Go to Homepage cta is not displaying");
-            WebElement simu=waitForVisibility(buyG.getPhnPeSimulator());
-            if (simu.isEnabled()){
+            WebElement simu = waitForVisibility(buyG.getPhnPeSimulator());
+            if (simu.isEnabled()) {
                 simu.click();
             }
             try {
@@ -96,7 +102,7 @@ public class buyGoldFromFloatingCTA {
                 if (goToHome.isDisplayed()) {
                     goToHome.click();
                 }
-            }catch (Exception f){
+            } catch (Exception f) {
                 log.info("Order success screen is getting display");
             }
         }
