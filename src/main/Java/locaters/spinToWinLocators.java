@@ -61,5 +61,6 @@ public class spinToWinLocators {
     @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"com.aso_centric.jar.staging:id/tvHeader\" and @text=\"Nek Collections\"]")
     private WebElement nekCollectionsHeader;
 
-
+    @AndroidFindBy(uiAutomator = "new UiSelector().textContains(\"Spins\")")
+    private WebElement spinsInProfile;
 }
