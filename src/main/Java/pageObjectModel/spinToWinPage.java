@@ -2,6 +2,7 @@ package pageObjectModel;
 
 import io.appium.java_client.android.AndroidDriver;
 import locaters.spinToWinLocators;
+import locaters.weeklyMagicLocators;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.WebElement;
 
@@ -13,16 +14,23 @@ import static basePackage.driverFactory.driver;
 public class spinToWinPage {
 
     spinToWinLocators sp = new spinToWinLocators(driver);
+    weeklyMagicLocators wM = new weeklyMagicLocators(driver);
 
     public void jackpotFlow() {
 
         try {
-            // Scroll to Spin to Win section
-            scrollUntilElementFound(driver, sp.getTitleSpinToWin());
-            scrollUntilElementFound(driver, sp.getNekCollectionsHeader());
+            try {
+                // Scroll to Spin to Win section
+                scrollUntilElementFound(driver, sp.getTitleSpinToWin());
+                scrollUntilElementFound(driver, sp.getNekCollectionsHeader());
 
-            if (sp.getSpinImage().isDisplayed()) {
-                waitForClick(sp.getArrowCta()).click();
+                if (sp.getSpinImage().isDisplayed()) {
+                    waitForClick(sp.getArrowCta()).click();
+                }
+            } catch (Exception e) {
+                waitForClick(wM.getProfileIcon()).click();
+                scrollUntilElementFound(driver, sp.getSpinsInProfile());
+                waitForClick(sp.getSpinsInProfile()).click();
             }
             waitForVisibility(sp.getSpinToWinBanner());
             // Scroll dropdown twice
@@ -33,12 +41,15 @@ public class spinToWinPage {
             // Back from spins
             waitForClick(sp.getBackButtoninSpins()).click();
 
-            // Handle Use Winnings flow
-            handleUseWinningsCTA();
-
+            try {
+                // Handle Use Winnings flow
+                handleUseWinningsCTA();
+            } catch (Exception e) {
+                driver.navigate().back();
+                driver.navigate().back();
+            }
         } catch (Exception e) {
             log.error("Exception in jackpotFlow", e);
-            handleUseWinningsCTA();
         }
     }
 
@@ -63,22 +74,24 @@ public class spinToWinPage {
 
             waitForVisibility(sp.getInstantSavingHeader());
             waitForClick(sp.getBackNavigate()).click();
-//            waitForSeconds(2);
+            waitForSeconds(2);
 
-//            try {
-//                if (sp.getCrossOptionInInstantsave().isDisplayed()) {
-//                    waitForClick(sp.getCrossOptionInInstantsave()).click();
-//                }
-//                else {
-//                    log.info("Clicking Cross Option In Instantsave");
-//                }
-//            } catch (Exception e) {
-//                log.info("Cross option not visible in Instant Save");
-//            }
+            try {
+                if (sp.getCrossOptionInInstantsave().isDisplayed()) {
+                    waitForClick(sp.getCrossOptionInInstantsave()).click();
+                }
+                else {
+                    log.info("Clicking Cross Option In Instantsave");
+                }
+            } catch (Exception e) {
+                log.info("Cross option not visible in Instant Save");
+            }
+            driver.navigate().back();
 
         } else {
             log.info("Use Winnings CTA not visible or text mismatch");
             takeScreenShot(driver, "HomeScreen");
+            driver.navigate().back();
         }
     }
 }
