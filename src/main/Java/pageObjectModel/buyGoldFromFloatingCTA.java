@@ -8,7 +8,6 @@ import org.openqa.selenium.WebElement;
 
 import static basePackage.actions.takeScreenShot;
 import static basePackage.driverFactory.driver;
-import static basePackage.driverFactory.wait;
 import static utilsPackage.waitUtils.*;
 
 @Slf4j
@@ -105,26 +104,5 @@ public class buyGoldFromFloatingCTA {
                 log.info("Order success screen is getting display");
             }
         }
-    }
-    public void payments() {
-        try {
-            waitForClick(buyG.getPhnPeSimulator()).click();
-            try {
-                WebElement merchant = waitForVisibility(buyG.getPhonePayMerchantBottomSheet());
-                if (merchant.isDisplayed()) {
-                    waitForVisibility(buyG.getPayCTAphonepeSimulatorBottomsheet()).click();
-                    waitForClick(ds.getPinCompleted()).click();
-                }
-            } catch (Exception e) {
-                log.info("phonePe Simulator Bottom sheet as not displayed");
-            }
-        } catch (Exception r) {
-            log.info("Payment screen not getting open");
-        }
-    }
-    public void swipeCard(){
-        scrollUntilElementFound(driver,buyG.getSwipeToBuy());
-        dragCoinToEnd(buyG.getSwipeCoinElementStartPoint(),buyG.getSwipeCoinEndPoint());
-        buyGoldAsZomatoAndNonZomato();
     }
 }
