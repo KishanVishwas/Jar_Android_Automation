@@ -58,5 +58,13 @@ public class buyGoldFlowLocators {
     @AndroidFindBy(id = "com.phonepe.simulator:id/pay_button")
     private WebElement payCTAphonepeSimulatorBottomsheet;
 
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Swipe to save in gold\"]")
+    private WebElement swipeToBuy;
+
+    @AndroidFindBy(uiAutomator = "new UiSelector().className(\"android.widget.ImageView\").instance(7)")
+    private WebElement SwipeCoinElementStartPoint;
+
+    @AndroidFindBy(uiAutomator = "new UiSelector().className(\"android.widget.ImageView\").instance(6)")
+    private WebElement SwipeCoinEndPoint;
 
 }

@@ -4,10 +4,8 @@ import io.appium.java_client.AppiumBy;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import lombok.extern.slf4j.Slf4j;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Dimension;
-import org.openqa.selenium.Rectangle;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Pause;
 import org.openqa.selenium.interactions.PointerInput;
 import org.openqa.selenium.interactions.Sequence;
 import org.openqa.selenium.remote.RemoteWebElement;
@@ -127,5 +125,36 @@ public class waitUtils {
 
         driver.executeScript("mobile: swipeGesture", params);
     }
+
+
+
+    public static void dragCoinToEnd(WebElement coinElement, WebElement goldBarElement) {
+
+        Point coinLocation = coinElement.getLocation();
+        Dimension coinSize = coinElement.getSize();
+
+        Point goldLocation = goldBarElement.getLocation();
+        Dimension goldSize = goldBarElement.getSize();
+
+        // Start from center of coin
+        int startX = coinLocation.getX() + coinSize.getWidth() / 2;
+        int startY = coinLocation.getY() + coinSize.getHeight() / 2;
+
+        // End at center of gold bar
+        int endX = goldLocation.getX() + goldSize.getWidth() / 2;
+        int endY = goldLocation.getY() + goldSize.getHeight() / 2;
+
+        Map<String, Object> params = new HashMap<>();
+
+        params.put("startX", startX);
+        params.put("startY", startY);
+        params.put("endX", endX);
+        params.put("endY", endY);
+        params.put("speed", 800); // adjust if needed
+
+        driver.executeScript("mobile: dragGesture", params);
+    }
+
+
 
 }
