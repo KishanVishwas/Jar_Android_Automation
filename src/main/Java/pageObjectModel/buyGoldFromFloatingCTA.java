@@ -16,7 +16,14 @@ public class buyGoldFromFloatingCTA {
     buyGoldFlowLocators buyG = new buyGoldFlowLocators(driver);
     dailySavingsLocators ds = new dailySavingsLocators(driver);
 
-    public void instantSaveScreen() {
+    public void instantSaveFlow() {
+        instantSaveScreen();
+        amountEntering();
+        buyGoldAsZomatoAndNonZomato();
+    }
+
+
+    void instantSaveScreen() {
         try {
             WebElement instantSave = waitForVisibility(buyG.getSaveInstantlyCTA());
             log.info("Fetched the Instant save cta in the locker");
@@ -37,7 +44,7 @@ public class buyGoldFromFloatingCTA {
         }
     }
 
-    public void amountEntering() {
+    void amountEntering() {
         try {
             waitForVisibility(buyG.getSaveInGoldTitle());
             log.info("Redirected to buy gold screen and doing another actions");
@@ -73,7 +80,7 @@ public class buyGoldFromFloatingCTA {
 
     }
 
-    public void buyGoldAsZomatoAndNonZomato() {
+    void buyGoldAsZomatoAndNonZomato() {
         try {
             waitForClick(buyG.getPhnPeSimulator()).click();
             try {

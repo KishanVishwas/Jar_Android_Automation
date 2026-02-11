@@ -1,8 +1,10 @@
 package pageObjectModel;
 
-import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.AppiumDriver;
 import locaters.trustMarkersLocators;
 import lombok.extern.slf4j.Slf4j;
+import org.openqa.selenium.TimeoutException;
+import org.openqa.selenium.WebElement;
 
 import static basePackage.driverFactory.driver;
 import static utilsPackage.waitUtils.*;
@@ -14,27 +16,33 @@ public class trustMarkersPage {
 
     public void kycCompletion() {
 
-        for (int i = 0; i < 3; i++) {
-            scrollUp((AndroidDriver) driver);
+        try {
+            WebElement newEntry = waitForVisibility(tmL.getNewHomeTrustMarkersEntry());
+            if (newEntry!=null) {
+                newEntry.click();
+                log.info("New trust marker entry found and clicked");
+            }
+
+        } catch (TimeoutException e) {
+
+            log.info("New entry not visible. Scrolling to trust marker section...");
+
+            // Scroll to trust marker section
+            scrollUntilElementFound((AppiumDriver) driver, tmL.getHeaderToScroll());
+
+            if (isFlowCompletedVisible()) {
+                log.info("KYC already completed – opening details");
+                waitForClick(tmL.getFlowArrow()).click();
+            } else {
+                log.info("KYC not completed – starting flow via nudge");
+                waitForClick(tmL.getNudge()).click();
+                waitForClick(tmL.getFlowArrow()).click();
+            }
         }
-
-        boolean isFlowCompletedVisible = isFlowCompletedVisible();
-
-        // Scroll to trust marker section
-        scrollUntilElementFound(driver, tmL.getHeaderToScroll());
-
-        if (isFlowCompletedVisible) {
-            log.info("KYC already completed – opening details");
-            waitForClick(tmL.getFlowArrow()).click();
-        } else {
-            log.info("KYC not completed – starting flow via nudge");
-            waitForClick(tmL.getNudge()).click();
-            waitForClick(tmL.getFlowArrow()).click();
-        }
-
         // PAN verification flow
         completePanVerification();
     }
+
 
     private boolean isFlowCompletedVisible() {
         try {
@@ -52,5 +60,7 @@ public class trustMarkersPage {
         waitForVisibility(tmL.getEditText3()).sendKeys("2000");
 
         waitForClick(tmL.getVerifyPan()).click();
+
+        log.info("PAN verification completed");
     }
 }

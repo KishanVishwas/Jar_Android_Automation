@@ -49,4 +49,7 @@ public class trustMarkersLocators {
     @AndroidFindBy(uiAutomator = "new UiSelector().text(\"See Details\")")
     private WebElement detailsCTA;
 
+    @AndroidFindBy(uiAutomator ="new UiSelector().text(\"Complete your KYC\")")
+    private WebElement newHomeTrustMarkersEntry;
+
 }
