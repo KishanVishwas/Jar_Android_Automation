@@ -40,7 +40,7 @@ public class buyGoldFlowLocators {
     @AndroidFindBy(id = "com.aso_centric.jar.staging:id/tvPaymentType")
     private WebElement phnPeSimulator;
 
-    @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"com.aso_centric.jar.staging:id/textView\" and @text=\"Go To Homepage\"]")
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Go To Homepage']\n")
     private WebElement goToHomePageCTA;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"com.aso_centric.jar.staging:id/tvTopLabel\"]")

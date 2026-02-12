@@ -1,6 +1,8 @@
 package pageObjectModel;
 
 import io.appium.java_client.android.AndroidDriver;
+import locaters.buyGoldFlowLocators;
+import locaters.dailySavingsLocators;
 import locaters.monthlySavingsLocators;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.WebElement;
@@ -11,6 +13,7 @@ import static utilsPackage.waitUtils.*;
 @Slf4j
 public class monthlySavingsPage {
     monthlySavingsLocators ml = new monthlySavingsLocators(driver);
+    dailySavingsLocators dsL = new dailySavingsLocators(driver);
 
     public void monthlySavingsSetupFlow() {
         monthlySavingsRedirection();
@@ -42,15 +45,26 @@ public class monthlySavingsPage {
         waitForClick(ml.getProceedForPayment()).click();
         waitForClick(ml.getPayButton()).click();
         waitForClick(ml.getPinCompleted()).click();
+        WebElement goToHome = waitForVisibility(dsL.getGoToHomeCTA());
+        if (goToHome.isDisplayed()) {
+            goToHome.click();
+        }
     }
 
     private void stopRedirection() {
-        scrollUntilElementFound(driver, ml.getApSavingsEntryPoint());
-        scrollDown((AndroidDriver) driver);
-        WebElement mAct = waitForVisibility(ml.getApSavingsMonthlyActiveCard());
-        WebElement suTi = waitForVisibility(ml.getApMonthSubtitle());
-        if (mAct != null || "Creating the future you deserve".equalsIgnoreCase(suTi.toString())) {
-            mAct.click();
+        waitForClick(ml.getProfileIcon()).click();
+        log.info("Profile Icon clicked");
+        if (ml.getMonthlySavingsEntry() != null) {
+            waitForClick(ml.getMonthlySavingsCard()).click();
+        } else {
+
+            scrollUntilElementFound(driver, ml.getApSavingsEntryPoint());
+            scrollDown((AndroidDriver) driver);
+            WebElement mAct = waitForVisibility(ml.getApSavingsMonthlyActiveCard());
+            WebElement suTi = waitForVisibility(ml.getApMonthSubtitle());
+            if (mAct != null || "Creating the future you deserve".equalsIgnoreCase(suTi.toString())) {
+                mAct.click();
+            }
         }
     }
 

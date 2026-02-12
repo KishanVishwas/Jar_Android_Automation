@@ -6,7 +6,7 @@ public class monthlySavings {
     @Test
     public void monthlySavingsTest() {
         monthlySavingsPage mS = new monthlySavingsPage();
-//        mS.monthlySavingsSetupFlow();
-        mS.monthlySavingsStopFlow();
+        mS.monthlySavingsSetupFlow();
+//        mS.monthlySavingsStopFlow();
     }
 }

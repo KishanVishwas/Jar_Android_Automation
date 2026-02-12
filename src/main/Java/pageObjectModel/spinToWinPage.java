@@ -17,6 +17,7 @@ public class spinToWinPage {
     weeklyMagicLocators wM = new weeklyMagicLocators(driver);
 
     public void jackpotFlow() {
+
         redirectionHandlingSpins();
     }
 
@@ -70,8 +71,7 @@ public class spinToWinPage {
             }
         }
 
-        if (cta != null && cta.isDisplayed()
-                && "Use Winnings".equalsIgnoreCase(cta.getText())) {
+        if (cta != null && cta.isDisplayed() && "Use Winnings".equalsIgnoreCase(cta.getText())) {
 
             log.info("Clicking Use Winnings CTA");
             cta.click();

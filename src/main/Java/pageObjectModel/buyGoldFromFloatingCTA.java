@@ -93,7 +93,7 @@ public class buyGoldFromFloatingCTA {
                 log.info("phonePe Simulator Bottom sheet as not displayed");
             }
             WebElement goToHome = waitForVisibility(buyG.getGoToHomePageCTA());
-            if (goToHome.isDisplayed()) {
+            if (goToHome!=null) {
                 goToHome.click();
             }
         } catch (TimeoutException e) {
