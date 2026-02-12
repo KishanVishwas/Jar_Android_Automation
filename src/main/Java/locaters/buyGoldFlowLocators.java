@@ -61,10 +61,10 @@ public class buyGoldFlowLocators {
     @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Swipe to save in gold\"]")
     private WebElement swipeToBuy;
 
-    @AndroidFindBy(uiAutomator = "new UiSelector().className(\"android.widget.ImageView\").instance(7)")
+    @AndroidFindBy(uiAutomator = "new UiSelector().className(\"android.widget.ImageView\").instance(1)")
     private WebElement SwipeCoinElementStartPoint;
 
-    @AndroidFindBy(uiAutomator = "new UiSelector().className(\"android.widget.ImageView\").instance(6)")
+    @AndroidFindBy(uiAutomator = "new UiSelector().className(\"android.widget.ImageView\").instance(0)")
     private WebElement SwipeCoinEndPoint;
 
 }

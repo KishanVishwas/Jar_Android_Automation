@@ -17,6 +17,10 @@ public class spinToWinPage {
     weeklyMagicLocators wM = new weeklyMagicLocators(driver);
 
     public void jackpotFlow() {
+        redirectionHandlingSpins();
+    }
+
+    private void redirectionHandlingSpins() {
 
         try {
             try {
@@ -79,8 +83,7 @@ public class spinToWinPage {
             try {
                 if (sp.getCrossOptionInInstantsave().isDisplayed()) {
                     waitForClick(sp.getCrossOptionInInstantsave()).click();
-                }
-                else {
+                } else {
                     log.info("Clicking Cross Option In Instantsave");
                 }
             } catch (Exception e) {

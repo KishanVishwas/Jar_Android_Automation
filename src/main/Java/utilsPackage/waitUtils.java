@@ -67,7 +67,7 @@ public class waitUtils {
 
         for (int i = 0; i < maxScrolls; i++) {
             try {
-                if (driver.findElement((By) element).isDisplayed()) {
+                if (driver.findElement((By) element)!= null) {
                     log.info("Element found after scrolling up");
                     return;
                 }

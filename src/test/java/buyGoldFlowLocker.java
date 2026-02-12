@@ -6,9 +6,6 @@ public class buyGoldFlowLocker {
     @Test(dependsOnMethods = "LoginFlow.onboardingVideoScreenFlow")
     public void buyGold() {
         buyGoldFromFloatingCTA buy = new buyGoldFromFloatingCTA();
-        buy.swipeCard();
-//        buy.instantSaveScreen();
-//        buy.amountEntering();
-//        buy.buyGoldAsZomatoAndNonZomato();
+        buy.instantSaveFlow();
     }
 }

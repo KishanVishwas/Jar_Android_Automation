@@ -4,9 +4,10 @@
     <test verbose="2" preserve-order="true" name="/Users/kishanr/Downloads/JAR_Android_Automation">
         <classes>
             <class name="LoginFlow"/>
-            <class name="spinsJackpot"/>
-            <class name="weeklyMagicFlow"/>
-            <!--            <class name="trustMarkers"/>-->
+            <class name="trustMarkers"/>
+            <!--            <class name="swipeToBuy"/>-->
+            <!--            <class name="spinsJackpot"/>-->
+            <!--            <class name="weeklyMagicFlow"/>-->
             <!--            <class name="weeklySavingsFlow"/>-->
             <!--            <class name="buyGoldFlowLocker"/>-->
             <!--            <class name="dailySavingsFlow"/>-->
