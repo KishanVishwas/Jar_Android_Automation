@@ -54,7 +54,7 @@ public class driverFactory {
         caps.setCapability("appium:autoGrantPermissions", true);
         caps.setCapability("appium:deviceName", configReader.get("androidDeviceName"));
         caps.setCapability("appium:noReset", false);
-        //caps.setCapability("appium:app", configReader.get("androidApp"));
+        caps.setCapability("appium:app", configReader.get("androidApp"));
 
 
 
