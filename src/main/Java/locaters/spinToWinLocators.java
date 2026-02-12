@@ -34,7 +34,7 @@ public class spinToWinLocators {
     @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"INSTANT SAVING\"]")
     private WebElement instantSavingHeader;
 
-    @AndroidFindBy(uiAutomator = "new UiSelector().className(\"android.widget.ImageView\").instance(0)")
+    @AndroidFindBy(uiAutomator = "new UiSelector().className(\"android.widget.ImageView\").instance(1)")
     private WebElement backNavigate;
 
     @AndroidFindBy(uiAutomator = "new UiSelector().className(\"android.widget.ImageView\")")
