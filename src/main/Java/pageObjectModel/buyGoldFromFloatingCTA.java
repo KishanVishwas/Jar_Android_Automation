@@ -56,6 +56,7 @@ public class buyGoldFromFloatingCTA {
             WebElement payCta = waitForVisibility(buyG.getPayNowCTA());
             if (payCta != null) {
                 payCta.click();
+                log.info("Clicked the pay cta");
             } else {
                 log.info("Pay Now CTA is disable");
             }

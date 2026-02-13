@@ -55,7 +55,7 @@ public class weeklySavingsLocators {
     @AndroidFindBy(xpath = "//android.widget.ImageView[@resource-id=\"com.phonepe.simulator:id/done\"]")
     private WebElement PinCompleted;
 
-    @AndroidFindBy(accessibility = "profile Icon")
+    @AndroidFindBy(uiAutomator = "new UiSelector().description(\"ProfileIcon\")")
     private WebElement ProfileIcon;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"I still want to cancel\"]")

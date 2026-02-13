@@ -3,6 +3,7 @@ package locaters;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
+import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import lombok.Data;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
@@ -17,9 +18,11 @@ public class onboardingLocators {
     }
 
     @AndroidFindBy(xpath = "//android.widget.TextView[contains(@text,'English')]")
+    @iOSXCUITFindBy(iOSClassChain = "**/XCUIElementTypeStaticText[`name == \"English\"`]")
     private WebElement English;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Choose the app language you prefer.']")
+    @iOSXCUITFindBy(iOSClassChain = "**/XCUIElementTypeStaticText[`name == \"Choose the app language you prefer.\"`]")
     private WebElement languagePageText;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Skip']")
@@ -32,12 +35,15 @@ public class onboardingLocators {
     private WebElement noneOfTheAbove;
 
     @AndroidFindBy(uiAutomator = "new UiSelector().resourceId(\"onboarding_v2_number_input_text_field\")")
+    @iOSXCUITFindBy(iOSClassChain = "**/XCUIElementTypeStaticText[`name == \"00000 00000\"`]")
     private WebElement phoneNumberTextField;
 
     @AndroidFindBy(uiAutomator = "new UiSelector().text(\"Send OTP\")")
+    @iOSXCUITFindBy(iOSClassChain = "**/XCUIElementTypeStaticText[`name == \"Send OTP\"`]")
     private WebElement sendOtpCTA;
 
     @AndroidFindBy(uiAutomator = "new UiSelector().resourceId(\"onboarding_v2_otp_input_text_field\").instance(0)")
+    @iOSXCUITFindBy(iOSClassChain = "**/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeScrollView/XCUIElementTypeOther[1]/XCUIElementTypeTextField")
     private WebElement enterOtpTextArea;
 
     @AndroidFindBy(xpath = "//android.view.View[@resource-id='onboarding_v2_verify_otp_cta']")
@@ -53,9 +59,11 @@ public class onboardingLocators {
     private WebElement skipInOnboardingDS;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"com.aso_centric.jar.staging:id/textView\" and @text=\"Cancel\"]")
+    @iOSXCUITFindBy(iOSClassChain = "**/XCUIElementTypeButton[`name == \"Cancel\"`]")
     private WebElement cancelDSonboard;
 
     @AndroidFindBy(uiAutomator = "new UiSelector().text(\"Apply\")")
+    @iOSXCUITFindBy(iOSClassChain = "**/XCUIElementTypeButton[`name == \"Apply\"`]")
     private WebElement applyCTA;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Start by entering your phone number\"]")
@@ -71,8 +79,19 @@ public class onboardingLocators {
     private WebElement saveInGoldTitle;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Skip for devs\"]")
+    @iOSXCUITFindBy(iOSClassChain = "**/XCUIElementTypeButton[`name == \"Skip for devs\"`]")
     private WebElement skipForDev;
 
     @AndroidFindBy(xpath = "//androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[3]/android.view.View/android.view.View")
+    @iOSXCUITFindBy(iOSClassChain = "**/XCUIElementTypeStaticText[`name == \"Start your saving journey\"`]")
     private WebElement startSJCTA;
+
+    @iOSXCUITFindBy(iOSClassChain = "**/XCUIElementTypeStaticText[`name == \"00000 00000\"`]")
+    private WebElement enterNumberArea;
+
+    @iOSXCUITFindBy(iOSClassChain = "**/XCUIElementTypeButton[`name == \"Skip\"`]")
+    private WebElement skipInOnboarding;
+
+    @iOSXCUITFindBy(accessibility = "Done")
+    private WebElement done;
 }

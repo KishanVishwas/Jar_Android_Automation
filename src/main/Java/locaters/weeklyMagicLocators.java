@@ -19,7 +19,7 @@ public class weeklyMagicLocators {
     @AndroidFindBy(uiAutomator = "new UiSelector().className(\"android.view.View\").instance(5)")
     private WebElement weeklyNotch;
 
-    @AndroidFindBy(accessibility = "profile Icon")
+    @AndroidFindBy(uiAutomator = "new UiSelector().description(\"ProfileIcon\")")
     private WebElement ProfileIcon;
 
     @AndroidFindBy(uiAutomator = "new UiSelector().text(\"Weekly \n" +
