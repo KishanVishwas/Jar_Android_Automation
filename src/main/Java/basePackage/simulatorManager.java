@@ -1,7 +1,10 @@
 package basePackage;
 
+import org.testng.annotations.Test;
+
 import java.io.IOException;
 
+@Test
 public class simulatorManager {
     public static Process appiumProcess;
 

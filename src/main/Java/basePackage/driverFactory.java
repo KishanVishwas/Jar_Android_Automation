@@ -20,7 +20,7 @@ public class driverFactory {
     // -------------------------------------------------------
     public static AppiumDriver driverSetup() throws Exception {
 
-        String platform = configReader.get("androidplatformName");
+        String platform = configReader.get("platformName");
 
         if (platform.equalsIgnoreCase("Android")) {
             driver = setupAndroid();
@@ -70,11 +70,22 @@ public class driverFactory {
         caps.setCapability("appium:deviceName", configReader.get("deviceName"));
         caps.setCapability("appium:udid", configReader.get("uuid"));
         caps.setCapability("appium:platformVersion", configReader.get("platformVersion"));
-        caps.setCapability("appium:autoAcceptAlerts", Boolean.parseBoolean(configReader.get("autoAcceptAlerts")));
-        caps.setCapability("appium:noReset", true);
-        caps.setCapability("appium:fullReset", true);
 
-        // iOS App: app (.ipa) or bundleId
+        caps.setCapability("appium:autoAcceptAlerts",
+                Boolean.parseBoolean(configReader.get("autoAcceptAlerts")));
+
+        caps.setCapability("appium:noReset", false);
+        caps.setCapability("appium:fullReset", true);
+// ⚠ should not be true with noReset
+
+// 🔥 Important capabilities for your iOS 17.5 workaround
+        caps.setCapability("appium:waitForQuiescence", false);
+        caps.setCapability("appium:waitForIdleTimeout", 0);
+        caps.setCapability("appium:simpleIsVisibleCheck", true);
+        caps.setCapability("appium:includeNonModalElements", true);
+        caps.setCapability("appium:usePrebuiltWDA", true);
+
+// iOS App: app (.app/.ipa) OR bundleId
         if (configReader.get("app") != null && !configReader.get("app").isEmpty()) {
             caps.setCapability("appium:app", configReader.get("app"));
         } else {
@@ -82,5 +93,6 @@ public class driverFactory {
         }
 
         return new IOSDriver(new URL(configReader.get("appiumServerURL")), caps);
+
     }
 }

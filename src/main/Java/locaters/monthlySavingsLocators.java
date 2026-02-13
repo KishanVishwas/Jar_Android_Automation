@@ -16,7 +16,7 @@ public class monthlySavingsLocators {
         PageFactory.initElements(new AppiumFieldDecorator(driver), this);
     }
 
-    @AndroidFindBy(accessibility = "profile Icon")
+    @AndroidFindBy(uiAutomator = "new UiSelector().description(\"ProfileIcon\")")
     private WebElement ProfileIcon;
 
     @AndroidFindBy(xpath = "\t\n" +

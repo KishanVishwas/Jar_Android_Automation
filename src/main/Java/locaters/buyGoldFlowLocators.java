@@ -19,7 +19,7 @@ public class buyGoldFlowLocators {
     @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"⚡ Save Instantly\"]")
     private WebElement saveInstantlyCTA;
 
-    @AndroidFindBy(accessibility = "profile Icon")
+    @AndroidFindBy(uiAutomator = "new UiSelector().description(\"ProfileIcon\")")
     private WebElement ProfileIcon;
 
     @AndroidFindBy(xpath = "(//android.widget.TextView[contains(@text,\"Instant\")])[1]")
