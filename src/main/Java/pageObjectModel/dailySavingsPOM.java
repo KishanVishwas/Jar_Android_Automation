@@ -65,17 +65,22 @@ public class dailySavingsPOM {
         }
         try {
             waitForVisibility(dsL.getDsStopSavingCTAFormVideo()).click();
-            log.info("Form video is  getting played");
+            log.info("FOMO video is  getting played");
         } catch (RuntimeException e) {
-            log.info("Form video is not getting played");
+            log.info("FOMO video is not getting played");
         }
+
         try {
             WebElement reason = waitForVisibility(dsL.getDsDontWantToSaveAnymoreRedioButtonCTA());
-            if (reason.isDisplayed() && reason.isEnabled()) {
+            if (reason != null && reason.isEnabled()) {
                 waitForClick(reason).click();
             }
             log.info("Don't Want To Save Any more reason is  selected");
         } catch (RuntimeException e) {
+            WebElement issueSec = waitForVisibility(dsL.getIssueInWithdrawalAmount());
+            if (issueSec != null && "Issue in withdrawal amount".equalsIgnoreCase(issueSec.getText())) {
+                issueSec.click();
+            }
             log.info("Don't Want To Save Any more reason is not displaying in the screen ");
             return;
         }
@@ -85,12 +90,17 @@ public class dailySavingsPOM {
                 waitForClick(dsL.getDsSubmitReasonCTA()).click();
             }
         } catch (RuntimeException e) {
+            WebElement stopInSec = waitForVisibility(dsL.getStopSavingCTAissuesSec());
+            if (stopInSec != null) {
+                stopInSec.click();
+            }
             log.info("Submit CTA in the reason selection is not clickable");
             return;
         }
         try {
             waitForVisibility(dsL.getDsStopSavingCTA()).click();
             log.info("Clicked on Stop saving after selecting the reason");
+            waitForVisibility(dsL.getDsStopSavingCTA()).click();
         } catch (RuntimeException e) {
             log.info("Stop saving CTA after selecting the reason is not displaying");
             return;
@@ -104,7 +114,10 @@ public class dailySavingsPOM {
             return;
         }
         try {
-            waitForVisibility(dsL.getGoToHomeCTA()).click();
+            WebElement goT = waitForVisibility(dsL.getGoToHomeCTA());
+            if (goT != null) {
+                goT.click();
+            }
             log.info("Clicked on Go to home CTA");
         } catch (Exception e) {
             log.info("Go to home CTA is not visible");
@@ -148,7 +161,7 @@ public class dailySavingsPOM {
         }
         try {
             WebElement lockerCTA = waitForVisibility(dsL.getGoToLockerCTA());
-            if(lockerCTA.isDisplayed()) {
+            if (lockerCTA.isDisplayed()) {
                 lockerCTA.click();
                 driver.navigate().back();
             }

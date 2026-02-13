@@ -49,8 +49,10 @@ public class buyGoldFromFloatingCTA {
             waitForVisibility(buyG.getSaveInGoldTitle());
             log.info("Redirected to buy gold screen and doing another actions");
             WebElement amountEnter = waitForClick(buyG.getAmountInputArea());
+            log.info("Clicked the amount enter");
             amountEnter.clear();
-            amountEnter.sendKeys("100");
+            amountEnter.sendKeys("10");
+            log.info("entered the amount");
             WebElement payCta = waitForVisibility(buyG.getPayNowCTA());
             if (payCta != null) {
                 payCta.click();
@@ -67,6 +69,7 @@ public class buyGoldFromFloatingCTA {
             try {
                 if (buyG.getManualToDSBottomSheet().isDisplayed()) {
                     waitForVisibility(buyG.getInstanteSaveRedioBottomSheet()).click();
+                    log.info("Clicked the instant save redio bottom sheet");
                     if (buyG.getInstantSaveBottomCTA().isEnabled()) {
                         buyG.getInstantSaveBottomCTA().click();
                     }
@@ -83,10 +86,12 @@ public class buyGoldFromFloatingCTA {
     void buyGoldAsZomatoAndNonZomato() {
         try {
             waitForClick(buyG.getPhnPeSimulator()).click();
+            log.info("Clicked the phn pe-simulator");
             try {
                 WebElement merchant = waitForVisibility(buyG.getPhonePayMerchantBottomSheet());
                 if (merchant.isDisplayed()) {
                     waitForVisibility(buyG.getPayCTAphonepeSimulatorBottomsheet()).click();
+                    log.info("Clicked the pay phonepe-simulator");
                     waitForClick(ds.getPinCompleted()).click();
                 }
             } catch (Exception e) {
@@ -95,6 +100,7 @@ public class buyGoldFromFloatingCTA {
             WebElement goToHome = waitForVisibility(buyG.getGoToHomePageCTA());
             if (goToHome!=null) {
                 goToHome.click();
+                log.info("Clicked the go to home");
             }
         } catch (TimeoutException e) {
             log.info("user has not redirect to payment listing and Go to Homepage cta is not displaying");

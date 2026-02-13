@@ -16,7 +16,7 @@ public class dailySavingsLocators {
         PageFactory.initElements(new AppiumFieldDecorator(driver), this);
     }
 
-    @AndroidFindBy(accessibility = "profile Icon")
+    @AndroidFindBy(uiAutomator = "new UiSelector().description(\"ProfileIcon\")")
     private WebElement ProfileIcon;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[normalize-space(@text)='Daily Saving']")
@@ -96,6 +96,12 @@ public class dailySavingsLocators {
 
     @AndroidFindBy(xpath = "//android.widget.FrameLayout[@resource-id=\"com.aso_centric.jar.staging:id/btnGoToHomePage\"]/android.view.ViewGroup")
     private WebElement ordrSucessGoToHomeCTA;
+
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Issue in withdrawal amount\"]")
+    private WebElement issueInWithdrawalAmount;
+
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Stop Saving\"]")
+    private WebElement stopSavingCTAissuesSec;
 
 
 }
