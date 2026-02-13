@@ -6,8 +6,8 @@ public class dailySavingsFlow {
     @Test(dependsOnMethods = "LoginFlow.onboardingVideoScreenFlow")
     public void dailySavings(){
         dailySavingsPOM ds=new dailySavingsPOM();
-       // ds.setupDailySaving();
-        ds.updateDS();
+//        ds.setupDailySaving();
+//        ds.updateDS();
         ds.stopDailySaving();
 
     }

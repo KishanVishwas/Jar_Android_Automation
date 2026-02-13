@@ -65,7 +65,6 @@ public class weeklyMagicPage {
         } catch (Exception e) {
             waitForClick(wM.getBackNaviateWeekly()).click();
             driver.navigate().back();
-            driver.navigate().refresh();
         }
     }
 }
