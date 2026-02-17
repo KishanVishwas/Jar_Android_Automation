@@ -30,7 +30,10 @@ public class onboardingFlow {
 
     public void onboardingVideo() {
         try {
-            waitForClick(onB.getSkipForDev()).click();
+            WebElement skipinDev = waitForVisibility(onB.getSkipForDev());
+            if (skipinDev != null) {
+                skipinDev.click();
+            }
             WebElement ssjCTA = waitForClick(onB.getStartSJCTA());
             if (ssjCTA.isEnabled()) {
                 ssjCTA.click();
@@ -45,15 +48,18 @@ public class onboardingFlow {
             }
         } catch (TimeoutException e) {
             waitForVisibility(onB.getEnterNumberTitle());
+            WebElement enterArea = waitForVisibility(onB.getEnterNumberArea());
+            enterArea.click();
+            waitForClick(onB.getDone()).click();
+
             log.info("Got directly Enter number screen without prefered numbers");
         }
         try {
             WebElement none = waitForVisibility(onB.getNoneOfTheAbove());
-            if(none!=null){
+            if (none != null) {
                 none.click();
             }
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             log.info("Non of the Above CTA is not visible");
         }
     }
@@ -67,7 +73,12 @@ public class onboardingFlow {
 
         waitForVisibility(onB.getEnterOtpTextArea()).sendKeys(otp);
 
-        waitForClick(onB.getVerifyOtpCTA()).click();
+        try {
+            waitForClick(onB.getVerifyOtpCTA()).click();
+        } catch (Exception e) {
+            log.info("user went directly by not clicking CTA");
+        }
+
     }
 
     public void userRedirectiontoHome() {
@@ -77,6 +88,11 @@ public class onboardingFlow {
             driver.navigate().back();
             waitForClick(onB.getCancelDSonboard()).click();
         } catch (TimeoutException e) {
+            WebElement sk = waitForVisibility(onB.getSkipInOnboarding());
+            if (sk != null) {
+                sk.click();
+            }
+            waitForClick(onB.getCancelDSonboard()).click();
             log.error("User not able to redirect to the homepage");
         }
     }

@@ -12,7 +12,8 @@ public class baseSetup {
         appiumServerManager.startServer();
 
         // Start emulator one time
-        emulatorManager.openAndroidEmulator();
+//        emulatorManager.openAndroidEmulator();
+        simulatorManager.openSimulator();
 
         // Create driver one time
         driverFactory.driverSetup();
