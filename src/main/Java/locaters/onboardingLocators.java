@@ -67,6 +67,7 @@ public class onboardingLocators {
     private WebElement applyCTA;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Start by entering your phone number\"]")
+    @iOSXCUITFindBy(iOSClassChain = "**/XCUIElementTypeStaticText[`name == \"Start by entering your phone number\"`]")
     private WebElement enterNumberTitle;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Select language\"]")
@@ -92,6 +93,6 @@ public class onboardingLocators {
     @iOSXCUITFindBy(iOSClassChain = "**/XCUIElementTypeButton[`name == \"Skip\"`]")
     private WebElement skipInOnboarding;
 
-    @iOSXCUITFindBy(accessibility = "Done")
+    @iOSXCUITFindBy(iOSClassChain = "**/XCUIElementTypeWindow[3]/XCUIElementTypeOther/XCUIElementTypeOther")
     private WebElement done;
 }

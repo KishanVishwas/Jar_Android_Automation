@@ -30,8 +30,8 @@ public class onboardingFlow {
 
     public void onboardingVideo() {
         try {
-            WebElement skipinDev=waitForVisibility(onB.getSkipForDev());
-            if (skipinDev!=null) {
+            WebElement skipinDev = waitForVisibility(onB.getSkipForDev());
+            if (skipinDev != null) {
                 skipinDev.click();
             }
             WebElement ssjCTA = waitForClick(onB.getStartSJCTA());
@@ -47,7 +47,7 @@ public class onboardingFlow {
                 useAnother.click();
             }
         } catch (TimeoutException e) {
-//            waitForVisibility(onB.getEnterNumberTitle());
+            waitForVisibility(onB.getEnterNumberTitle());
             WebElement enterArea = waitForVisibility(onB.getEnterNumberArea());
             enterArea.click();
             waitForClick(onB.getDone()).click();
