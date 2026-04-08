@@ -39,7 +39,8 @@ public class onboardingFlow {
                 ssjCTA.click();
             }
         } catch (Exception e) {
-            waitForVisibility(onB.getUseOtherNumberCTA());
+//            waitForVisibility(onB.getUseOtherNumberCTA());
+            log.info("above is not needed");
         }
         try {
             WebElement useAnother = waitForVisibility(onB.getUseOtherNumberCTA());
@@ -47,11 +48,14 @@ public class onboardingFlow {
                 useAnother.click();
             }
         } catch (TimeoutException e) {
-            waitForVisibility(onB.getEnterNumberTitle());
-            WebElement enterArea = waitForVisibility(onB.getEnterNumberArea());
-            enterArea.click();
-            waitForClick(onB.getDone()).click();
-
+            try {
+                waitForVisibility(onB.getEnterNumberTitle());
+                WebElement enterArea = waitForVisibility(onB.getEnterNumberArea());
+                enterArea.click();
+                waitForClick(onB.getDone()).click();
+            } catch (Exception e2) {
+                log.info("Keyboard enabled directly");
+            }
             log.info("Got directly Enter number screen without prefered numbers");
         }
         try {
