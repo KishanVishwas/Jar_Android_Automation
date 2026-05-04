@@ -1,6 +1,7 @@
 package locaters;
 
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.pagefactory.AndroidFindAll;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import lombok.Data;
@@ -19,8 +20,11 @@ public class weeklyMagicLocators {
     @AndroidFindBy(uiAutomator = "new UiSelector().className(\"android.view.View\").instance(5)")
     private WebElement weeklyNotch;
 
-    @AndroidFindBy(uiAutomator = "new UiSelector().description(\"ProfileIcon\")")
-    private WebElement ProfileIcon;
+    @AndroidFindBy(accessibility = "ProfileIcon")
+    private WebElement profileIconPrimary;
+
+    @AndroidFindBy(uiAutomator = "new UiSelector().className(\"android.view.View\").instance(53)")
+    private WebElement profileIconFallback;
 
     @AndroidFindBy(uiAutomator = "new UiSelector().text(\"Weekly \n" +
             "Magic\")")

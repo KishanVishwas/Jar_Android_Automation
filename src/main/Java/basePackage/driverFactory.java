@@ -9,6 +9,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.net.URL;
 import java.time.Duration;
+import java.util.HashMap;
 
 public class driverFactory {
 
@@ -16,26 +17,52 @@ public class driverFactory {
     public static AppiumDriver driver;
 
     // -------------------------------------------------------
-    //     MAIN DRIVER SETUP (Platform Switch)
+    //     MAIN DRIVER SETUP (Platform + Environment Switch)
     // -------------------------------------------------------
     public static AppiumDriver driverSetup() throws Exception {
 
-        String platform = configReader.get("platformName");
+        String platform = configReader.get("platformName");   // Android / iOS
+        String env = configReader.get("env");                 // local / browserstack
 
-        if (platform.equalsIgnoreCase("Android")) {
-            driver = setupAndroid();
-        } else if (platform.equalsIgnoreCase("iOS")) {
-            driver = setupIOS();
-        } else {
-            throw new Exception("❌ Invalid platform! Use: android / ios");
+        System.out.println("ENV: [" + env + "]");
+        System.out.println("PLATFORM: [" + platform + "]");
+
+        // ---------------- BrowserStack ----------------
+        if ("browserstack".equalsIgnoreCase(env)) {
+
+            System.out.println("👉 Running on BrowserStack");
+
+            if ("Android".equalsIgnoreCase(platform)) {
+                throw new UnsupportedOperationException("Android BrowserStack setup not implemented yet");
+
+            } else if ("iOS".equalsIgnoreCase(platform)) {
+                driver = setupIOSBrowserStack();
+            } else {
+                throw new Exception("❌ Invalid platform for BrowserStack");
+            }
+
+        }
+        // ---------------- Local ----------------
+        else {
+
+            System.out.println("👉 Running on LOCAL");
+
+            if ("Android".equalsIgnoreCase(platform)) {
+                driver = setupAndroid();
+            } else if ("iOS".equalsIgnoreCase(platform)) {
+                driver = setupIOS();
+            } else {
+                throw new Exception("❌ Invalid platform! Use Android / iOS");
+            }
         }
 
         wait = new WebDriverWait(driver, Duration.ofSeconds(20));
-
         return driver;
     }
 
-    //                   ANDROID SETUP
+    // -------------------------------------------------------
+    //                   ANDROID LOCAL SETUP
+    // -------------------------------------------------------
     private static AppiumDriver setupAndroid() throws Exception {
 
         DesiredCapabilities caps = new DesiredCapabilities();
@@ -45,21 +72,20 @@ public class driverFactory {
         caps.setCapability("appium:appPackage", "com.aso_centric.jar.staging");
         caps.setCapability("appium:appActivity", configReader.get("androidActivity"));
 
-        // You can load these also from config.xml if needed
-        //caps.setCapability("appium:deviceName", configReader.get("androidDeviceName"));
         caps.setCapability("appium:udid", configReader.get("androidUDID"));
         caps.setCapability("appium:platformVersion", configReader.get("androidPlatformVersion"));
+        caps.setCapability("appium:deviceName", configReader.get("androidDeviceName"));
 
         caps.setCapability("appium:autoGrantPermissions", true);
-        caps.setCapability("appium:deviceName", configReader.get("androidDeviceName"));
         caps.setCapability("appium:noReset", false);
         caps.setCapability("appium:app", configReader.get("androidApp"));
-
 
         return new AndroidDriver(new URL(configReader.get("appiumServerURL")), caps);
     }
 
-    //                     iOS SETUP
+    // -------------------------------------------------------
+    //                   iOS LOCAL SETUP
+    // -------------------------------------------------------
     private static AppiumDriver setupIOS() throws Exception {
 
         DesiredCapabilities caps = new DesiredCapabilities();
@@ -70,7 +96,8 @@ public class driverFactory {
         caps.setCapability("appium:udid", configReader.get("uuid"));
         caps.setCapability("appium:platformVersion", configReader.get("platformVersion"));
 
-        caps.setCapability("appium:autoAcceptAlerts", Boolean.parseBoolean(configReader.get("autoAcceptAlerts")));
+        caps.setCapability("appium:autoAcceptAlerts",
+                Boolean.parseBoolean(configReader.get("autoAcceptAlerts")));
 
         caps.setCapability("appium:noReset", false);
         caps.setCapability("appium:fullReset", true);
@@ -88,6 +115,49 @@ public class driverFactory {
         }
 
         return new IOSDriver(new URL(configReader.get("appiumServerURL")), caps);
+    }
 
+    // -------------------------------------------------------
+    //               iOS BROWSERSTACK SETUP
+    // -------------------------------------------------------
+    private static AppiumDriver setupIOSBrowserStack() throws Exception {
+
+        DesiredCapabilities caps = new DesiredCapabilities();
+
+        // Core
+        caps.setCapability("platformName", "iOS");
+        caps.setCapability("appium:automationName", "XCUITest");
+        caps.setCapability("appium:app", "bs://dd41d344a15407d959b3987875b7ba01c397ea55");
+        caps.setCapability("appium:autoAcceptAlerts", true);
+
+        // BrowserStack options
+        HashMap<String, Object> bstackOptions = new HashMap<>();
+
+        bstackOptions.put("userName", "testing_repf4l");
+        bstackOptions.put("accessKey", "wsGdeqpsQfqbCFK4dvE3");
+
+        bstackOptions.put("deviceName", "iPhone 16 Pro");
+        bstackOptions.put("osVersion", "18.0");
+
+//        bstackOptions.put("projectName", "Mobile Automation");
+//        bstackOptions.put("buildName", "Inspector Debug");
+//        bstackOptions.put("sessionName", "Inspector iOS Session");
+
+        bstackOptions.put("debug", true);
+        bstackOptions.put("networkLogs", true);
+
+        caps.setCapability("bstack:options", bstackOptions);
+
+        System.out.println("🚀 Starting BrowserStack session...");
+
+        // ✅ IMPORTANT: assign to global driver (no shadowing)
+        driver = new IOSDriver(
+                new URL("http://hub-cloud.browserstack.com/wd/hub"),
+                caps
+        );
+
+        System.out.println("✅ BrowserStack session created: " + driver.getSessionId());
+
+        return driver;
     }
 }

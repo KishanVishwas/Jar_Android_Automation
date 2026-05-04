@@ -19,7 +19,12 @@ public class weeklyMagicPage {
     }
 
     private void weeklyMagicRedirection() {
-        waitForClick(wM.getProfileIcon()).click();
+        if (wM.getProfileIconPrimary().isDisplayed()) {
+            waitForClick(wM.getProfileIconPrimary()).click();
+        }
+        else {
+            waitForClick(wM.getProfileIconFallback()).click();
+        }
         scrollUntilElementFound(driver, wM.getWeeklyMagicInProfile());
         WebElement week = waitForVisibility(wM.getWeeklyMagicInProfile());
         if (week != null) {

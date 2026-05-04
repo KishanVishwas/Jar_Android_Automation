@@ -67,4 +67,7 @@ public class buyGoldFlowLocators {
     @AndroidFindBy(uiAutomator = "new UiSelector().className(\"android.widget.ImageView\").instance(0)")
     private WebElement SwipeCoinEndPoint;
 
+    @AndroidFindBy(uiAutomator = "new UiSelector().className(\"android.view.View\").instance(32)")
+    private WebElement profileIcon2;
+
 }
