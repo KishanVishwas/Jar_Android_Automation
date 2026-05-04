@@ -1,0 +1,9 @@
+
+Mon May 04 2026 15:23:23:840 GMT+0530 (IST) -- Discovered proxy settings in your environment and using the same for establishing a BrowserStack Local connection. Use --disable-proxy-discovery to disable using the discovered proxy settings.
+
+Mon May 04 2026 15:23:24:276 GMT+0530 (IST) -- [WARNING] Skipping initialisation of configuration console because: port already in use by another Binary
+Mon May 04 2026 15:23:26:108 GMT+0530 (IST) -- [SUCCESS] You can now access your local server(s) in our remote browser
+
+Mon May 04 2026 15:23:27:949 GMT+0530 (IST) -- Press Ctrl-C to exit
+
+

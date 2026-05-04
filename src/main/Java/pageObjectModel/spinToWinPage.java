@@ -33,7 +33,7 @@ public class spinToWinPage {
                     waitForClick(sp.getArrowCta()).click();
                 }
             } catch (Exception e) {
-                waitForClick(wM.getProfileIcon()).click();
+                waitForClick(wM.getProfileIconPrimary()).click();
                 scrollUntilElementFound(driver, sp.getSpinsInProfile());
                 waitForClick(sp.getSpinsInProfile()).click();
             }

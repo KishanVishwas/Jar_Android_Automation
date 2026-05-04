@@ -9,14 +9,14 @@ public class baseSetup {
     @BeforeSuite
     public void globalSetup() throws Exception {
         // Start Appium one time
-        appiumServerManager.startServer();
+//        appiumServerManager.startServer();
 
         // Start emulator one time
 //        emulatorManager.openAndroidEmulator();
-        simulatorManager.openSimulator();
+//        simulatorManager.openSimulator();
 
         // Create driver one time
-        driverFactory.driverSetup();
+        driver =driverFactory.driverSetup();
     }
 
     @AfterSuite
@@ -30,6 +30,6 @@ public class baseSetup {
        // emulatorManager.closeAndroidEmulator();
 
         // Stop Appium one time
-        appiumServerManager.stopServer();
+//        appiumServerManager.stopServer();
     }
 }

@@ -50,7 +50,7 @@ public class onboardingFlow {
         } catch (TimeoutException e) {
             try {
                 waitForVisibility(onB.getEnterNumberTitle());
-                WebElement enterArea = waitForVisibility(onB.getEnterNumberArea());
+                WebElement enterArea = waitForVisibility(onB.getPhoneNumberTextField());
                 enterArea.click();
                 waitForClick(onB.getDone()).click();
             } catch (Exception e2) {
@@ -88,16 +88,20 @@ public class onboardingFlow {
     public void userRedirectiontoHome() {
 
         try {
+            try{
             waitForVisibility(onB.getSaveInGoldTitle());
             driver.navigate().back();
-            waitForClick(onB.getCancelDSonboard()).click();
-        } catch (TimeoutException e) {
-            WebElement sk = waitForVisibility(onB.getSkipInOnboarding());
-            if (sk != null) {
-                sk.click();
+            waitForClick(onB.getCancelDSonboard()).click();}
+            catch (Exception e){
+                WebElement sk = waitForVisibility(onB.getSkipInOnboarding());
+                if (sk != null) {
+                    sk.click();
+                }
+                waitForClick(onB.getCancelDSonboard()).click();
+                log.error("User not able to redirect to the homepage");
             }
-            waitForClick(onB.getCancelDSonboard()).click();
-            log.error("User not able to redirect to the homepage");
+        } catch (TimeoutException e) {
+            log.info("IOS implementaion");
         }
     }
 }

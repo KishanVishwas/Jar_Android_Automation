@@ -32,12 +32,18 @@ public class buyGoldFromFloatingCTA {
 
         } catch (TimeoutException e) {
             try {
-                waitForVisibility(buyG.getProfileIcon()).click();
+                WebElement profile1 = waitForVisibility(buyG.getProfileIcon());
+                WebElement profile2 = waitForVisibility(buyG.getProfileIcon2());
                 log.info("didnt get the instant save cta in locker ,redirecting from the new profile to buy gold");
+                if (profile1.isEnabled()) {
+                    profile1.click();
+                    log.info("Clicked the instant save cta in the new profile");
+                } else if (profile2.isEnabled()) {
+                    profile2.click();
+                }
                 waitForVisibility(buyG.getInstantSaveInProfile()).click();
-                log.info("Clicked the instant save cta in the new profile");
             } catch (Exception e1) {
-                waitForVisibility(buyG.getHomeTab());
+                driver.navigate().back();
                 log.info("HomeScreen Redirected");
                 takeScreenShot(driver, "instant_save_screen");
             }
@@ -99,7 +105,7 @@ public class buyGoldFromFloatingCTA {
                 log.info("phonePe Simulator Bottom sheet as not displayed");
             }
             WebElement goToHome = waitForVisibility(buyG.getGoToHomePageCTA());
-            if (goToHome!=null) {
+            if (goToHome != null) {
                 goToHome.click();
                 log.info("Clicked the go to home");
             }
