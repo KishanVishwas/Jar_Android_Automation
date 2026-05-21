@@ -1,14 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="All Test Suite">
-    <test verbose="2" preserve-order="true" name="/Users/kishanr/Downloads/JAR_Android_Automation">
+<suite name="Jar App Regression Suite">
+    <test verbose="2" preserve-order="true" name="Jar Android Automation">
         <classes>
+            <!-- LoginFlow must run first — all dependent tests rely on the active session -->
             <class name="LoginFlow"/>
-<!--            <class name="buyGoldFlowLocker"/>-->
-<!--            <class name="spinsJackpot"/>-->
-<!--            <class name="weeklyMagicFlow"/>-->
-<!--            <class name="dailySavingsFlow"/>-->
-<!--            <class name="swipeToBuy"/>-->
+
+            <!-- Enable the classes below when the corresponding feature is under test.
+                 Each test depends on LoginFlow completing successfully. -->
+            <!--
+            <class name="buyGoldFlowLocker"/>
+            <class name="spinsJackpot"/>
+            <class name="weeklyMagicFlow"/>
+            <class name="dailySavingsFlow"/>
+            <class name="swipeToBuy"/>
+            <class name="weeklySavingsFlow"/>
+            <class name="monthlySavings"/>
+            <class name="trustMarkers"/>
+            -->
         </classes>
     </test>
 </suite>

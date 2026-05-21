@@ -31,7 +31,7 @@ buildIdentifier: '#${BUILD_NUMBER}' # Supports strings along with either/both ${
 # OR
 # app: 'bs://<app-id>' # App URL returned when uploading the app to BrowserStack manually
 # Visit https://www.browserstack.com/docs/app-automate/appium/set-up-tests/specify-app for more options
-app: bs://dd41d344a15407d959b3987875b7ba01c397ea55 # BrowserStack Sample App
+app: bs://7a681b618ad06b4c59c4acfad3f149410066fe3e # BrowserStack Sample App
 
 # =======================================
 # Platforms (Browsers / Devices to test)

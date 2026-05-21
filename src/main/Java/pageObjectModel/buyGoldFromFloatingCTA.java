@@ -22,29 +22,25 @@ public class buyGoldFromFloatingCTA {
         buyGoldAsZomatoAndNonZomato();
     }
 
-
     void instantSaveScreen() {
         try {
             WebElement instantSave = waitForVisibility(buyG.getSaveInstantlyCTA());
-            log.info("Fetched the Instant save cta in the locker");
+            log.info("Fetched the Instant save CTA in the locker");
             instantSave.click();
-            log.info("Clicked the instant save cta in the locker");
-
         } catch (TimeoutException e) {
             try {
                 WebElement profile1 = waitForVisibility(buyG.getProfileIcon());
                 WebElement profile2 = waitForVisibility(buyG.getProfileIcon2());
-                log.info("didnt get the instant save cta in locker ,redirecting from the new profile to buy gold");
+                log.info("Instant save CTA not in locker, redirecting from profile");
                 if (profile1.isEnabled()) {
                     profile1.click();
-                    log.info("Clicked the instant save cta in the new profile");
                 } else if (profile2.isEnabled()) {
                     profile2.click();
                 }
                 waitForVisibility(buyG.getInstantSaveInProfile()).click();
             } catch (Exception e1) {
                 driver.navigate().back();
-                log.info("HomeScreen Redirected");
+                log.info("Redirected to HomeScreen");
                 takeScreenShot(driver, "instant_save_screen");
             }
         }
@@ -53,30 +49,19 @@ public class buyGoldFromFloatingCTA {
     void amountEntering() {
         try {
             waitForVisibility(buyG.getSaveInGoldTitle());
-            log.info("Redirected to buy gold screen and doing another actions");
+            log.info("Redirected to buy gold screen");
             WebElement amountEnter = waitForClick(buyG.getAmountInputArea());
-            log.info("Clicked the amount enter");
             amountEnter.clear();
             amountEnter.sendKeys("10");
-            log.info("entered the amount");
+            log.info("Amount entered");
             WebElement payCta = waitForVisibility(buyG.getPayNowCTA());
             if (payCta != null) {
                 payCta.click();
-                log.info("Clicked the pay cta");
-            } else {
-                log.info("Pay Now CTA is disable");
-            }
-            try {
-                if (payCta != null) {
-                    payCta.click();
-                }
-            } catch (TimeoutException e) {
-                log.info("Pay Now CTA is disable");
+                log.info("Clicked Pay CTA");
             }
             try {
                 if (buyG.getManualToDSBottomSheet().isDisplayed()) {
                     waitForVisibility(buyG.getInstanteSaveRedioBottomSheet()).click();
-                    log.info("Clicked the instant save redio bottom sheet");
                     if (buyG.getInstantSaveBottomCTA().isEnabled()) {
                         buyG.getInstantSaveBottomCTA().click();
                     }
@@ -87,30 +72,27 @@ public class buyGoldFromFloatingCTA {
         } catch (TimeoutException e) {
             log.info("Element is not visible");
         }
-
     }
 
     void buyGoldAsZomatoAndNonZomato() {
         try {
             waitForClick(buyG.getPhnPeSimulator()).click();
-            log.info("Clicked the phn pe-simulator");
+            log.info("Clicked PhonePe simulator");
             try {
                 WebElement merchant = waitForVisibility(buyG.getPhonePayMerchantBottomSheet());
                 if (merchant.isDisplayed()) {
                     waitForVisibility(buyG.getPayCTAphonepeSimulatorBottomsheet()).click();
-                    log.info("Clicked the pay phonepe-simulator");
                     waitForClick(ds.getPinCompleted()).click();
                 }
             } catch (Exception e) {
-                log.info("phonePe Simulator Bottom sheet as not displayed");
+                log.info("PhonePe Simulator bottom sheet not displayed");
             }
             WebElement goToHome = waitForVisibility(buyG.getGoToHomePageCTA());
             if (goToHome != null) {
                 goToHome.click();
-                log.info("Clicked the go to home");
             }
         } catch (TimeoutException e) {
-            log.info("user has not redirect to payment listing and Go to Homepage cta is not displaying");
+            log.info("Payment listing not shown, retrying PhonePe");
             WebElement simu = waitForVisibility(buyG.getPhnPeSimulator());
             if (simu.isEnabled()) {
                 simu.click();
@@ -121,7 +103,7 @@ public class buyGoldFromFloatingCTA {
                     goToHome.click();
                 }
             } catch (Exception f) {
-                log.info("Order success screen is getting display");
+                log.info("Order success screen is getting displayed");
             }
         }
     }

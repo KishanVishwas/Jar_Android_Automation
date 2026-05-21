@@ -10,10 +10,10 @@ public class buyGoldSwipeToBuy {
 
     buyGoldFlowLocators buyG = new buyGoldFlowLocators(driver);
 
-    public void swipeCard(){
-        scrollUntilElementFound(driver,buyG.getSwipeToBuy());
-        dragCoinToEnd(buyG.getSwipeCoinElementStartPoint(),buyG.getSwipeCoinEndPoint());
-        buyGoldFromFloatingCTA buy=new buyGoldFromFloatingCTA();
+    public void swipeCard() {
+        scrollUntilElementFound(driver, buyG.getSwipeToBuy());
+        dragCoinToEnd(buyG.getSwipeCoinElementStartPoint(), buyG.getSwipeCoinEndPoint());
+        buyGoldFromFloatingCTA buy = new buyGoldFromFloatingCTA();
         buy.buyGoldAsZomatoAndNonZomato();
     }
 }

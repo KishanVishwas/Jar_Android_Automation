@@ -45,17 +45,18 @@
 
         <!-- Appium Java Client -->
         <!-- https://mvnrepository.com/artifact/io.appium/java-client -->
-        <dependency>
-            <groupId>io.appium</groupId>
-            <artifactId>java-client</artifactId>
-            <version>10.0.0</version>
-        </dependency>
-
-        <!-- Selenium WebDriver -->
+        <!-- Source: https://mvnrepository.com/artifact/io.appium/java-client -->
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
-            <version>4.36.0</version>
+            <version>4.11.0</version>
+        </dependency>
+
+        <!-- Appium Java client (includes Selenium) -->
+        <dependency>
+            <groupId>io.appium</groupId>
+            <artifactId>java-client</artifactId>
+            <version>8.5.1</version>
         </dependency>
 
         <!-- TestNG for test management (optional but common) -->
@@ -95,7 +96,7 @@
         <dependency>
             <groupId>com.browserstack</groupId>
             <artifactId>browserstack-java-sdk</artifactId>
-            <version>LATEST</version>
+            <version>1.28.0</version>
         </dependency>
 
     </dependencies>

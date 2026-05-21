@@ -1,3 +1,5 @@
+import basePackage.driverFactory;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import pageObjectModel.monthlySavingsPage;
 
@@ -7,6 +9,6 @@ public class monthlySavings {
     public void monthlySavingsTest() {
         monthlySavingsPage mS = new monthlySavingsPage();
         mS.monthlySavingsSetupFlow();
-//        mS.monthlySavingsStopFlow();
+        Assert.assertNotNull(driverFactory.driver, "Driver session lost after monthly savings flow");
     }
 }

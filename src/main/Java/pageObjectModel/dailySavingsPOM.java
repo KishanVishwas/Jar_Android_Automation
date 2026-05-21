@@ -2,11 +2,11 @@ package pageObjectModel;
 
 import locaters.buyGoldFlowLocators;
 import locaters.dailySavingsLocators;
-
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
+import utilsPackage.PaymentHelper;
 
 import static basePackage.driverFactory.driver;
 import static utilsPackage.waitUtils.*;
@@ -15,6 +15,7 @@ import static utilsPackage.waitUtils.*;
 public class dailySavingsPOM {
     dailySavingsLocators dsL = new dailySavingsLocators(driver);
     buyGoldFlowLocators buyG = new buyGoldFlowLocators(driver);
+    PaymentHelper payment = new PaymentHelper();
 
     public void setupDailySaving() {
         waitForVisibility(dsL.getProfileIcon()).click();
@@ -34,9 +35,8 @@ public class dailySavingsPOM {
         } catch (TimeoutException e) {
             waitForVisibility(dsL.getProceedForPaymentCTA()).click();
         }
-        waitForVisibility(dsL.getPhonePayPaymentButton()).click();
-        waitForClick(dsL.getPinCompleted()).click();
-        waitForVisibility(dsL.getGoToHomeCTA()).click();
+        payment.completePhonePePayment();
+        payment.goToHome();
     }
 
     public void stopDailySaving() {
@@ -46,12 +46,12 @@ public class dailySavingsPOM {
             waitForVisibility(dsL.getDsInProfile()).click();
             try {
                 waitForVisibility(dsL.getDsActiveStatus());
-                log.info("Daily saving is active ");
+                log.info("Daily saving is active");
             } catch (NoSuchElementException e) {
-                log.info("Daily saving is not active ");
+                log.info("Daily saving is not active");
             }
         } catch (RuntimeException e) {
-            log.info("Daily saving is not visable  in hamberger");
+            log.info("Daily saving is not visible in hamburger");
             return;
         }
 
@@ -60,12 +60,12 @@ public class dailySavingsPOM {
             waitForVisibility(dsL.getDsManageSavingropDown()).click();
             waitForVisibility(dsL.getDsStopCTA()).click();
         } catch (RuntimeException e) {
-            log.info("Manage Saving Drop Down CTA is not visable");
+            log.info("Manage Saving Drop Down CTA is not visible");
             return;
         }
         try {
             waitForVisibility(dsL.getDsStopSavingCTAFormVideo()).click();
-            log.info("FOMO video is  getting played");
+            log.info("FOMO video is getting played");
         } catch (RuntimeException e) {
             log.info("FOMO video is not getting played");
         }
@@ -75,13 +75,13 @@ public class dailySavingsPOM {
             if (reason != null && reason.isEnabled()) {
                 waitForClick(reason).click();
             }
-            log.info("Don't Want To Save Any more reason is  selected");
+            log.info("Don't Want To Save Anymore reason is selected");
         } catch (RuntimeException e) {
             WebElement issueSec = waitForVisibility(dsL.getIssueInWithdrawalAmount());
             if (issueSec != null && "Issue in withdrawal amount".equalsIgnoreCase(issueSec.getText())) {
                 issueSec.click();
             }
-            log.info("Don't Want To Save Any more reason is not displaying in the screen ");
+            log.info("Don't Want To Save Anymore reason is not displaying");
             return;
         }
         try {
@@ -110,7 +110,7 @@ public class dailySavingsPOM {
             waitForVisibility(dsL.getDs_StopPermanentlyRedioButtom()).click();
             waitForClick(dsL.getDsStopSavingCTA()).click();
         } catch (Exception e) {
-            log.info("Stop Permanently Radio Button is not clickable ");
+            log.info("Stop Permanently Radio Button is not clickable");
             return;
         }
         try {
@@ -132,32 +132,27 @@ public class dailySavingsPOM {
             log.info("Daily saving is not active");
         }
         try {
-            WebElement increas = waitForVisibility(dsL.getUpdateMandateCta());
-            if (increas.isEnabled()) {
-                increas.click();
+            WebElement increase = waitForVisibility(dsL.getUpdateMandateCta());
+            if (increase.isEnabled()) {
+                increase.click();
             }
         } catch (Exception e) {
-            log.info("increase CTA is disable");
+            log.info("Increase CTA is disabled");
         }
         try {
-            String ApText = waitForVisibility(dsL.getAutomaticStepUpBottomSheet()).getText();
-            log.info("user got Automatic Step-Up Bottom sheet");
-            if (ApText.equalsIgnoreCase("Automatic Step-Up")) {
-
-                waitForClick(dsL.getWithOutStepUpRedioButton()).click();
+            String apText = waitForVisibility(dsL.getAutomaticStepUpBottomSheet()).getText();
+            log.info("User got Automatic Step-Up bottom sheet");
+            if (apText.equalsIgnoreCase("Automatic Step-Up")) {
+                waitForClick(dsL.getProceedWithOutStepUpRedioButton()).click();
                 waitForVisibility(dsL.getProceedWithOutStepUpRedioButton()).click();
-            } else {
-                log.info("Auto step up bottom sheet has not opened");
             }
         } catch (Exception e) {
             log.info("Auto step up bottom sheet has not opened");
         }
         try {
-            waitForVisibility(dsL.getPhonePayPaymentButton()).click();
-            waitForClick(dsL.getPinCompleted()).click();
-            waitForVisibility(dsL.getGoToHomeCTA()).click();
+            payment.completePhonePePayment();
         } catch (Exception e) {
-            log.info("PhonePay bottom sheet as not opened");
+            log.info("PhonePe bottom sheet has not opened");
         }
         try {
             WebElement lockerCTA = waitForVisibility(dsL.getGoToLockerCTA());
@@ -166,27 +161,21 @@ public class dailySavingsPOM {
                 driver.navigate().back();
             }
         } catch (TimeoutException e) {
-            log.info("New order success screen is not displayed so Locker CTA is not clickable");
-            WebElement goToHameCTA = waitForVisibility(dsL.getOrdrSucessGoToHomeCTA());
-            goToHameCTA.click();
-
+            log.info("Locker CTA not visible, going to home");
+            waitForVisibility(dsL.getOrdrSucessGoToHomeCTA()).click();
         }
-
     }
 
     public void autoStepup() {
         try {
-            String ApText = waitForVisibility(dsL.getAutomaticStepUpBottomSheet()).getText();
-            log.info("user got Automatic Step-Up Bottom sheet");
-            if (ApText.equalsIgnoreCase("Automatic Step-Up")) {
+            String apText = waitForVisibility(dsL.getAutomaticStepUpBottomSheet()).getText();
+            log.info("User got Automatic Step-Up bottom sheet");
+            if (apText.equalsIgnoreCase("Automatic Step-Up")) {
                 waitForClick(dsL.getWithStepUpRedioButton()).click();
                 waitForVisibility(dsL.getActivateStepUpCTA()).click();
-            } else {
-                log.info("Auto step up bottom sheet has not opened");
             }
         } catch (Exception e) {
-            log.info("User is not Eligible for Auto step up bottom sheet");
+            log.info("User is not eligible for Auto step up bottom sheet");
         }
-
     }
 }

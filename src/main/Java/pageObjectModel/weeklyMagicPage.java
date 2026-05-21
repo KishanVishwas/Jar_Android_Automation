@@ -1,6 +1,5 @@
 package pageObjectModel;
 
-import locaters.buyGoldFlowLocators;
 import locaters.weeklyMagicLocators;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.WebElement;
@@ -21,8 +20,7 @@ public class weeklyMagicPage {
     private void weeklyMagicRedirection() {
         if (wM.getProfileIconPrimary().isDisplayed()) {
             waitForClick(wM.getProfileIconPrimary()).click();
-        }
-        else {
+        } else {
             waitForClick(wM.getProfileIconFallback()).click();
         }
         scrollUntilElementFound(driver, wM.getWeeklyMagicInProfile());
@@ -33,20 +31,19 @@ public class weeklyMagicPage {
     }
 
     private void weeklyGoThrough() {
-
         try {
             WebElement lC = waitForClick(wM.getBtnLeftChevron());
             if (lC != null) {
                 lC.click();
             }
         } catch (Exception e) {
-            log.error("old weekly magic not displayed");
+            log.error("Old weekly magic not displayed");
         }
         waitForClick(wM.getLeftChevron()).click();
         waitForClick(wM.getLeftChevron()).click();
         WebElement title = waitForVisibility(wM.getCurrentWeekTitle());
         if (title != null) {
-            log.info("Weekly_savings_currentWeek score");
+            log.info("Weekly savings current week score visible");
         }
         waitForClick(wM.getBtnRightChevron()).click();
         waitForClick(wM.getRightChevron()).click();
@@ -54,11 +51,11 @@ public class weeklyMagicPage {
         try {
             WebElement cta = waitForVisibility(wM.getGetMystryCardCta());
             if (cta != null && "Get Mystery Card".equals(cta.getText())) {
-                log.info("Get Mystery Card cta is visible");
+                log.info("Get Mystery Card CTA is visible");
                 cta.click();
             }
         } catch (Exception e) {
-            log.error("Get Mystry Card cta is not visible");
+            log.error("Get Mystery Card CTA is not visible");
         }
         try {
             WebElement header = waitForVisibility(wM.getInstantSaveHeader());

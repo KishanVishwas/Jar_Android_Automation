@@ -5,6 +5,7 @@ import locaters.trustMarkersLocators;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
+import utilsPackage.configReader;
 
 import static basePackage.driverFactory.driver;
 import static utilsPackage.waitUtils.*;
@@ -15,19 +16,14 @@ public class trustMarkersPage {
     trustMarkersLocators tmL = new trustMarkersLocators(driver);
 
     public void kycCompletion() {
-
         try {
             WebElement newEntry = waitForVisibility(tmL.getNewHomeTrustMarkersEntry());
-            if (newEntry!=null) {
+            if (newEntry != null) {
                 newEntry.click();
                 log.info("New trust marker entry found and clicked");
             }
-
         } catch (TimeoutException e) {
-
             log.info("New entry not visible. Scrolling to trust marker section...");
-
-            // Scroll to trust marker section
             scrollUntilElementFound((AppiumDriver) driver, tmL.getHeaderToScroll());
 
             if (isFlowCompletedVisible()) {
@@ -39,10 +35,8 @@ public class trustMarkersPage {
                 waitForClick(tmL.getFlowArrow()).click();
             }
         }
-        // PAN verification flow
         completePanVerification();
     }
-
 
     private boolean isFlowCompletedVisible() {
         try {
@@ -53,14 +47,11 @@ public class trustMarkersPage {
     }
 
     private void completePanVerification() {
-
-        waitForVisibility(tmL.getEditPan()).sendKeys("FOKPR6232A");
-        waitForVisibility(tmL.getEditText1()).sendKeys("27");
-        waitForVisibility(tmL.getEditText2()).sendKeys("07");
-        waitForVisibility(tmL.getEditText3()).sendKeys("2000");
-
+        waitForVisibility(tmL.getEditPan()).sendKeys(configReader.get("testPanNumber"));
+        waitForVisibility(tmL.getEditText1()).sendKeys(configReader.get("testDobDay"));
+        waitForVisibility(tmL.getEditText2()).sendKeys(configReader.get("testDobMonth"));
+        waitForVisibility(tmL.getEditText3()).sendKeys(configReader.get("testDobYear"));
         waitForClick(tmL.getVerifyPan()).click();
-
         log.info("PAN verification completed");
     }
 }

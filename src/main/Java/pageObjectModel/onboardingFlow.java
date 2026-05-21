@@ -13,12 +13,12 @@ public class onboardingFlow {
 
     onboardingLocators onB = new onboardingLocators(driver);
 
-    public void langaugeSelection() {
+    public void languageSelection() {
         try {
             waitForVisibility(onB.getLanguagePageText());
             WebElement english = waitForClick(onB.getEnglish());
             english.click();
-            log.info("English, selecting English langauge");
+            log.info("Selecting English language");
             WebElement apply = waitForClick(onB.getApplyCTA());
             apply.click();
         } catch (TimeoutException e) {
@@ -30,17 +30,16 @@ public class onboardingFlow {
 
     public void onboardingVideo() {
         try {
-            WebElement skipinDev = waitForVisibility(onB.getSkipForDev());
-            if (skipinDev != null) {
-                skipinDev.click();
+            WebElement skipInDev = waitForVisibility(onB.getSkipForDev());
+            if (skipInDev != null) {
+                skipInDev.click();
             }
             WebElement ssjCTA = waitForClick(onB.getStartSJCTA());
             if (ssjCTA.isEnabled()) {
                 ssjCTA.click();
             }
         } catch (Exception e) {
-//            waitForVisibility(onB.getUseOtherNumberCTA());
-            log.info("above is not needed");
+            log.info("Skip for dev CTA not needed");
         }
         try {
             WebElement useAnother = waitForVisibility(onB.getUseOtherNumberCTA());
@@ -50,13 +49,11 @@ public class onboardingFlow {
         } catch (TimeoutException e) {
             try {
                 waitForVisibility(onB.getEnterNumberTitle());
-                WebElement enterArea = waitForVisibility(onB.getPhoneNumberTextField());
-                enterArea.click();
-                waitForClick(onB.getDone()).click();
+                waitForVisibility(onB.getPhoneNumberTextField()).click();
             } catch (Exception e2) {
                 log.info("Keyboard enabled directly");
             }
-            log.info("Got directly Enter number screen without prefered numbers");
+            log.info("Got directly to Enter number screen without preferred numbers");
         }
         try {
             WebElement none = waitForVisibility(onB.getNoneOfTheAbove());
@@ -64,12 +61,11 @@ public class onboardingFlow {
                 none.click();
             }
         } catch (Exception e) {
-            log.info("Non of the Above CTA is not visible");
+            log.info("None Of The Above CTA is not visible");
         }
     }
 
     public void userLogin(String number, String otp) {
-
         WebElement phnArea = waitForVisibility(onB.getPhoneNumberTextField());
         phnArea.sendKeys(number);
 
@@ -80,19 +76,17 @@ public class onboardingFlow {
         try {
             waitForClick(onB.getVerifyOtpCTA()).click();
         } catch (Exception e) {
-            log.info("user went directly by not clicking CTA");
+            log.info("User proceeded without clicking verify CTA (auto-verified)");
         }
-
     }
 
-    public void userRedirectiontoHome() {
-
+    public void userRedirectionToHome() {
         try {
-            try{
-            waitForVisibility(onB.getSaveInGoldTitle());
-            driver.navigate().back();
-            waitForClick(onB.getCancelDSonboard()).click();}
-            catch (Exception e){
+            try {
+                waitForVisibility(onB.getSaveInGoldTitle());
+                driver.navigate().back();
+                waitForClick(onB.getCancelDSonboard()).click();
+            } catch (Exception e) {
                 WebElement sk = waitForVisibility(onB.getSkipInOnboarding());
                 if (sk != null) {
                     sk.click();
@@ -101,7 +95,13 @@ public class onboardingFlow {
                 log.error("User not able to redirect to the homepage");
             }
         } catch (TimeoutException e) {
-            log.info("IOS implementaion");
+            log.info("iOS implementation — no DS onboarding prompt");
         }
+    }
+
+    /** @deprecated Use {@link #userRedirectionToHome()} */
+    @Deprecated
+    public void userRedirectiontoHome() {
+        userRedirectionToHome();
     }
 }

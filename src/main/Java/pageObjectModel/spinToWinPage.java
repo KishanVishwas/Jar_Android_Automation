@@ -17,18 +17,14 @@ public class spinToWinPage {
     weeklyMagicLocators wM = new weeklyMagicLocators(driver);
 
     public void jackpotFlow() {
-
         redirectionHandlingSpins();
     }
 
     private void redirectionHandlingSpins() {
-
         try {
             try {
-                // Scroll to Spin to Win section
                 scrollUntilElementFound(driver, sp.getTitleSpinToWin());
                 scrollUntilElementFound(driver, sp.getNekCollectionsHeader());
-
                 if (sp.getSpinImage().isDisplayed()) {
                     waitForClick(sp.getArrowCta()).click();
                 }
@@ -38,16 +34,13 @@ public class spinToWinPage {
                 waitForClick(sp.getSpinsInProfile()).click();
             }
             waitForVisibility(sp.getSpinToWinBanner());
-            // Scroll dropdown twice
             scrollTillEndOfSection(sp.getActiveDropDownPoint());
             waitForSeconds(2);
             scrollTillEndOfSection(sp.getActiveDropDownPoint());
 
-            // Back from spins
             waitForClick(sp.getBackButtoninSpins()).click();
 
             try {
-                // Handle Use Winnings flow
                 handleUseWinningsCTA();
             } catch (Exception e) {
                 driver.navigate().back();
@@ -59,7 +52,6 @@ public class spinToWinPage {
     }
 
     private void handleUseWinningsCTA() {
-
         WebElement cta = null;
 
         try {
@@ -72,7 +64,6 @@ public class spinToWinPage {
         }
 
         if (cta != null && cta.isDisplayed() && "Use Winnings".equalsIgnoreCase(cta.getText())) {
-
             log.info("Clicking Use Winnings CTA");
             cta.click();
 
@@ -83,14 +74,11 @@ public class spinToWinPage {
             try {
                 if (sp.getCrossOptionInInstantsave().isDisplayed()) {
                     waitForClick(sp.getCrossOptionInInstantsave()).click();
-                } else {
-                    log.info("Clicking Cross Option In Instantsave");
                 }
             } catch (Exception e) {
                 log.info("Cross option not visible in Instant Save");
             }
             driver.navigate().back();
-
         } else {
             log.info("Use Winnings CTA not visible or text mismatch");
             takeScreenShot(driver, "HomeScreen");

@@ -1,3 +1,5 @@
+import basePackage.driverFactory;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import pageObjectModel.buyGoldFromFloatingCTA;
 
@@ -7,5 +9,6 @@ public class buyGoldFlowLocker {
     public void buyGold() {
         buyGoldFromFloatingCTA buy = new buyGoldFromFloatingCTA();
         buy.instantSaveFlow();
+        Assert.assertNotNull(driverFactory.driver, "Driver session lost after buy gold flow");
     }
 }
