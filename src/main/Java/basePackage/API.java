@@ -2,24 +2,30 @@ package basePackage;
 
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
+import lombok.extern.slf4j.Slf4j;
+import utilsPackage.configReader;
 
 import static io.restassured.RestAssured.given;
 
+@Slf4j
 public class API {
-    public static String decryptOtp(String number){
 
-        RestAssured.baseURI = "https://dev.myjar.app";
+    public static String decryptOtp(String number) {
+        RestAssured.baseURI = configReader.get("apiBaseUrl");
 
         Response response = given()
-                .header("Authorization", "Basic cGFydG5lcl9pbmNlabnRpdmVfc2VydmljZTo1OWMyNTUxZmU0YmVmYjA4OTVlN2I3ZGI5NzMzNWRhMDRiMmI0NTlmZWViZWZlZWYxMGI5YTlkZDdlMjU3MmZi")
+                .header("Authorization", configReader.get("apiAuthToken"))
                 .queryParam("phoneNumber", number)
                 .when()
-                .get("/v1/api/admin/otp/decryptOTP")
-                .then()
-                .extract()
-                .response();
-        System.out.println(response.prettyPrint());
-       return response.jsonPath().getString("data");
-    }
+                .get("/v1/api/otp/decryptOTP");
 
+        int statusCode = response.getStatusCode();
+        if (statusCode != 200) {
+            throw new RuntimeException("OTP decrypt failed — HTTP " + statusCode + ": " + response.getBody().asString());
+        }
+
+        String otp = response.jsonPath().getString("data");
+        log.info("OTP decrypted successfully for number ending in {}", number.substring(number.length() - 4));
+        return otp;
+    }
 }

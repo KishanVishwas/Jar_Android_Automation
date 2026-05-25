@@ -1,0 +1,1 @@
+15:45:50.719 [main] WARN  c.b.config.BrowserStackConfig - Test Observability could not be enabled because framework detected is null. We currently support frameworks testng, cucumber-testng & serenity

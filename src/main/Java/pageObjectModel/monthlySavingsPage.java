@@ -1,11 +1,11 @@
 package pageObjectModel;
 
 import io.appium.java_client.android.AndroidDriver;
-import locaters.buyGoldFlowLocators;
 import locaters.dailySavingsLocators;
 import locaters.monthlySavingsLocators;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.WebElement;
+import utilsPackage.PaymentHelper;
 
 import static basePackage.driverFactory.driver;
 import static utilsPackage.waitUtils.*;
@@ -14,10 +14,11 @@ import static utilsPackage.waitUtils.*;
 public class monthlySavingsPage {
     monthlySavingsLocators ml = new monthlySavingsLocators(driver);
     dailySavingsLocators dsL = new dailySavingsLocators(driver);
+    PaymentHelper payment = new PaymentHelper();
 
     public void monthlySavingsSetupFlow() {
         monthlySavingsRedirection();
-        monthlyAmountflow();
+        monthlyAmountFlow();
     }
 
     public void monthlySavingsStopFlow() {
@@ -37,18 +38,14 @@ public class monthlySavingsPage {
         }
     }
 
-    private void monthlyAmountflow() {
+    private void monthlyAmountFlow() {
         WebElement amount = waitForClick(ml.getAmountArea());
         amount.clear();
         amount.sendKeys("200");
         waitForClick(ml.getProceedCTA()).click();
         waitForClick(ml.getProceedForPayment()).click();
-        waitForClick(ml.getPayButton()).click();
-        waitForClick(ml.getPinCompleted()).click();
-        WebElement goToHome = waitForVisibility(dsL.getGoToHomeCTA());
-        if (goToHome.isDisplayed()) {
-            goToHome.click();
-        }
+        payment.completePhonePePayment();
+        payment.goToHome();
     }
 
     private void stopRedirection() {
@@ -57,12 +54,11 @@ public class monthlySavingsPage {
         if (ml.getMonthlySavingsEntry() != null) {
             waitForClick(ml.getMonthlySavingsCard()).click();
         } else {
-
             scrollUntilElementFound(driver, ml.getApSavingsEntryPoint());
             scrollDown((AndroidDriver) driver);
             WebElement mAct = waitForVisibility(ml.getApSavingsMonthlyActiveCard());
             WebElement suTi = waitForVisibility(ml.getApMonthSubtitle());
-            if (mAct != null || "Creating the future you deserve".equalsIgnoreCase(suTi.toString())) {
+            if (mAct != null && "Creating the future you deserve".equalsIgnoreCase(suTi.getText())) {
                 mAct.click();
             }
         }
